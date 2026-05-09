@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "Деревянное ведро",
+  "item.buckets_update.wooden_water_bucket": "Деревянное ведро с водой",
+  "item.buckets_update.copper_bucket": "Медное ведро",
+  "item.buckets_update.copper_water_bucket": "Медное ведро с водой",
+  "item.buckets_update.waxed_copper_bucket": "Вощёное медное ведро",
+  "item.buckets_update.waxed_copper_water_bucket": "Вощёное медное ведро с водой",
+  "item.buckets_update.bucket.water_only": "В это ведро можно набирать только воду",
+  "item.buckets_update.copper_bucket.too_rusty": "Медное ведро слишком окислилось, чтобы держать воду"
+}

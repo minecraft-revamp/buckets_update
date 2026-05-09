@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "Cubeta de madera",
+  "item.buckets_update.wooden_water_bucket": "Cubeta de madera con agua",
+  "item.buckets_update.copper_bucket": "Cubeta de cobre",
+  "item.buckets_update.copper_water_bucket": "Cubeta de cobre con agua",
+  "item.buckets_update.waxed_copper_bucket": "Cubeta de cobre encerada",
+  "item.buckets_update.waxed_copper_water_bucket": "Cubeta de cobre encerada con agua",
+  "item.buckets_update.bucket.water_only": "Esta cubeta solo puede contener agua",
+  "item.buckets_update.copper_bucket.too_rusty": "La cubeta de cobre está demasiado oxidada para contener agua"
+}

@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "Dřevěný kbelík",
+  "item.buckets_update.wooden_water_bucket": "Dřevěný kbelík s vodou",
+  "item.buckets_update.copper_bucket": "Měděný kbelík",
+  "item.buckets_update.copper_water_bucket": "Měděný kbelík s vodou",
+  "item.buckets_update.waxed_copper_bucket": "Voskovaný měděný kbelík",
+  "item.buckets_update.waxed_copper_water_bucket": "Voskovaný měděný kbelík s vodou",
+  "item.buckets_update.bucket.water_only": "Do tohoto kbelíku lze nabírat pouze vodu",
+  "item.buckets_update.copper_bucket.too_rusty": "Měděný kbelík je příliš zoxidovaný, aby udržel vodu"
+}

@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "Favödör",
+  "item.buckets_update.wooden_water_bucket": "Vizes favödör",
+  "item.buckets_update.copper_bucket": "Rézvödör",
+  "item.buckets_update.copper_water_bucket": "Vizes rézvödör",
+  "item.buckets_update.waxed_copper_bucket": "Viaszolt rézvödör",
+  "item.buckets_update.waxed_copper_water_bucket": "Vizes viaszolt rézvödör",
+  "item.buckets_update.bucket.water_only": "Ez a vödör csak vizet tarthat",
+  "item.buckets_update.copper_bucket.too_rusty": "A rézvödör túlságosan oxidálódott, hogy vizet tartson"
+}

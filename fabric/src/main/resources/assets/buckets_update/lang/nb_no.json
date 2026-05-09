@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "Trebøtte",
+  "item.buckets_update.wooden_water_bucket": "Trebøtte med vann",
+  "item.buckets_update.copper_bucket": "Kobberbøtte",
+  "item.buckets_update.copper_water_bucket": "Kobberbøtte med vann",
+  "item.buckets_update.waxed_copper_bucket": "Vokset kobberbøtte",
+  "item.buckets_update.waxed_copper_water_bucket": "Vokset kobberbøtte med vann",
+  "item.buckets_update.bucket.water_only": "Denne bøtta kan bare inneholde vann",
+  "item.buckets_update.copper_bucket.too_rusty": "Kobberbøtta er for oksidert til å holde vann"
+}

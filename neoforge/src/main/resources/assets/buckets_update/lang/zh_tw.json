@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "木桶",
+  "item.buckets_update.wooden_water_bucket": "裝水的木桶",
+  "item.buckets_update.copper_bucket": "銅桶",
+  "item.buckets_update.copper_water_bucket": "裝水的銅桶",
+  "item.buckets_update.waxed_copper_bucket": "上蠟銅桶",
+  "item.buckets_update.waxed_copper_water_bucket": "裝水的上蠟銅桶",
+  "item.buckets_update.bucket.water_only": "這個桶只能裝水",
+  "item.buckets_update.copper_bucket.too_rusty": "銅桶氧化得太嚴重,無法裝水"
+}

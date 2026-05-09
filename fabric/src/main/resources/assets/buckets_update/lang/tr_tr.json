@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "Tahta Kova",
+  "item.buckets_update.wooden_water_bucket": "Sulu Tahta Kova",
+  "item.buckets_update.copper_bucket": "Bakır Kova",
+  "item.buckets_update.copper_water_bucket": "Sulu Bakır Kova",
+  "item.buckets_update.waxed_copper_bucket": "Mumlu Bakır Kova",
+  "item.buckets_update.waxed_copper_water_bucket": "Sulu Mumlu Bakır Kova",
+  "item.buckets_update.bucket.water_only": "Bu kova yalnızca su tutabilir",
+  "item.buckets_update.copper_bucket.too_rusty": "Bakır kova su tutmak için fazla oksitlenmiş"
+}

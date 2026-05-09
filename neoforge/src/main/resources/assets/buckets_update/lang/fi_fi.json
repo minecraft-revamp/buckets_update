@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "Puusanko",
+  "item.buckets_update.wooden_water_bucket": "Puusanko ja vettä",
+  "item.buckets_update.copper_bucket": "Kuparisanko",
+  "item.buckets_update.copper_water_bucket": "Kuparisanko ja vettä",
+  "item.buckets_update.waxed_copper_bucket": "Vahattu kuparisanko",
+  "item.buckets_update.waxed_copper_water_bucket": "Vahattu kuparisanko ja vettä",
+  "item.buckets_update.bucket.water_only": "Tämä sanko voi sisältää vain vettä",
+  "item.buckets_update.copper_bucket.too_rusty": "Kuparisanko on liian hapettunut pitääkseen vettä"
+}

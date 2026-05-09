@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "Træspand",
+  "item.buckets_update.wooden_water_bucket": "Træspand med vand",
+  "item.buckets_update.copper_bucket": "Kobberspand",
+  "item.buckets_update.copper_water_bucket": "Kobberspand med vand",
+  "item.buckets_update.waxed_copper_bucket": "Vokset kobberspand",
+  "item.buckets_update.waxed_copper_water_bucket": "Vokset kobberspand med vand",
+  "item.buckets_update.bucket.water_only": "Denne spand kan kun indeholde vand",
+  "item.buckets_update.copper_bucket.too_rusty": "Kobberspanden er for oxideret til at holde vand"
+}

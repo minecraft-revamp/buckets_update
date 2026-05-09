@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+  "name": "${mod_name}",
+  "description": "Buckets Update — refresh the Minecraft bucket family with new craftable variants: wooden buckets (durability), copper buckets (oxidation stages), and waxed copper buckets (infinite). Wax with honeycomb, scrub with an axe to restore. Iron bucket recipe revisited to use a chain.",
+  "authors": ["JessicaMalle"],
+  "license": "All Rights Reserved",
+
+  "environment": "*",
+  "entrypoints": {
+    "main":   ["com.bucketsupdate.fabric.BucketsUpdateFabric"],
+    "client": ["com.bucketsupdate.fabric.client.BucketsUpdateFabricClient"]
+  },
+
+  "depends": {
+    "fabricloader":  ">=${loader_version}",
+    "fabric-api":    "*",
+    "minecraft":     "${minecraft_version}",
+    "java":          ">=25"
+  }
+}

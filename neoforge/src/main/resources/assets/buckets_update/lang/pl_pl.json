@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "Drewniane wiadro",
+  "item.buckets_update.wooden_water_bucket": "Drewniane wiadro z wodą",
+  "item.buckets_update.copper_bucket": "Miedziane wiadro",
+  "item.buckets_update.copper_water_bucket": "Miedziane wiadro z wodą",
+  "item.buckets_update.waxed_copper_bucket": "Woskowane miedziane wiadro",
+  "item.buckets_update.waxed_copper_water_bucket": "Woskowane miedziane wiadro z wodą",
+  "item.buckets_update.bucket.water_only": "To wiadro może pomieścić tylko wodę",
+  "item.buckets_update.copper_bucket.too_rusty": "Miedziane wiadro jest zbyt utlenione, by pomieścić wodę"
+}

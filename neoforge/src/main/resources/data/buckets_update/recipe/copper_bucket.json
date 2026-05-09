@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " H ",
+    "C C",
+    " C "
+  ],
+  "key": {
+    "H": "minecraft:copper_chain",
+    "C": "minecraft:copper_ingot"
+  },
+  "result": {
+    "id": "buckets_update:copper_bucket",
+    "count": 1
+  }
+}

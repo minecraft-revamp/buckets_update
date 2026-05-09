@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "Ξύλινος κουβάς",
+  "item.buckets_update.wooden_water_bucket": "Ξύλινος κουβάς με νερό",
+  "item.buckets_update.copper_bucket": "Χάλκινος κουβάς",
+  "item.buckets_update.copper_water_bucket": "Χάλκινος κουβάς με νερό",
+  "item.buckets_update.waxed_copper_bucket": "Κερωμένος χάλκινος κουβάς",
+  "item.buckets_update.waxed_copper_water_bucket": "Κερωμένος χάλκινος κουβάς με νερό",
+  "item.buckets_update.bucket.water_only": "Αυτός ο κουβάς χωράει μόνο νερό",
+  "item.buckets_update.copper_bucket.too_rusty": "Ο χάλκινος κουβάς έχει οξειδωθεί υπερβολικά για να κρατήσει νερό"
+}

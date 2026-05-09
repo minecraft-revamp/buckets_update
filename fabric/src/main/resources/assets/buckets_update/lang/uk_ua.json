@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "Дерев'яне відро",
+  "item.buckets_update.wooden_water_bucket": "Дерев'яне відро з водою",
+  "item.buckets_update.copper_bucket": "Мідне відро",
+  "item.buckets_update.copper_water_bucket": "Мідне відро з водою",
+  "item.buckets_update.waxed_copper_bucket": "Вощене мідне відро",
+  "item.buckets_update.waxed_copper_water_bucket": "Вощене мідне відро з водою",
+  "item.buckets_update.bucket.water_only": "У це відро можна набирати лише воду",
+  "item.buckets_update.copper_bucket.too_rusty": "Мідне відро надто окислилося, щоб тримати воду"
+}

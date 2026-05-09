@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "دلو خشبي",
+  "item.buckets_update.wooden_water_bucket": "دلو خشبي مع ماء",
+  "item.buckets_update.copper_bucket": "دلو نحاسي",
+  "item.buckets_update.copper_water_bucket": "دلو نحاسي مع ماء",
+  "item.buckets_update.waxed_copper_bucket": "دلو نحاسي مشمّع",
+  "item.buckets_update.waxed_copper_water_bucket": "دلو نحاسي مشمّع مع ماء",
+  "item.buckets_update.bucket.water_only": "هذا الدلو يحمل الماء فقط",
+  "item.buckets_update.copper_bucket.too_rusty": "الدلو النحاسي صدئ جدًا ليحمل الماء"
+}

@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "Holzeimer",
+  "item.buckets_update.wooden_water_bucket": "Holzeimer mit Wasser",
+  "item.buckets_update.copper_bucket": "Kupfereimer",
+  "item.buckets_update.copper_water_bucket": "Kupfereimer mit Wasser",
+  "item.buckets_update.waxed_copper_bucket": "Gewachster Kupfereimer",
+  "item.buckets_update.waxed_copper_water_bucket": "Gewachster Kupfereimer mit Wasser",
+  "item.buckets_update.bucket.water_only": "Dieser Eimer kann nur Wasser fassen",
+  "item.buckets_update.copper_bucket.too_rusty": "Der Kupfereimer ist zu oxidiert, um Wasser zu fassen"
+}

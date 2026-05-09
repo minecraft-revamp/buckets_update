@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "나무 양동이",
+  "item.buckets_update.wooden_water_bucket": "물이 든 나무 양동이",
+  "item.buckets_update.copper_bucket": "구리 양동이",
+  "item.buckets_update.copper_water_bucket": "물이 든 구리 양동이",
+  "item.buckets_update.waxed_copper_bucket": "밀랍칠한 구리 양동이",
+  "item.buckets_update.waxed_copper_water_bucket": "물이 든 밀랍칠한 구리 양동이",
+  "item.buckets_update.bucket.water_only": "이 양동이에는 물만 담을 수 있습니다",
+  "item.buckets_update.copper_bucket.too_rusty": "구리 양동이가 너무 산화되어 물을 담을 수 없습니다"
+}

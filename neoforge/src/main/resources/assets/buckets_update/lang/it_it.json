@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "Secchio di legno",
+  "item.buckets_update.wooden_water_bucket": "Secchio d'acqua di legno",
+  "item.buckets_update.copper_bucket": "Secchio di rame",
+  "item.buckets_update.copper_water_bucket": "Secchio d'acqua di rame",
+  "item.buckets_update.waxed_copper_bucket": "Secchio di rame cerato",
+  "item.buckets_update.waxed_copper_water_bucket": "Secchio d'acqua di rame cerato",
+  "item.buckets_update.bucket.water_only": "Questo secchio può contenere solo acqua",
+  "item.buckets_update.copper_bucket.too_rusty": "Il secchio di rame è troppo ossidato per contenere acqua"
+}

@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "ถังไม้",
+  "item.buckets_update.wooden_water_bucket": "ถังไม้ใส่น้ำ",
+  "item.buckets_update.copper_bucket": "ถังทองแดง",
+  "item.buckets_update.copper_water_bucket": "ถังทองแดงใส่น้ำ",
+  "item.buckets_update.waxed_copper_bucket": "ถังทองแดงเคลือบขี้ผึ้ง",
+  "item.buckets_update.waxed_copper_water_bucket": "ถังทองแดงเคลือบขี้ผึ้งใส่น้ำ",
+  "item.buckets_update.bucket.water_only": "ถังนี้บรรจุได้เฉพาะน้ำเท่านั้น",
+  "item.buckets_update.copper_bucket.too_rusty": "ถังทองแดงเกิดสนิมเกินไป ไม่สามารถบรรจุน้ำได้"
+}

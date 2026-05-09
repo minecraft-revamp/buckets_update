@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "Xô gỗ",
+  "item.buckets_update.wooden_water_bucket": "Xô gỗ chứa nước",
+  "item.buckets_update.copper_bucket": "Xô đồng",
+  "item.buckets_update.copper_water_bucket": "Xô đồng chứa nước",
+  "item.buckets_update.waxed_copper_bucket": "Xô đồng phủ sáp",
+  "item.buckets_update.waxed_copper_water_bucket": "Xô đồng phủ sáp chứa nước",
+  "item.buckets_update.bucket.water_only": "Xô này chỉ có thể chứa nước",
+  "item.buckets_update.copper_bucket.too_rusty": "Xô đồng đã quá oxy hóa để chứa nước"
+}

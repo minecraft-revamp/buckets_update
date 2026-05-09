@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "Seau en bois",
+  "item.buckets_update.wooden_water_bucket": "Seau en bois (eau)",
+  "item.buckets_update.copper_bucket": "Seau en cuivre",
+  "item.buckets_update.copper_water_bucket": "Seau en cuivre (eau)",
+  "item.buckets_update.waxed_copper_bucket": "Seau en cuivre ciré",
+  "item.buckets_update.waxed_copper_water_bucket": "Seau en cuivre ciré (eau)",
+  "item.buckets_update.bucket.water_only": "Ce seau ne peut contenir que de l'eau",
+  "item.buckets_update.copper_bucket.too_rusty": "Le seau en cuivre est trop rouillé pour contenir de l'eau"
+}

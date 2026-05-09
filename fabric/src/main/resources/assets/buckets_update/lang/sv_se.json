@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "Trähink",
+  "item.buckets_update.wooden_water_bucket": "Trähink med vatten",
+  "item.buckets_update.copper_bucket": "Kopparhink",
+  "item.buckets_update.copper_water_bucket": "Kopparhink med vatten",
+  "item.buckets_update.waxed_copper_bucket": "Vaxad kopparhink",
+  "item.buckets_update.waxed_copper_water_bucket": "Vaxad kopparhink med vatten",
+  "item.buckets_update.bucket.water_only": "Denna hink kan bara innehålla vatten",
+  "item.buckets_update.copper_bucket.too_rusty": "Kopparhinken är för oxiderad för att rymma vatten"
+}

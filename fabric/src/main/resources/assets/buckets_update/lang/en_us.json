@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "Wooden Bucket",
+  "item.buckets_update.wooden_water_bucket": "Wooden Water Bucket",
+  "item.buckets_update.copper_bucket": "Copper Bucket",
+  "item.buckets_update.copper_water_bucket": "Copper Water Bucket",
+  "item.buckets_update.waxed_copper_bucket": "Waxed Copper Bucket",
+  "item.buckets_update.waxed_copper_water_bucket": "Waxed Copper Water Bucket",
+  "item.buckets_update.bucket.water_only": "This bucket can only hold water",
+  "item.buckets_update.copper_bucket.too_rusty": "The copper bucket is too rusty to hold water"
+}

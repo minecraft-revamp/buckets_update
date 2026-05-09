@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "Houten emmer",
+  "item.buckets_update.wooden_water_bucket": "Houten emmer met water",
+  "item.buckets_update.copper_bucket": "Koperen emmer",
+  "item.buckets_update.copper_water_bucket": "Koperen emmer met water",
+  "item.buckets_update.waxed_copper_bucket": "Gewaxte koperen emmer",
+  "item.buckets_update.waxed_copper_water_bucket": "Gewaxte koperen emmer met water",
+  "item.buckets_update.bucket.water_only": "Deze emmer kan alleen water bevatten",
+  "item.buckets_update.copper_bucket.too_rusty": "De koperen emmer is te zeer geoxideerd om water vast te houden"
+}

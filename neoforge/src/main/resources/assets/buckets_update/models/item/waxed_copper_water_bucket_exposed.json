@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "buckets_update:item/waxed_copper_water_bucket_exposed"
+  }
+}

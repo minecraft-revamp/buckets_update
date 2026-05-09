@@ -1,0 +1,11 @@
+{
+  "itemGroup.buckets_update.main": "Buckets Update",
+  "item.buckets_update.wooden_bucket": "Balde de madeira",
+  "item.buckets_update.wooden_water_bucket": "Balde de madeira com água",
+  "item.buckets_update.copper_bucket": "Balde de cobre",
+  "item.buckets_update.copper_water_bucket": "Balde de cobre com água",
+  "item.buckets_update.waxed_copper_bucket": "Balde de cobre encerado",
+  "item.buckets_update.waxed_copper_water_bucket": "Balde de cobre encerado com água",
+  "item.buckets_update.bucket.water_only": "Este balde só pode conter água",
+  "item.buckets_update.copper_bucket.too_rusty": "O balde de cobre está demasiado oxidado para conter água"
+}
