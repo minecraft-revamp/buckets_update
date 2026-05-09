@@ -52,8 +52,8 @@ public final class BucketEvents {
                     ? InteractionResult.SUCCESS.heldItemTransformedTo(player.getItemInHand(bucketHand))
                     : InteractionResult.PASS;
         } else if (tool.getItem() instanceof AxeItem) {
-            return applyScrub(player, bucket, tool)
-                    ? InteractionResult.SUCCESS
+            return applyScrub(player, bucket, bucketHand, tool)
+                    ? InteractionResult.SUCCESS.heldItemTransformedTo(player.getItemInHand(bucketHand))
                     : InteractionResult.PASS;
         }
         return InteractionResult.PASS;
@@ -75,11 +75,15 @@ public final class BucketEvents {
         return true;
     }
 
-    private static boolean applyScrub(Player player, ItemStack bucket, ItemStack axe) {
+    private static boolean applyScrub(Player player, ItemStack bucket, InteractionHand bucketHand, ItemStack axe) {
         OxidationStage stage = bucket.get(ModDataComponents.OXIDATION_STAGE);
         if (stage == null || !stage.canScrub()) return false;
 
-        bucket.set(ModDataComponents.OXIDATION_STAGE, stage.previous());
+        // Build a new stack and assign explicitly — component-only in-place mutations
+        // don't always resync to the client on MC 26.1.
+        ItemStack scrubbed = bucket.copy();
+        scrubbed.set(ModDataComponents.OXIDATION_STAGE, stage.previous());
+        player.setItemInHand(bucketHand, scrubbed);
 
         if (!player.getAbilities().instabuild && player.level() instanceof ServerLevel serverLevel) {
             axe.hurtAndBreak(1, serverLevel,

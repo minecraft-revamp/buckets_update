@@ -85,7 +85,7 @@ public final class BucketEvents {
         if (tool.is(Items.HONEYCOMB)) {
             handled = applyWax(player, bucket, bucketHand, tool);
         } else if (tool.getItem() instanceof AxeItem) {
-            handled = applyScrub(player, bucket, tool);
+            handled = applyScrub(player, bucket, bucketHand, tool);
         } else {
             return;
         }
@@ -114,11 +114,16 @@ public final class BucketEvents {
         return true;
     }
 
-    private static boolean applyScrub(Player player, ItemStack bucket, ItemStack axe) {
+    private static boolean applyScrub(Player player, ItemStack bucket, InteractionHand bucketHand, ItemStack axe) {
         OxidationStage stage = bucket.get(ModDataComponents.OXIDATION_STAGE.get());
         if (stage == null || !stage.canScrub()) return false;
 
-        bucket.set(ModDataComponents.OXIDATION_STAGE.get(), stage.previous());
+        // Build a new stack with the previous stage and explicitly assign it to the slot.
+        // In-place `bucket.set(...)` doesn't always trigger a client/server inventory resync
+        // for component-only mutations on MC 26.1, so the visual stays on the old stage.
+        ItemStack scrubbed = bucket.copy();
+        scrubbed.set(ModDataComponents.OXIDATION_STAGE.get(), stage.previous());
+        player.setItemInHand(bucketHand, scrubbed);
 
         if (!player.getAbilities().instabuild && player.level() instanceof ServerLevel serverLevel) {
             axe.hurtAndBreak(1, serverLevel,
