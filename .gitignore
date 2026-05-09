@@ -28,3 +28,9 @@ Thumbs.db
 
 # JDK tarballs (we keep them in ~/.local/jdks, never commit)
 *.tar.gz
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
