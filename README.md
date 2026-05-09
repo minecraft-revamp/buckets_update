@@ -15,11 +15,11 @@ Refresh the Minecraft bucket family with new craftable variants — durable wood
 | 🪣 Wooden | 3 planks + 1 stick | 16 uses, then breaks |
 | 🟠 Copper | 3 copper ingots + 1 copper chain | Oxidises gradually through 4 visual stages; refuses water once fully oxidised |
 | ✨ Waxed copper | Copper bucket + honeycomb (right-click) | Infinite uses, oxidation frozen at the moment of waxing |
+| ⚙️ Iron *(vanilla, recipe revised)* | 3 iron ingots + 1 iron chain | Standard vanilla bucket — only the recipe changes, to avoid the historical shape conflict with the wooden bowl |
 
 Plus:
 
 - **Restore an oxidised copper bucket** — hold an axe in one hand and the copper bucket in the other, right-click. Reverses one stage of oxidation, axe takes 1 durability damage.
-- **Vanilla iron bucket recipe revisited** — now uses 3 iron ingots in V + 1 iron chain on top. Avoids the historic shape conflict with the wooden bowl recipe (which the wooden bucket also resolves).
 - **30 language translations** included.
 
 ## Recipes
