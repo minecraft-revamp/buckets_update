@@ -12,8 +12,8 @@ Refresh the Minecraft bucket family with new craftable variants — durable wood
 
 | Bucket | Material | Behaviour |
 |---|---|---|
-| 🪣 Wooden | 4 planks + 1 stick | 16 uses, then breaks |
-| 🟠 Copper | 4 copper ingots + 1 copper chain | Oxidises gradually through 4 visual stages; refuses water once fully oxidised |
+| 🪣 Wooden | 3 planks + 1 stick | 16 uses, then breaks |
+| 🟠 Copper | 3 copper ingots + 1 copper chain | Oxidises gradually through 4 visual stages; refuses water once fully oxidised |
 | ✨ Waxed copper | Copper bucket + honeycomb (right-click) | Infinite uses, oxidation frozen at the moment of waxing |
 
 Plus:
