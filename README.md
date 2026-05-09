@@ -24,14 +24,40 @@ Plus:
 
 ## Recipes
 
-```
-Wooden Bucket          Copper Bucket          Iron Bucket (overridden)
-.   stick   .          .   chain   .          .   chain   .
-plank   plank          ingot   ingot          ingot   ingot
-.   plank   .          .   ingot   .          .   ingot   .
-```
+> **Legend** · 🟫 Planks · 🥢 Stick · 🟧 Copper ingot · ⛓️ Copper chain · ⬜ Iron ingot · 🔗 Iron chain
 
-The waxed copper bucket and oxidation restoration are **not** crafting-table operations — they're right-click interactions in the world (see above).
+### 🪣 Wooden Bucket
+
+|  |  |  |
+|:-:|:-:|:-:|
+|  | 🥢 |  |
+| 🟫 |  | 🟫 |
+|  | 🟫 |  |
+
+### 🟠 Copper Bucket
+
+|  |  |  |
+|:-:|:-:|:-:|
+|  | ⛓️ |  |
+| 🟧 |  | 🟧 |
+|  | 🟧 |  |
+
+### ⚙️ Iron Bucket *(vanilla recipe revised)*
+
+|  |  |  |
+|:-:|:-:|:-:|
+|  | 🔗 |  |
+| ⬜ |  | ⬜ |
+|  | ⬜ |  |
+
+### ✨ Wax & 🪓 Restore — right-click only
+
+Not crafted at a table. Hold each item in opposite hands and right-click in the air.
+
+| Action | Tool | Bucket | Result |
+|---|:-:|:-:|---|
+| **Wax** | 🍯 Honeycomb | 🟠 Copper bucket | ✨ Waxed copper bucket *(oxidation stage frozen)* |
+| **Restore** | 🪓 Axe | 🟠 Oxidised copper bucket | 🟠 Copper bucket *(one stage less; axe takes 1 durability)* |
 
 ## Install
 
