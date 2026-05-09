@@ -2,6 +2,7 @@
 
 Refresh the Minecraft bucket family with new craftable variants — durable wooden buckets, oxidising copper buckets, and waxed copper buckets that last forever.
 
+[![Build](https://github.com/JessicaMalle/minecraft_buckets_update/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/JessicaMalle/minecraft_buckets_update/actions/workflows/build-and-test.yml)
 [![Minecraft](https://img.shields.io/badge/Minecraft-26.1.2-62B132?logo=minecraft&logoColor=white)](https://www.minecraft.net/)
 [![NeoForge](https://img.shields.io/badge/NeoForge-26.1.2.41--beta-D7742F)](https://neoforged.net/)
 [![Fabric](https://img.shields.io/badge/Fabric-0.148.0%2B26.1.2-DBD0B4)](https://fabricmc.net/)
