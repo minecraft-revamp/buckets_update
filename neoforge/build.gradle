@@ -125,6 +125,19 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+    // Unit tests — JUnit 5. The neoforge dep is also pulled into the test
+    // classpath so OxidationStage (which implements StringRepresentable) can
+    // be loaded.
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.11.0'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.11.0'
+    testCompileOnly "net.neoforged:neoforge:${neo_version}"
+    testRuntimeOnly "net.neoforged:neoforge:${neo_version}"
+}
+
+test {
+    useJUnitPlatform()
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
@@ -173,3 +186,14 @@ idea {
         downloadJavadoc = true
     }
 }
+
+// Resource validator (tests/validate.py) — wired onto `check`.
+// Catches JSON errors, lang desync, pack.mcmeta format, missing texture refs,
+// and palette drift. Runs in <1s. See tests/validate.py for details.
+tasks.register('validateResources', Exec) {
+    description = 'Lint resources (JSON, lang, pack.mcmeta, palettes) via Python'
+    group = 'verification'
+    workingDir = rootProject.file('..')
+    commandLine 'python3', 'tests/validate.py', projectDir.absolutePath
+}
+tasks.named('check').configure { dependsOn 'validateResources' }
