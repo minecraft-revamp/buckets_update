@@ -1,0 +1,33 @@
+{
+  "parent": "buckets_update:udder_master",
+  "display": {
+    "icon": {
+      "id": "buckets_update:copper_milk_bucket"
+    },
+    "title": {
+      "translate": "advancements.buckets_update.last_drop.title"
+    },
+    "description": {
+      "translate": "advancements.buckets_update.last_drop.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "drank_wooden_milk": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": { "items": ["buckets_update:wooden_milk_bucket"] }
+      }
+    },
+    "drank_copper_milk": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": { "items": ["buckets_update:copper_milk_bucket"] }
+      }
+    }
+  },
+  "requirements": [["drank_wooden_milk", "drank_copper_milk"]]
+}

@@ -1,0 +1,27 @@
+{
+  "parent": "buckets_update:root",
+  "display": {
+    "icon": {
+      "id": "minecraft:bucket"
+    },
+    "title": {
+      "translate": "advancements.buckets_update.old_school.title"
+    },
+    "description": {
+      "translate": "advancements.buckets_update.old_school.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "crafted_iron_bucket": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipe_id": "minecraft:bucket"
+      }
+    }
+  },
+  "requirements": [["crafted_iron_bucket"]]
+}

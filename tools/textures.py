@@ -10,6 +10,16 @@ vanilla MC sources at runtime: this lets the linter run without requiring a
 prior `./gradlew neoFormDecompile`, and pins the palette to a specific
 artistic decision (HSV shifts on copper_ingot, wooden_axe trimmed by 2 dark
 stops). To re-derive after a Mojang change, run `python3 tools/textures.py`.
+
+NOTE: copper buckets do NOT oxidize (aligned with vanilla copper tools, which
+also don't oxidize). The exposed/weathered/oxidized/waxed palettes are kept
+here for historical reference and in case a future variant wants them, but no
+shipped texture currently uses them.
+
+Milk variants (wooden_milk_bucket / copper_milk_bucket) are intentionally
+excluded from the L3 palette check: they composite vanilla milk_bucket's
+white-cream gradient on top of the material rim, and the white pixels would
+register as "unexpected colors" against the pure material palette.
 """
 from __future__ import annotations
 import colorsys
@@ -28,41 +38,16 @@ EXPECTED_PALETTES: Dict[str, List[RGB]] = {
     "copper_unoxidized": [(109, 52, 33), (138, 65, 41), (156, 69, 41),
                           (156, 78, 49), (193, 90, 54), (231, 124, 86),
                           (252, 153, 130), (251, 195, 182)],
-    "copper_exposed": [(105, 70, 48), (132, 88, 60), (150, 96, 64),
-                       (150, 102, 70), (185, 122, 81), (222, 156, 113),
-                       (242, 180, 151), (241, 206, 189)],
-    "copper_weathered": [(69, 100, 71), (87, 127, 90), (96, 144, 100),
-                         (99, 144, 104), (120, 178, 125), (152, 213, 158),
-                         (181, 232, 182), (202, 231, 203)],
-    "copper_oxidized": [(56, 109, 94), (70, 138, 119), (76, 156, 133),
-                        (81, 156, 136), (96, 193, 166), (130, 231, 203),
-                        (167, 252, 223), (203, 251, 234)],
 }
-# Waxed visually identical to non-waxed in vanilla, so they share palettes.
-for _k in ("unoxidized", "exposed", "weathered", "oxidized"):
-    EXPECTED_PALETTES[f"waxed_{_k}"] = EXPECTED_PALETTES[f"copper_{_k}"]
 
 
 # ----- Item → stage mapping --------------------------------------------------
+# Only validated items; milk variants excluded (white pixels not in palette).
 ITEM_TO_STAGE: Dict[str, str] = {
-    "wooden_bucket":                       "wood",
-    "wooden_water_bucket":                 "wood",
-    "copper_bucket":                       "copper_unoxidized",
-    "copper_bucket_exposed":               "copper_exposed",
-    "copper_bucket_weathered":             "copper_weathered",
-    "copper_bucket_oxidized":              "copper_oxidized",
-    "copper_water_bucket":                 "copper_unoxidized",
-    "copper_water_bucket_exposed":         "copper_exposed",
-    "copper_water_bucket_weathered":       "copper_weathered",
-    "copper_water_bucket_oxidized":        "copper_oxidized",
-    "waxed_copper_bucket":                 "waxed_unoxidized",
-    "waxed_copper_bucket_exposed":         "waxed_exposed",
-    "waxed_copper_bucket_weathered":       "waxed_weathered",
-    "waxed_copper_bucket_oxidized":        "waxed_oxidized",
-    "waxed_copper_water_bucket":           "waxed_unoxidized",
-    "waxed_copper_water_bucket_exposed":   "waxed_exposed",
-    "waxed_copper_water_bucket_weathered": "waxed_weathered",
-    "waxed_copper_water_bucket_oxidized":  "waxed_oxidized",
+    "wooden_bucket":       "wood",
+    "wooden_water_bucket": "wood",
+    "copper_bucket":       "copper_unoxidized",
+    "copper_water_bucket": "copper_unoxidized",
 }
 
 
@@ -97,13 +82,6 @@ def _hsv_shift(rgb: RGB, dh_deg: float, ds_mul: float, dv_mul: float) -> RGB:
     return (round(r2 * 255), round(g2 * 255), round(b2 * 255))
 
 
-# Tuned per stage. Updating these requires re-running this module.
-_STAGE_HSV_SHIFTS = {
-    "copper_unoxidized": (0,    1.00, 1.00),
-    "copper_exposed":    (8,    0.78, 0.96),
-    "copper_weathered":  (110,  0.45, 0.92),
-    "copper_oxidized":   (148,  0.70, 1.00),
-}
 _WOOD_TRIM = 2  # clip darkest stops of wooden_axe (cord/leather, not wood)
 
 
@@ -115,9 +93,7 @@ def rederive_from_vanilla(vanilla_root: Path) -> Dict[str, List[RGB]]:
     """
     out: Dict[str, List[RGB]] = {}
     out["wood"] = _palette_sorted(vanilla_root / "textures/item/wooden_axe.png")[_WOOD_TRIM:]
-    base = _palette_sorted(vanilla_root / "textures/item/copper_ingot.png")
-    for stage, (dh, ds, dv) in _STAGE_HSV_SHIFTS.items():
-        out[stage] = [_hsv_shift(c, dh, ds, dv) for c in base]
+    out["copper_unoxidized"] = _palette_sorted(vanilla_root / "textures/item/copper_ingot.png")
     return out
 
 

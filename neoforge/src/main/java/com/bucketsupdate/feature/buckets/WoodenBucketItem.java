@@ -36,10 +36,14 @@ public class WoodenBucketItem extends BaseBucketItem {
 
     @Override
     protected ItemStack buildResult(ItemStack stack, boolean fillingAction) {
-        // Bucket broke — wear pushed it past max durability.
         if (stack.getDamageValue() >= MAX_USES) {
             return ItemStack.EMPTY;
         }
         return super.buildResult(stack, fillingAction);
+    }
+
+    @Override
+    protected boolean wouldBreakAfterWear(ItemStack stack) {
+        return stack.getDamageValue() >= MAX_USES;
     }
 }

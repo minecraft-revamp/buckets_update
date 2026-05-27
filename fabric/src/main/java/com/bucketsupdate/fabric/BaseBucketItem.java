@@ -4,12 +4,15 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.level.ClipContext;
@@ -26,8 +29,8 @@ import net.minecraft.world.phys.HitResult;
 import java.util.function.Supplier;
 
 /**
- * Base class shared by our wooden, copper and waxed-copper buckets.
- * Restricts pickup to water sources only and provides hooks for wear/refusal/transform logic.
+ * Base class shared by our wooden and copper buckets. Restricts pickup to water
+ * sources only and provides hooks for wear / break-on-wear / state-copy logic.
  */
 public abstract class BaseBucketItem extends BucketItem {
     /** Local copy because vanilla {@code BucketItem.content} is private (NeoForge exposes it, Fabric doesn't). */
@@ -69,6 +72,34 @@ public abstract class BaseBucketItem extends BucketItem {
     }
 
     protected void applyWear(ItemStack stack, Level level, Player player, boolean fillingAction) {}
+
+    /** Public entry point for the milking flow (acts as a fill action). */
+    public void applyMilkingWear(ItemStack stack, Level level, Player player) {
+        applyWear(stack, level, player, true);
+    }
+
+    /**
+     * Builds the milk-filled counterpart for a cow-milking action, or
+     * {@link ItemStack#EMPTY} if this bucket has just broken from wear.
+     */
+    public ItemStack buildMilkResult(ItemStack stack, Item milkItem) {
+        if (wouldBreakAfterWear(stack)) {
+            return ItemStack.EMPTY;
+        }
+        ItemStack milk = new ItemStack(milkItem);
+        copyState(stack, milk);
+        return milk;
+    }
+
+    /** Subclasses signal that wear has just exhausted the bucket (e.g. wood at MAX_USES). */
+    protected boolean wouldBreakAfterWear(ItemStack stack) {
+        return false;
+    }
+
+    /** Sound played when the bucket breaks from durability exhaustion. Defaults to wood. */
+    public SoundEvent getBreakSound() {
+        return SoundEvents.WOOD_BREAK;
+    }
 
     protected ItemStack buildResult(ItemStack stack, boolean fillingAction) {
         return fillingAction ? toFilled(stack) : toEmpty(stack);
@@ -132,7 +163,6 @@ public abstract class BaseBucketItem extends BucketItem {
                 && container.canPlaceLiquid(player, level, pos, clicked, this.bucketContent);
         BlockPos placePos = (canPlaceInside && this.bucketContent == Fluids.WATER) ? pos : relPos;
 
-        // Vanilla Fabric only has the 4-arg overload; NeoForge added an ItemStack-aware variant.
         if (!emptyContents(player, level, placePos, hit)) {
             return InteractionResult.FAIL;
         }
@@ -148,7 +178,7 @@ public abstract class BaseBucketItem extends BucketItem {
         if (ourResult.isEmpty()) {
             if (player instanceof ServerPlayer sp) {
                 sp.level().playSound(null, sp.blockPosition(),
-                        net.minecraft.sounds.SoundEvents.WOOD_BREAK, SoundSource.PLAYERS, 1.0F, 1.0F);
+                        getBreakSound(), SoundSource.PLAYERS, 1.0F, 1.0F);
             }
             held.shrink(1);
             return InteractionResult.SUCCESS.heldItemTransformedTo(ItemStack.EMPTY);

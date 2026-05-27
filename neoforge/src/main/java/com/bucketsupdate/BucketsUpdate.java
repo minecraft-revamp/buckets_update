@@ -1,8 +1,8 @@
 package com.bucketsupdate;
 
 import com.bucketsupdate.feature.buckets.BucketEvents;
+import com.bucketsupdate.feature.buckets.MilkEvents;
 import com.bucketsupdate.registry.ModCreativeTabs;
-import com.bucketsupdate.registry.ModDataComponents;
 import com.bucketsupdate.registry.ModItems;
 import com.mojang.logging.LogUtils;
 import net.neoforged.bus.api.IEventBus;
@@ -17,11 +17,11 @@ public class BucketsUpdate {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public BucketsUpdate(IEventBus modEventBus, ModContainer modContainer) {
-        ModDataComponents.DATA_COMPONENTS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(BucketEvents.class);
+        NeoForge.EVENT_BUS.register(MilkEvents.class);
 
         LOGGER.info("Buckets Update initialised");
     }

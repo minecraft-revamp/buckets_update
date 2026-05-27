@@ -41,4 +41,9 @@ public class WoodenBucketItem extends BaseBucketItem {
         }
         return super.buildResult(stack, fillingAction);
     }
+
+    @Override
+    protected boolean wouldBreakAfterWear(ItemStack stack) {
+        return stack.getDamageValue() >= MAX_USES;
+    }
 }

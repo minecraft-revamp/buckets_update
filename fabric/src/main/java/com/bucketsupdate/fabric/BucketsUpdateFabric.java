@@ -11,11 +11,10 @@ public class BucketsUpdateFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         // Class-load triggers force the static initializers to run, performing registration.
-        ModDataComponents.bootstrap();
         ModItems.bootstrap();
         ModCreativeTabs.bootstrap();
 
-        BucketEvents.register();
+        MilkEvents.register();
 
         LOGGER.info("Buckets Update (Fabric) initialised");
     }

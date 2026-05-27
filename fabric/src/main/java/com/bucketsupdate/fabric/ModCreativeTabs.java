@@ -16,10 +16,10 @@ public final class ModCreativeTabs {
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.WOODEN_BUCKET);
                         output.accept(ModItems.WOODEN_WATER_BUCKET);
+                        output.accept(ModItems.WOODEN_MILK_BUCKET);
                         output.accept(ModItems.COPPER_BUCKET);
                         output.accept(ModItems.COPPER_WATER_BUCKET);
-                        output.accept(ModItems.WAXED_COPPER_BUCKET);
-                        output.accept(ModItems.WAXED_COPPER_WATER_BUCKET);
+                        output.accept(ModItems.COPPER_MILK_BUCKET);
                     })
                     .build());
 

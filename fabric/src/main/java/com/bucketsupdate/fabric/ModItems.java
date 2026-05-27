@@ -1,21 +1,24 @@
 package com.bucketsupdate.fabric;
 
 import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.level.material.Fluids;
 
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 /**
- * Fabric-style item registration. Each item is registered with its id pre-set on Item.Properties,
- * which is required since MC 1.21.4+. Counterparts are wired via lazy suppliers so cross-references
- * resolve correctly regardless of declaration order.
+ * Fabric-style item registration. Each item gets its id pre-set on Item.Properties
+ * (required since MC 1.21.4+). Cross-references between paired items (empty/filled)
+ * use lazy suppliers so declaration order doesn't matter; milk variants are
+ * declared after their empty counterpart so the supplier returns a non-null value
+ * by the time it's first invoked.
  */
 public final class ModItems {
     public static final WoodenBucketItem WOODEN_BUCKET = registerItem(
@@ -34,6 +37,13 @@ public final class ModItems {
                     () -> ModItems.WOODEN_WATER_BUCKET,
                     () -> ModItems.WOODEN_BUCKET));
 
+    public static final WoodenMilkBucketItem WOODEN_MILK_BUCKET = registerItem(
+            "wooden_milk_bucket",
+            props -> new WoodenMilkBucketItem(
+                    props.stacksTo(1)
+                            .component(DataComponents.CONSUMABLE, Consumables.MILK_BUCKET),
+                    () -> ModItems.WOODEN_BUCKET));
+
     public static final CopperBucketItem COPPER_BUCKET = registerItem(
             "copper_bucket",
             props -> new CopperBucketItem(
@@ -50,21 +60,12 @@ public final class ModItems {
                     () -> ModItems.COPPER_WATER_BUCKET,
                     () -> ModItems.COPPER_BUCKET));
 
-    public static final WaxedCopperBucketItem WAXED_COPPER_BUCKET = registerItem(
-            "waxed_copper_bucket",
-            props -> new WaxedCopperBucketItem(
-                    Fluids.EMPTY,
-                    props.stacksTo(1),
-                    () -> ModItems.WAXED_COPPER_WATER_BUCKET,
-                    () -> ModItems.WAXED_COPPER_BUCKET));
-
-    public static final WaxedCopperBucketItem WAXED_COPPER_WATER_BUCKET = registerItem(
-            "waxed_copper_water_bucket",
-            props -> new WaxedCopperBucketItem(
-                    Fluids.WATER,
-                    props.stacksTo(1).craftRemainder(ModItems.WAXED_COPPER_BUCKET),
-                    () -> ModItems.WAXED_COPPER_WATER_BUCKET,
-                    () -> ModItems.WAXED_COPPER_BUCKET));
+    public static final CopperMilkBucketItem COPPER_MILK_BUCKET = registerItem(
+            "copper_milk_bucket",
+            props -> new CopperMilkBucketItem(
+                    props.stacksTo(1)
+                            .component(DataComponents.CONSUMABLE, Consumables.MILK_BUCKET),
+                    () -> ModItems.COPPER_BUCKET));
 
     private ModItems() {}
 

@@ -1,0 +1,27 @@
+{
+  "parent": "buckets_update:root",
+  "display": {
+    "icon": {
+      "id": "buckets_update:copper_bucket"
+    },
+    "title": {
+      "translate": "advancements.buckets_update.craft_copper.title"
+    },
+    "description": {
+      "translate": "advancements.buckets_update.craft_copper.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "got_copper_bucket": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{ "items": ["buckets_update:copper_bucket"] }]
+      }
+    }
+  },
+  "requirements": [["got_copper_bucket"]]
+}

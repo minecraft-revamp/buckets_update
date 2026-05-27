@@ -1,0 +1,33 @@
+{
+  "parent": "buckets_update:root",
+  "display": {
+    "icon": {
+      "id": "buckets_update:wooden_water_bucket"
+    },
+    "title": {
+      "translate": "advancements.buckets_update.splash.title"
+    },
+    "description": {
+      "translate": "advancements.buckets_update.splash.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "got_wooden_water": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{ "items": ["buckets_update:wooden_water_bucket"] }]
+      }
+    },
+    "got_copper_water": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{ "items": ["buckets_update:copper_water_bucket"] }]
+      }
+    }
+  },
+  "requirements": [["got_wooden_water", "got_copper_water"]]
+}

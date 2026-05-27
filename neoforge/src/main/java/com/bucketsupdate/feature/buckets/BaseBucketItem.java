@@ -4,12 +4,15 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.level.ClipContext;
@@ -25,11 +28,8 @@ import net.minecraft.world.phys.HitResult;
 import java.util.function.Supplier;
 
 /**
- * Base class shared by our wooden, copper and waxed-copper buckets.
- * - Restricts pickup to water sources only.
- * - Hooks {@link #canUseFor} to allow subclasses to refuse an action (e.g. oxidized copper).
- * - Hooks {@link #applyWear} for damage / oxidation progression after a successful action.
- * - Hooks {@link #buildResult} to swap the held item for its full/empty counterpart, with state copied.
+ * Base class shared by our wooden and copper buckets. Restricts pickup to water
+ * sources only; subclasses hook wear / break-on-wear / state-copy.
  */
 public abstract class BaseBucketItem extends BucketItem {
     private final Supplier<? extends BucketItem> filledCounterpart;
@@ -71,9 +71,36 @@ public abstract class BaseBucketItem extends BucketItem {
     /** Wear-and-tear after a successful action. Subclasses may mutate {@code stack} in place. */
     protected void applyWear(ItemStack stack, Level level, Player player, boolean fillingAction) {}
 
+    /** Public entry point for the milking flow (acts as a fill action). */
+    public void applyMilkingWear(ItemStack stack, Level level, Player player) {
+        applyWear(stack, level, player, true);
+    }
+
+    /**
+     * Builds the milk-filled counterpart for a cow-milking action, or
+     * {@link ItemStack#EMPTY} if this bucket has just broken from wear.
+     */
+    public ItemStack buildMilkResult(ItemStack stack, Item milkItem) {
+        if (wouldBreakAfterWear(stack)) {
+            return ItemStack.EMPTY;
+        }
+        ItemStack milk = new ItemStack(milkItem);
+        copyState(stack, milk);
+        return milk;
+    }
+
+    /** Subclasses signal that wear has just exhausted the bucket (wood/copper at MAX_USES). */
+    protected boolean wouldBreakAfterWear(ItemStack stack) {
+        return false;
+    }
+
+    /** Sound played when the bucket breaks from durability exhaustion. Defaults to wood. */
+    public SoundEvent getBreakSound() {
+        return SoundEvents.WOOD_BREAK;
+    }
+
     /**
      * Builds the resulting item after a successful action.
-     * Default: empty &lt;-&gt; filled counterpart, with state copied.
      * Return {@link ItemStack#EMPTY} to signal the bucket broke (no replacement).
      */
     protected ItemStack buildResult(ItemStack stack, boolean fillingAction) {
@@ -150,10 +177,9 @@ public abstract class BaseBucketItem extends BucketItem {
     private InteractionResult finishUse(ItemStack held, Player player, boolean fillingAction) {
         ItemStack ourResult = buildResult(held, fillingAction);
         if (ourResult.isEmpty()) {
-            // Bucket broke during this action — remove and return empty hand.
             if (player instanceof ServerPlayer sp) {
                 sp.level().playSound(null, sp.blockPosition(),
-                        net.minecraft.sounds.SoundEvents.WOOD_BREAK, SoundSource.PLAYERS, 1.0F, 1.0F);
+                        getBreakSound(), SoundSource.PLAYERS, 1.0F, 1.0F);
             }
             held.shrink(1);
             return InteractionResult.SUCCESS.heldItemTransformedTo(ItemStack.EMPTY);

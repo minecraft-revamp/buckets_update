@@ -2,8 +2,11 @@ package com.bucketsupdate.registry;
 
 import com.bucketsupdate.BucketsUpdate;
 import com.bucketsupdate.feature.buckets.CopperBucketItem;
-import com.bucketsupdate.feature.buckets.WaxedCopperBucketItem;
+import com.bucketsupdate.feature.buckets.CopperMilkBucketItem;
 import com.bucketsupdate.feature.buckets.WoodenBucketItem;
+import com.bucketsupdate.feature.buckets.WoodenMilkBucketItem;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -11,7 +14,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public final class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(BucketsUpdate.MOD_ID);
 
-    // ---- Wooden bucket pair ----
+    // ---- Wooden bucket family ----
     public static final DeferredItem<WoodenBucketItem> WOODEN_BUCKET = ITEMS.registerItem(
             "wooden_bucket",
             props -> new WoodenBucketItem(
@@ -28,7 +31,13 @@ public final class ModItems {
                     () -> ModItems.WOODEN_WATER_BUCKET.get(),
                     () -> ModItems.WOODEN_BUCKET.get()));
 
-    // ---- Copper bucket pair ----
+    public static final DeferredItem<WoodenMilkBucketItem> WOODEN_MILK_BUCKET = ITEMS.registerItem(
+            "wooden_milk_bucket",
+            props -> new WoodenMilkBucketItem(
+                    props.stacksTo(1).component(DataComponents.CONSUMABLE, Consumables.MILK_BUCKET),
+                    () -> ModItems.WOODEN_BUCKET.get()));
+
+    // ---- Copper bucket family ----
     public static final DeferredItem<CopperBucketItem> COPPER_BUCKET = ITEMS.registerItem(
             "copper_bucket",
             props -> new CopperBucketItem(
@@ -45,22 +54,11 @@ public final class ModItems {
                     () -> ModItems.COPPER_WATER_BUCKET.get(),
                     () -> ModItems.COPPER_BUCKET.get()));
 
-    // ---- Waxed copper bucket pair ----
-    public static final DeferredItem<WaxedCopperBucketItem> WAXED_COPPER_BUCKET = ITEMS.registerItem(
-            "waxed_copper_bucket",
-            props -> new WaxedCopperBucketItem(
-                    Fluids.EMPTY,
-                    props.stacksTo(1),
-                    () -> ModItems.WAXED_COPPER_WATER_BUCKET.get(),
-                    () -> ModItems.WAXED_COPPER_BUCKET.get()));
-
-    public static final DeferredItem<WaxedCopperBucketItem> WAXED_COPPER_WATER_BUCKET = ITEMS.registerItem(
-            "waxed_copper_water_bucket",
-            props -> new WaxedCopperBucketItem(
-                    Fluids.WATER,
-                    props.stacksTo(1).craftRemainder(ModItems.WAXED_COPPER_BUCKET.get()),
-                    () -> ModItems.WAXED_COPPER_WATER_BUCKET.get(),
-                    () -> ModItems.WAXED_COPPER_BUCKET.get()));
+    public static final DeferredItem<CopperMilkBucketItem> COPPER_MILK_BUCKET = ITEMS.registerItem(
+            "copper_milk_bucket",
+            props -> new CopperMilkBucketItem(
+                    props.stacksTo(1).component(DataComponents.CONSUMABLE, Consumables.MILK_BUCKET),
+                    () -> ModItems.COPPER_BUCKET.get()));
 
     private ModItems() {}
 }
