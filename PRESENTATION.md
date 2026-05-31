@@ -1,8 +1,6 @@
 <div align="center">
 
-# 🪣 Bucketry
-
-![Bucketry — wood, bamboo, copper, iron](docs/images/banner.png)
+![Bucketry](docs/images/logo.png)
 
 **The bucket progression vanilla never finished.**
 
