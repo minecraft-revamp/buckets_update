@@ -6,6 +6,6 @@ import net.fabricmc.api.ClientModInitializer;
 public class BucketsUpdateFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        BucketsUpdateFabric.LOGGER.info("Buckets Update (Fabric) client setup");
+        BucketsUpdateFabric.LOGGER.info("Bucketry (Fabric) client setup");
     }
 }

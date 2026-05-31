@@ -23,6 +23,6 @@ public class BucketsUpdate {
         NeoForge.EVENT_BUS.register(BucketEvents.class);
         NeoForge.EVENT_BUS.register(MilkEvents.class);
 
-        LOGGER.info("Buckets Update initialised");
+        LOGGER.info("Bucketry initialised");
     }
 }

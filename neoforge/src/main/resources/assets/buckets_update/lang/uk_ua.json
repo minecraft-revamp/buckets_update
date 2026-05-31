@@ -1,11 +1,11 @@
 {
-  "itemGroup.buckets_update.main": "Buckets Update",
+  "itemGroup.buckets_update.main": "Bucketry",
   "item.buckets_update.wooden_bucket": "Дерев'яне відро",
   "item.buckets_update.wooden_water_bucket": "Дерев'яне відро з водою",
   "item.buckets_update.copper_bucket": "Мідне відро",
   "item.buckets_update.copper_water_bucket": "Мідне відро з водою",
   "item.buckets_update.bucket.water_only": "У це відро можна набирати лише воду",
-  "advancements.buckets_update.root.title": "Відерне ремесло",
+  "advancements.buckets_update.root.title": "Bucketry",
   "advancements.buckets_update.root.description": "Ласкаво просимо до твоєї першої відрової пригоди. Обери свій шлях: дерево, бамбук, мідь або залізо.",
   "advancements.buckets_update.splash.title": "Шубовсть",
   "advancements.buckets_update.splash.description": "Набери води у відро — дерево, бамбук або мідь.",

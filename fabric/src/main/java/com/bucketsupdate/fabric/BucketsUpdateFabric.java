@@ -16,6 +16,6 @@ public class BucketsUpdateFabric implements ModInitializer {
 
         MilkEvents.register();
 
-        LOGGER.info("Buckets Update (Fabric) initialised");
+        LOGGER.info("Bucketry (Fabric) initialised");
     }
 }

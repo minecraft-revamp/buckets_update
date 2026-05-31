@@ -1,11 +1,11 @@
 {
-  "itemGroup.buckets_update.main": "Buckets Update",
+  "itemGroup.buckets_update.main": "Bucketry",
   "item.buckets_update.wooden_bucket": "Træspand",
   "item.buckets_update.wooden_water_bucket": "Træspand med vand",
   "item.buckets_update.copper_bucket": "Kobberspand",
   "item.buckets_update.copper_water_bucket": "Kobberspand med vand",
   "item.buckets_update.bucket.water_only": "Denne spand kan kun indeholde vand",
-  "advancements.buckets_update.root.title": "Spandeværket",
+  "advancements.buckets_update.root.title": "Bucketry",
   "advancements.buckets_update.root.description": "Velkommen til dit første spandeeventyr. Vælg din vej: træ, bambus, kobber eller jern.",
   "advancements.buckets_update.splash.title": "Plask",
   "advancements.buckets_update.splash.description": "Fyld en spand med vand — træ, bambus eller kobber.",

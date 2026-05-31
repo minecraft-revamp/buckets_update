@@ -1,6 +1,6 @@
-# Buckets Update
+# Bucketry
 
-![Buckets Update — wood, bamboo, copper, iron](docs/images/banner.png)
+![Bucketry — wood, bamboo, copper, iron](docs/images/banner.png)
 
 Refresh the Minecraft bucket family with a vanilla-first tier ladder — a cheap wooden bucket, a tougher bamboo one, and a permanent copper one that sits between wood and iron.
 

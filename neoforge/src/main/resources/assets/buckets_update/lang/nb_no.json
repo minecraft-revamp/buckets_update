@@ -1,11 +1,11 @@
 {
-  "itemGroup.buckets_update.main": "Buckets Update",
+  "itemGroup.buckets_update.main": "Bucketry",
   "item.buckets_update.wooden_bucket": "Trebøtte",
   "item.buckets_update.wooden_water_bucket": "Trebøtte med vann",
   "item.buckets_update.copper_bucket": "Kobberbøtte",
   "item.buckets_update.copper_water_bucket": "Kobberbøtte med vann",
   "item.buckets_update.bucket.water_only": "Denne bøtta kan bare inneholde vann",
-  "advancements.buckets_update.root.title": "Bøttehandverk",
+  "advancements.buckets_update.root.title": "Bucketry",
   "advancements.buckets_update.root.description": "Velkommen til ditt første bøtteeventyr. Velg din vei: tre, bambus, kobber eller jern.",
   "advancements.buckets_update.splash.title": "Plask",
   "advancements.buckets_update.splash.description": "Fyll en bøtte med vann — tre, bambus eller kobber.",

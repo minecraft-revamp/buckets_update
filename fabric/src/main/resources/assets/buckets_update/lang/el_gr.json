@@ -1,11 +1,11 @@
 {
-  "itemGroup.buckets_update.main": "Buckets Update",
+  "itemGroup.buckets_update.main": "Bucketry",
   "item.buckets_update.wooden_bucket": "Ξύλινος κουβάς",
   "item.buckets_update.wooden_water_bucket": "Ξύλινος κουβάς με νερό",
   "item.buckets_update.copper_bucket": "Χάλκινος κουβάς",
   "item.buckets_update.copper_water_bucket": "Χάλκινος κουβάς με νερό",
   "item.buckets_update.bucket.water_only": "Αυτός ο κουβάς χωράει μόνο νερό",
-  "advancements.buckets_update.root.title": "Η τέχνη του κουβά",
+  "advancements.buckets_update.root.title": "Bucketry",
   "advancements.buckets_update.root.description": "Καλώς ήρθες στην πρώτη σου περιπέτεια με κουβάδες. Διάλεξε δρόμο: ξύλο, μπαμπού, χαλκός ή σίδηρος.",
   "advancements.buckets_update.splash.title": "Πλατς",
   "advancements.buckets_update.splash.description": "Γέμισε έναν κουβά με νερό — ξύλο, μπαμπού ή χαλκό.",

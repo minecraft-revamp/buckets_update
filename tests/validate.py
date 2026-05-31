@@ -1,4 +1,4 @@
-"""Resource validator for Buckets Update — Levels 1 + 3 of the test pyramid.
+"""Resource validator for Bucketry — Levels 1 + 3 of the test pyramid.
 
 Runs purely-Python checks across both loader trees (neoforge/, fabric/).
 Designed to fail fast and produce a clear summary so a non-Java reader can

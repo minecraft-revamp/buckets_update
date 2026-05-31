@@ -1,11 +1,11 @@
 {
-  "itemGroup.buckets_update.main": "Buckets Update",
+  "itemGroup.buckets_update.main": "Bucketry",
   "item.buckets_update.wooden_bucket": "Деревянное ведро",
   "item.buckets_update.wooden_water_bucket": "Деревянное ведро с водой",
   "item.buckets_update.copper_bucket": "Медное ведро",
   "item.buckets_update.copper_water_bucket": "Медное ведро с водой",
   "item.buckets_update.bucket.water_only": "В это ведро можно набирать только воду",
-  "advancements.buckets_update.root.title": "Ведёрное ремесло",
+  "advancements.buckets_update.root.title": "Bucketry",
   "advancements.buckets_update.root.description": "Добро пожаловать в ваше первое ведёрное приключение. Выберите путь: дерево, бамбук, медь или железо.",
   "advancements.buckets_update.splash.title": "Плюх",
   "advancements.buckets_update.splash.description": "Наберите воды в ведро — дерево, бамбук или медь.",

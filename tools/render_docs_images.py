@@ -66,8 +66,8 @@ def render_banner() -> None:
     h = pad + title_h + px + label_h + pad
     img = Image.new("RGBA", (w, h), BG)
     d = ImageDraw.Draw(img)
-    _center_text(d, w // 2, pad - 4, "Buckets Update", _font(34), TEXT)
-    _center_text(d, w // 2, pad + 30, "wood · bamboo · copper · iron", _font(16), SUBTEXT)
+    _center_text(d, w // 2, pad - 6, "Bucketry", _font(42), TEXT)
+    _center_text(d, w // 2, pad + 36, "wood · bamboo · copper · iron", _font(16), SUBTEXT)
     y = pad + title_h
     for i, (tex, label) in enumerate(tiers):
         x = pad + i * (px + gap)

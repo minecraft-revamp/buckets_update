@@ -1,8 +1,8 @@
 <div align="center">
 
-# 🪣 Buckets Update
+# 🪣 Bucketry
 
-![Buckets Update — wood, bamboo, copper, iron](docs/images/banner.png)
+![Bucketry — wood, bamboo, copper, iron](docs/images/banner.png)
 
 **The bucket progression vanilla never finished.**
 
@@ -20,7 +20,7 @@
 
 ## Why this mod
 
-Vanilla has exactly one bucket. You either have iron, or you have nothing — there's no early-game bucket and no reason to ever craft a second kind. Buckets Update fills that one missing piece with a small, readable **tier ladder** that looks like it could have shipped with the base game: wood early, bamboo as a sturdier wooden alternative, copper as a permanent mid-tier, and iron unchanged except for a recipe tweak that frees up the wooden-bowl shape.
+Vanilla has exactly one bucket. You either have iron, or you have nothing — there's no early-game bucket and no reason to ever craft a second kind. Bucketry fills that one missing piece with a small, readable **tier ladder** that looks like it could have shipped with the base game: wood early, bamboo as a sturdier wooden alternative, copper as a permanent mid-tier, and iron unchanged except for a recipe tweak that frees up the wooden-bowl shape.
 
 No HUD spam, no menus, no new ores. Just buckets that behave the way you'd expect.
 

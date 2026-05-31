@@ -1,5 +1,5 @@
 """
-Shared palette logic and texture generation for Buckets Update.
+Shared palette logic and texture generation for Bucketry.
 
 Single source of truth for what colour each bucket variant should use.
 Both `tools/regenerate.py` (re-derives textures from vanilla) and

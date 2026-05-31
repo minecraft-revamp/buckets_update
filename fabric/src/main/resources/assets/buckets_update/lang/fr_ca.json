@@ -1,11 +1,11 @@
 {
-  "itemGroup.buckets_update.main": "Buckets Update",
+  "itemGroup.buckets_update.main": "Bucketry",
   "item.buckets_update.wooden_bucket": "Seau en bois",
   "item.buckets_update.wooden_water_bucket": "Seau en bois (eau)",
   "item.buckets_update.copper_bucket": "Seau en cuivre",
   "item.buckets_update.copper_water_bucket": "Seau en cuivre (eau)",
   "item.buckets_update.bucket.water_only": "Ce seau ne peut contenir que de l'eau",
-  "advancements.buckets_update.root.title": "L'art du seau",
+  "advancements.buckets_update.root.title": "Bucketry",
   "advancements.buckets_update.root.description": "Bienvenue dans ta première aventure de seaux. Choisis ta voie : bois, bambou, cuivre ou fer.",
   "advancements.buckets_update.splash.title": "Plouf",
   "advancements.buckets_update.splash.description": "Remplis un seau d'eau — bois, bambou ou cuivre.",

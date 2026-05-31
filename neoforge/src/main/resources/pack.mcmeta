@@ -1,6 +1,6 @@
 {
   "pack": {
-    "description": "Buckets Update mod resources",
+    "description": "Bucketry mod resources",
     "min_format": [101, 1],
     "max_format": 101
   }

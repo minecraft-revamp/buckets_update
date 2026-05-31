@@ -1,11 +1,11 @@
 {
-  "itemGroup.buckets_update.main": "Buckets Update",
+  "itemGroup.buckets_update.main": "Bucketry",
   "item.buckets_update.wooden_bucket": "Favödör",
   "item.buckets_update.wooden_water_bucket": "Vizes favödör",
   "item.buckets_update.copper_bucket": "Rézvödör",
   "item.buckets_update.copper_water_bucket": "Vizes rézvödör",
   "item.buckets_update.bucket.water_only": "Ez a vödör csak vizet tarthat",
-  "advancements.buckets_update.root.title": "A vödör mestersége",
+  "advancements.buckets_update.root.title": "Bucketry",
   "advancements.buckets_update.root.description": "Üdv az első vödörkalandodon. Válaszd az utad: fa, bambusz, réz vagy vas.",
   "advancements.buckets_update.splash.title": "Csobban",
   "advancements.buckets_update.splash.description": "Tölts meg egy vödröt vízzel — fa, bambusz vagy réz.",

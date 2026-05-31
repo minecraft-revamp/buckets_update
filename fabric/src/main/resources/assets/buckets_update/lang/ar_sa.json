@@ -1,11 +1,11 @@
 {
-  "itemGroup.buckets_update.main": "Buckets Update",
+  "itemGroup.buckets_update.main": "Bucketry",
   "item.buckets_update.wooden_bucket": "دلو خشبي",
   "item.buckets_update.wooden_water_bucket": "دلو خشبي مع ماء",
   "item.buckets_update.copper_bucket": "دلو نحاسي",
   "item.buckets_update.copper_water_bucket": "دلو نحاسي مع ماء",
   "item.buckets_update.bucket.water_only": "هذا الدلو يحمل الماء فقط",
-  "advancements.buckets_update.root.title": "حرفة الدلو",
+  "advancements.buckets_update.root.title": "Bucketry",
   "advancements.buckets_update.root.description": "مرحبًا بك في أول مغامرة دلاء لك. اختر طريقك: خشب أو خيزران أو نحاس أو حديد.",
   "advancements.buckets_update.splash.title": "طخ",
   "advancements.buckets_update.splash.description": "املأ دلوًا بالماء — خشب أو خيزران أو نحاس.",

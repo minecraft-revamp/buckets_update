@@ -1,4 +1,6 @@
-# Buckets Update — repo guide for AI iteration
+# Bucketry — repo guide for AI iteration
+
+> Brand/display name is **Bucketry**; the technical `mod_id` remains `buckets_update` (registry IDs, asset paths, repo). Don't conflate the two.
 
 **Local path:** `<repo>/` (sibling repos for the Minecraft Revamp collective live under `<mods-dir>/`).
 
@@ -110,7 +112,7 @@ The vanilla iron bucket recipe is replaced by ours (a row of 3 iron chains acros
 30 language files under `src/main/resources/assets/buckets_update/lang/`. `en_us.json` is the canonical source — MC falls back to it for any missing key.
 
 Translation keys:
-- `itemGroup.buckets_update.main` — creative tab label (kept as `"Buckets Update"` untranslated for branding)
+- `itemGroup.buckets_update.main` — creative tab label (kept as `"Bucketry"` untranslated for branding; the advancements root title is also `"Bucketry"` so the progress tab carries the mod name)
 - `item.buckets_update.<id>` — item display names (incl. bamboo family + `copper_powder_snow_bucket`)
 - `item.buckets_update.bucket.water_only` — overlay msg when trying to fill a bucket from a non-water source (powder snow is exempt on copper)
 - `advancements.buckets_update.craft_{wooden,copper}.description` — name the recipe shape, so they change when the recipe changes

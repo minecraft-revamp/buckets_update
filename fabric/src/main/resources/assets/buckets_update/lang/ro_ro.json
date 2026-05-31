@@ -1,11 +1,11 @@
 {
-  "itemGroup.buckets_update.main": "Buckets Update",
+  "itemGroup.buckets_update.main": "Bucketry",
   "item.buckets_update.wooden_bucket": "Găleată din lemn",
   "item.buckets_update.wooden_water_bucket": "Găleată din lemn cu apă",
   "item.buckets_update.copper_bucket": "Găleată din cupru",
   "item.buckets_update.copper_water_bucket": "Găleată din cupru cu apă",
   "item.buckets_update.bucket.water_only": "Această găleată poate conține doar apă",
-  "advancements.buckets_update.root.title": "Meșteșugul găleții",
+  "advancements.buckets_update.root.title": "Bucketry",
   "advancements.buckets_update.root.description": "Bun venit la prima ta aventură cu găleți. Alege-ți calea: lemn, bambus, cupru sau fier.",
   "advancements.buckets_update.splash.title": "Pleosc",
   "advancements.buckets_update.splash.description": "Umple o găleată cu apă — lemn, bambus sau cupru.",

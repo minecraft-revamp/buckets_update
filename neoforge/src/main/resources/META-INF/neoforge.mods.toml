@@ -40,9 +40,10 @@ displayName="${mod_name}" #mandatory
 
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Buckets Update — refresh the Minecraft bucket family with new craftable variants:
-wooden buckets (durability), copper buckets (oxidation stages), and waxed copper buckets (infinite).
-Wax with honeycomb, scrub with an axe to restore. Iron bucket recipe revisited to use a chain.
+Bucketry — a vanilla-first bucket tier ladder: cheap wooden buckets (16 uses) and tougher
+bamboo ones (32 uses) that wear out and repair in the crafting grid, plus permanent copper
+buckets that stack to 16 and scoop powder snow. Water + milk variants throughout, and the
+iron bucket recipe is revised to a row of chains over a U of ingots.
 '''
 authors="JessicaMalle"
 

@@ -1,11 +1,11 @@
 {
-  "itemGroup.buckets_update.main": "Buckets Update",
+  "itemGroup.buckets_update.main": "Bucketry",
   "item.buckets_update.wooden_bucket": "Dřevěný kbelík",
   "item.buckets_update.wooden_water_bucket": "Dřevěný kbelík s vodou",
   "item.buckets_update.copper_bucket": "Měděný kbelík",
   "item.buckets_update.copper_water_bucket": "Měděný kbelík s vodou",
   "item.buckets_update.bucket.water_only": "Do tohoto kbelíku lze nabírat pouze vodu",
-  "advancements.buckets_update.root.title": "Kbelíkové řemeslo",
+  "advancements.buckets_update.root.title": "Bucketry",
   "advancements.buckets_update.root.description": "Vítej u svého prvního kbelíkového dobrodružství. Vyber si cestu: dřevo, bambus, měď nebo železo.",
   "advancements.buckets_update.splash.title": "Žbluňk",
   "advancements.buckets_update.splash.description": "Naplň kbelík vodou — dřevo, bambus nebo měď.",

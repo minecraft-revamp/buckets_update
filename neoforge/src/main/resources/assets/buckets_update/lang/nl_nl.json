@@ -1,11 +1,11 @@
 {
-  "itemGroup.buckets_update.main": "Buckets Update",
+  "itemGroup.buckets_update.main": "Bucketry",
   "item.buckets_update.wooden_bucket": "Houten emmer",
   "item.buckets_update.wooden_water_bucket": "Houten emmer met water",
   "item.buckets_update.copper_bucket": "Koperen emmer",
   "item.buckets_update.copper_water_bucket": "Koperen emmer met water",
   "item.buckets_update.bucket.water_only": "Deze emmer kan alleen water bevatten",
-  "advancements.buckets_update.root.title": "Het emmer-ambacht",
+  "advancements.buckets_update.root.title": "Bucketry",
   "advancements.buckets_update.root.description": "Welkom bij je eerste emmeravontuur. Kies je pad: hout, bamboe, koper of ijzer.",
   "advancements.buckets_update.splash.title": "Plons",
   "advancements.buckets_update.splash.description": "Vul een emmer met water — hout, bamboe of koper.",
