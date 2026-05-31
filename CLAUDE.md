@@ -37,14 +37,14 @@ export JAVA_HOME=$HOME/.local/jdks/current25 PATH=$JAVA_HOME/bin:$PATH
 ```
 
 JAR outputs:
-- `neoforge/build/libs/buckets_update-0.1.0.jar`
-- `fabric/build/libs/buckets_update-fabric-0.1.0.jar`
+- `neoforge/build/libs/buckets_update-1.0.0.jar`
+- `fabric/build/libs/buckets_update-fabric-1.0.0.jar`
 
 ## Test workflow
 
 Prism Launcher with two instances (one per loader). Symlink the JAR for hot-reload:
 ```bash
-ln -sf <project>/neoforge/build/libs/buckets_update-0.1.0.jar \
+ln -sf <project>/neoforge/build/libs/buckets_update-1.0.0.jar \
        ~/.var/app/org.prismlauncher.PrismLauncher/data/PrismLauncher/instances/<NeoForgeInstance>/.minecraft/mods/
 ```
 Same pattern for Fabric.

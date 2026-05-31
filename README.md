@@ -52,8 +52,8 @@ Water, milk, and powder-snow variants aren't crafted — fill an empty bucket fr
    - **NeoForge** `26.1.2.41-beta`, or
    - **Fabric Loader** `0.18.4` + **Fabric API** `0.148.0+26.1.2`
 3. Drop the matching JAR from [releases](../../releases) into your instance's `mods/` folder:
-   - `buckets_update-0.1.0.jar` for NeoForge
-   - `buckets_update-fabric-0.1.0.jar` for Fabric
+   - `buckets_update-1.0.0.jar` for NeoForge
+   - `buckets_update-fabric-1.0.0.jar` for Fabric
 
 ## Build from source
 
@@ -63,12 +63,12 @@ Two self-contained Gradle projects, one per loader.
 # NeoForge — needs Java 21 (auto-fetches Java 25 toolchain)
 cd neoforge
 JAVA_HOME=/path/to/jdk-21 ./gradlew build
-# → neoforge/build/libs/buckets_update-0.1.0.jar
+# → neoforge/build/libs/buckets_update-1.0.0.jar
 
 # Fabric — needs Java 25 (Loom is strict)
 cd fabric
 JAVA_HOME=/path/to/jdk-25 ./gradlew build
-# → fabric/build/libs/buckets_update-fabric-0.1.0.jar
+# → fabric/build/libs/buckets_update-fabric-1.0.0.jar
 ```
 
 You can also run the dev client directly with `./gradlew runClient` from either subdirectory.
