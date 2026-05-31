@@ -102,7 +102,7 @@ This mod is the first of a planned set of small focused mods rather than a singl
 
 ## License
 
-All rights reserved by the author. Reach out before forking or redistributing.
+[MIT](./LICENSE) © 2026 JessicaMalle — free to use, modify, redistribute and bundle in modpacks; just keep the copyright notice.
 
 ---
 
