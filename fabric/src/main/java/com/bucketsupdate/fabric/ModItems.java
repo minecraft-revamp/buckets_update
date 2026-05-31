@@ -67,6 +67,12 @@ public final class ModItems {
                             .component(DataComponents.CONSUMABLE, Consumables.MILK_BUCKET),
                     () -> ModItems.COPPER_BUCKET));
 
+    public static final CopperPowderSnowBucketItem COPPER_POWDER_SNOW_BUCKET = registerItem(
+            "copper_powder_snow_bucket",
+            props -> new CopperPowderSnowBucketItem(
+                    props.durability(CopperBucketItem.MAX_USES),
+                    () -> ModItems.COPPER_BUCKET));
+
     private ModItems() {}
 
     private static <T extends Item> T registerItem(String name, Function<Item.Properties, T> factory) {

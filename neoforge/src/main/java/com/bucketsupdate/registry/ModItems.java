@@ -3,6 +3,7 @@ package com.bucketsupdate.registry;
 import com.bucketsupdate.BucketsUpdate;
 import com.bucketsupdate.feature.buckets.CopperBucketItem;
 import com.bucketsupdate.feature.buckets.CopperMilkBucketItem;
+import com.bucketsupdate.feature.buckets.CopperPowderSnowBucketItem;
 import com.bucketsupdate.feature.buckets.WoodenBucketItem;
 import com.bucketsupdate.feature.buckets.WoodenMilkBucketItem;
 import net.minecraft.core.component.DataComponents;
@@ -58,6 +59,12 @@ public final class ModItems {
             "copper_milk_bucket",
             props -> new CopperMilkBucketItem(
                     props.stacksTo(1).component(DataComponents.CONSUMABLE, Consumables.MILK_BUCKET),
+                    () -> ModItems.COPPER_BUCKET.get()));
+
+    public static final DeferredItem<CopperPowderSnowBucketItem> COPPER_POWDER_SNOW_BUCKET = ITEMS.registerItem(
+            "copper_powder_snow_bucket",
+            props -> new CopperPowderSnowBucketItem(
+                    props.durability(CopperBucketItem.MAX_USES),
                     () -> ModItems.COPPER_BUCKET.get()));
 
     private ModItems() {}

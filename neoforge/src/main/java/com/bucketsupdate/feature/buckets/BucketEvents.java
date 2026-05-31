@@ -16,12 +16,12 @@ public final class BucketEvents {
 
     private static final Identifier IRON_BUCKET_ID = Identifier.withDefaultNamespace("bucket");
 
-    /** New iron bucket pattern: 3 ingots in V + iron chain centred above. */
+    /** New iron bucket pattern: 3 ingots in a U + a row of 3 iron chains across the top. */
     private static final String IRON_BUCKET_RECIPE_JSON = """
             {
               "type": "minecraft:crafting_shaped",
               "category": "misc",
-              "pattern": [" H ", "I I", " I "],
+              "pattern": ["HHH", "I I", " I "],
               "key": {
                 "H": "minecraft:iron_chain",
                 "I": "minecraft:iron_ingot"

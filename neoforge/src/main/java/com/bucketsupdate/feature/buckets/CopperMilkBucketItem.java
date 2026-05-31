@@ -1,20 +1,16 @@
 package com.bucketsupdate.feature.buckets;
 
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 
 import java.util.function.Supplier;
 
 /**
- * Copper milk bucket: shares the empty copper bucket's 190-use durability pool
- * across fills + drinks. On the drink that pushes damage past MAX_USES, the bucket
- * breaks (returns {@link ItemStack#EMPTY}) instead of returning the empty counterpart.
+ * Copper milk bucket: shares the empty copper bucket's 190-use wear pool
+ * across fills + drinks. On the drink that pushes wear past MAX_USES the bucket
+ * breaks (returns {@link net.minecraft.world.item.ItemStack#EMPTY}) instead of
+ * returning the empty counterpart.
  */
 public class CopperMilkBucketItem extends BaseMilkBucketItem {
     public CopperMilkBucketItem(Properties properties, Supplier<? extends Item> emptyCounterpart) {
@@ -22,24 +18,12 @@ public class CopperMilkBucketItem extends BaseMilkBucketItem {
     }
 
     @Override
-    protected void copyState(ItemStack from, ItemStack to) {
-        Integer damage = from.get(DataComponents.DAMAGE);
-        if (damage != null) {
-            to.set(DataComponents.DAMAGE, damage);
-        }
+    protected int maxUses() {
+        return CopperBucketItem.MAX_USES;
     }
 
     @Override
-    protected ItemStack finalizeDrink(ItemStack drunk, ItemStack empty, Level level, Player player) {
-        int newDamage = drunk.getDamageValue() + 1;
-        if (newDamage >= CopperBucketItem.MAX_USES) {
-            if (level instanceof ServerLevel sl) {
-                sl.playSound(null, player.blockPosition(),
-                        SoundEvents.COPPER_BREAK, SoundSource.PLAYERS, 1.0F, 1.0F);
-            }
-            return ItemStack.EMPTY;
-        }
-        empty.set(DataComponents.DAMAGE, newDamage);
-        return empty;
+    protected SoundEvent getBreakSound() {
+        return SoundEvents.COPPER_BREAK;
     }
 }

@@ -2,6 +2,7 @@ package com.bucketsupdate.feature.buckets;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -28,8 +29,12 @@ import net.minecraft.world.phys.HitResult;
 import java.util.function.Supplier;
 
 /**
- * Base class shared by our wooden and copper buckets. Restricts pickup to water
- * sources only; subclasses hook wear / break-on-wear / state-copy.
+ * Base class shared by our wooden and copper buckets. Restricts liquid pickup to water
+ * sources, and uses vanilla durability (the {@code DAMAGE}/{@code MAX_DAMAGE} components):
+ * the buckets wear out and break after {@link #maxUses()} uses, show the vanilla durability
+ * bar, and can be repaired by combining two damaged ones in the crafting grid
+ * ({@code RepairItemRecipe}). Because they're damageable they follow the vanilla rule of
+ * not stacking.
  */
 public abstract class BaseBucketItem extends BucketItem {
     private final Supplier<? extends BucketItem> filledCounterpart;
@@ -49,6 +54,11 @@ public abstract class BaseBucketItem extends BucketItem {
         return this.content == Fluids.EMPTY;
     }
 
+    /** Uses before this bucket breaks. Default {@code MAX_VALUE} = unbreakable. */
+    protected int maxUses() {
+        return Integer.MAX_VALUE;
+    }
+
     public ItemStack toFilled(ItemStack source) {
         ItemStack filled = new ItemStack(filledCounterpart.get());
         copyState(source, filled);
@@ -61,15 +71,24 @@ public abstract class BaseBucketItem extends BucketItem {
         return empty;
     }
 
-    protected void copyState(ItemStack from, ItemStack to) {}
+    /** Carries accrued durability damage across the empty/filled transition. */
+    protected void copyState(ItemStack from, ItemStack to) {
+        Integer damage = from.get(DataComponents.DAMAGE);
+        if (damage != null) {
+            to.set(DataComponents.DAMAGE, damage);
+        }
+    }
 
     /** Refusal check evaluated BEFORE any side effect (drain water, place water). */
     protected boolean canUseFor(ItemStack stack, Player player, boolean fillingAction) {
         return true;
     }
 
-    /** Wear-and-tear after a successful action. Subclasses may mutate {@code stack} in place. */
-    protected void applyWear(ItemStack stack, Level level, Player player, boolean fillingAction) {}
+    /** Wear-and-tear after a successful action: one durability point, unless in creative. */
+    protected void applyWear(ItemStack stack, Level level, Player player, boolean fillingAction) {
+        if (player.getAbilities().instabuild) return;
+        stack.setDamageValue(stack.getDamageValue() + 1);
+    }
 
     /** Public entry point for the milking flow (acts as a fill action). */
     public void applyMilkingWear(ItemStack stack, Level level, Player player) {
@@ -89,22 +108,37 @@ public abstract class BaseBucketItem extends BucketItem {
         return milk;
     }
 
-    /** Subclasses signal that wear has just exhausted the bucket (wood/copper at MAX_USES). */
+    /** True once durability damage has reached the cap (bucket should break). */
     protected boolean wouldBreakAfterWear(ItemStack stack) {
-        return false;
+        return stack.getDamageValue() >= maxUses();
     }
 
-    /** Sound played when the bucket breaks from durability exhaustion. Defaults to wood. */
+    /** Sound played when the bucket breaks from wear exhaustion. Defaults to wood. */
     public SoundEvent getBreakSound() {
         return SoundEvents.WOOD_BREAK;
     }
 
     /**
      * Builds the resulting item after a successful action.
-     * Return {@link ItemStack#EMPTY} to signal the bucket broke (no replacement).
+     * Returns {@link ItemStack#EMPTY} to signal the bucket broke (no replacement).
      */
     protected ItemStack buildResult(ItemStack stack, boolean fillingAction) {
+        if (wouldBreakAfterWear(stack)) {
+            return ItemStack.EMPTY;
+        }
         return fillingAction ? toFilled(stack) : toEmpty(stack);
+    }
+
+    // ---- Solid (non-fluid) pickup, e.g. powder snow. Default: unsupported. ----
+
+    /** Whether an empty bucket may scoop this non-fluid {@link BucketPickup} block. */
+    protected boolean canSolidPickup(BlockState state) {
+        return false;
+    }
+
+    /** Result of a solid pickup (called AFTER wear is applied). {@link ItemStack#EMPTY} = broke. */
+    protected ItemStack buildSolidResult(ItemStack stack) {
+        return ItemStack.EMPTY;
     }
 
     @Override
@@ -136,6 +170,10 @@ public abstract class BaseBucketItem extends BucketItem {
         }
         Fluid sourceFluid = level.getFluidState(pos).getType();
         if (sourceFluid != Fluids.WATER) {
+            // Non-water source: try a solid pickup (powder snow on copper) before refusing.
+            if (canSolidPickup(state)) {
+                return doSolidPickup(level, player, held, pickup, pos, state);
+            }
             player.sendOverlayMessage(Component.translatable("item.buckets_update.bucket.water_only"));
             return InteractionResult.FAIL;
         }
@@ -153,7 +191,24 @@ public abstract class BaseBucketItem extends BucketItem {
         pickup.getPickupSound(state).ifPresent(s -> player.playSound(s, 1.0F, 1.0F));
         level.gameEvent(player, GameEvent.FLUID_PICKUP, pos);
 
-        return finishUse(held, player, true);
+        return finishUseWithResult(held, player, buildResult(held, true));
+    }
+
+    private InteractionResult doSolidPickup(Level level, Player player, ItemStack held, BucketPickup pickup, BlockPos pos, BlockState state) {
+        if (!canUseFor(held, player, true)) {
+            return InteractionResult.FAIL;
+        }
+        // Remove the block via vanilla pickup; we discard its (vanilla) result item and build our own.
+        ItemStack taken = pickup.pickupBlock(player, level, pos, state);
+        if (taken.isEmpty()) {
+            return InteractionResult.FAIL;
+        }
+        applyWear(held, level, player, true);
+        player.awardStat(Stats.ITEM_USED.get(this));
+        pickup.getPickupSound(state).ifPresent(s -> player.playSound(s, 1.0F, 1.0F));
+        level.gameEvent(player, GameEvent.FLUID_PICKUP, pos);
+
+        return finishUseWithResult(held, player, buildSolidResult(held));
     }
 
     private InteractionResult doEmpty(Level level, Player player, ItemStack held, BlockHitResult hit, BlockPos pos, BlockPos relPos) {
@@ -171,11 +226,10 @@ public abstract class BaseBucketItem extends BucketItem {
         checkExtraContent(player, level, held, placePos);
         player.awardStat(Stats.ITEM_USED.get(this));
 
-        return finishUse(held, player, false);
+        return finishUseWithResult(held, player, buildResult(held, false));
     }
 
-    private InteractionResult finishUse(ItemStack held, Player player, boolean fillingAction) {
-        ItemStack ourResult = buildResult(held, fillingAction);
+    private InteractionResult finishUseWithResult(ItemStack held, Player player, ItemStack ourResult) {
         if (ourResult.isEmpty()) {
             if (player instanceof ServerPlayer sp) {
                 sp.level().playSound(null, sp.blockPosition(),

@@ -1,5 +1,10 @@
 package com.bucketsupdate.fabric;
 
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -9,14 +14,15 @@ import net.minecraft.world.level.Level;
 import java.util.function.Supplier;
 
 /**
- * Base for our three milk-bucket variants. The vanilla CONSUMABLE component
+ * Base for our two milk-bucket variants. The vanilla CONSUMABLE component
  * (set in {@link ModItems}) handles the drinking animation, sound and effects-clear.
+ * Durability is shared with the empty bucket via the vanilla {@code DAMAGE} component.
  * <p>
  * We intentionally do NOT use {@code usingConvertsTo} (i.e. no {@code USE_REMAINDER}
  * component): vanilla's USE_REMAINDER replacement fires AFTER {@link #finishUsingItem}
  * via {@code ItemStack#applyAfterUseComponentSideEffects}, which would overwrite our
- * state-preserved empty stack with a fresh full-durability one. Instead we build
- * the empty counterpart manually here, copy material state across, and apply drink wear.
+ * state-preserved empty stack with a fresh full-durability one. Instead we build the
+ * empty counterpart manually here, copy damage state across, and apply drink wear.
  */
 public abstract class BaseMilkBucketItem extends Item {
     protected final Supplier<? extends Item> emptyCounterpart;
@@ -24,6 +30,16 @@ public abstract class BaseMilkBucketItem extends Item {
     public BaseMilkBucketItem(Properties properties, Supplier<? extends Item> emptyCounterpart) {
         super(properties);
         this.emptyCounterpart = emptyCounterpart;
+    }
+
+    /** Uses before the bucket breaks. Default {@code MAX_VALUE} = unbreakable. */
+    protected int maxUses() {
+        return Integer.MAX_VALUE;
+    }
+
+    /** Sound played when the bucket breaks from wear exhaustion. Defaults to wood. */
+    protected SoundEvent getBreakSound() {
+        return SoundEvents.WOOD_BREAK;
     }
 
     @Override
@@ -44,10 +60,25 @@ public abstract class BaseMilkBucketItem extends Item {
         return finalizeDrink(stackBefore, empty, level, player);
     }
 
-    protected void copyState(ItemStack from, ItemStack to) {}
+    /** Carries accrued durability damage from the drunk milk bucket onto the empty counterpart. */
+    protected void copyState(ItemStack from, ItemStack to) {
+        Integer damage = from.get(DataComponents.DAMAGE);
+        if (damage != null) {
+            to.set(DataComponents.DAMAGE, damage);
+        }
+    }
 
-    /** Apply per-material drink wear. Return {@link ItemStack#EMPTY} if the bucket broke. */
+    /** Apply drink wear; returns {@link ItemStack#EMPTY} if the bucket broke. */
     protected ItemStack finalizeDrink(ItemStack drunk, ItemStack empty, Level level, Player player) {
+        int newDamage = drunk.getDamageValue() + 1;
+        if (newDamage >= maxUses()) {
+            if (level instanceof ServerLevel sl) {
+                sl.playSound(null, player.blockPosition(),
+                        getBreakSound(), SoundSource.PLAYERS, 1.0F, 1.0F);
+            }
+            return ItemStack.EMPTY;
+        }
+        empty.set(DataComponents.DAMAGE, newDamage);
         return empty;
     }
 }

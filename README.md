@@ -1,6 +1,6 @@
 # Buckets Update
 
-Refresh the Minecraft bucket family with new craftable variants — durable wooden buckets, oxidising copper buckets, and waxed copper buckets that last forever.
+Refresh the Minecraft bucket family with new craftable variants — lightweight wooden buckets and sturdier copper buckets that sit between wood and iron.
 
 [![Build](https://github.com/minecraft-revamp/buckets_update/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/minecraft-revamp/buckets_update/actions/workflows/build-and-test.yml)
 [![Minecraft](https://img.shields.io/badge/Minecraft-26.1.2-62B132?logo=minecraft&logoColor=white)](https://www.minecraft.net/)
@@ -13,17 +13,20 @@ Refresh the Minecraft bucket family with new craftable variants — durable wood
 
 | Bucket | Material | Behaviour |
 |---|---|---|
-| 🪣 Wooden | 3 planks + 1 stick | 16 uses, then breaks |
-| 🟠 Copper | 3 copper ingots + 1 copper chain | Oxidises gradually through 4 visual stages; refuses water once fully oxidised |
-| ✨ Waxed copper | Copper bucket + honeycomb (right-click) | Infinite uses, oxidation frozen at the moment of waxing |
-| ⚙️ Iron *(vanilla, recipe revised)* | 3 iron ingots + 1 iron chain | Standard vanilla bucket — only the recipe changes, to avoid the historical shape conflict with the wooden bowl |
+| 🪣 Wooden | 3 planks + 3 sticks | Cheapest tier — ~16 uses, then breaks |
+| 🟠 Copper | 3 copper ingots + 3 copper chains | Mid-tier — ~190 uses, then breaks; also scoops powder snow like the iron bucket |
+| ⚙️ Iron *(vanilla, recipe revised)* | 3 iron ingots + 3 iron chains | Standard vanilla bucket — only the recipe changes, to avoid the historical shape conflict with the wooden bowl |
 
-Plus:
+Each wood and copper bucket comes as an empty, a water, and a milk variant, plus a copper powder-snow variant. Highlights:
 
-- **Restore an oxidised copper bucket** — hold an axe in one hand and the copper bucket in the other, right-click. Reverses one stage of oxidation, axe takes 1 durability damage.
+- **Durability, the vanilla way.** Wood and copper buckets wear out and break (vanilla durability), show the normal durability bar, and — like any vanilla tool — can be **repaired by combining two damaged ones in the crafting grid**. Being damageable, they don't stack (one per slot), same as other durable items.
+- **Milk a cow** with any wood or copper bucket → the matching milk bucket (drink to clear effects, same as vanilla). Milking and drinking draw from the same durability pool as filling.
+- **Powder snow.** Scoop powder snow with an empty **copper** bucket (the wooden bucket only holds water), just like the iron bucket. Placing it back returns the empty copper bucket.
 - **30 language translations** included.
 
 ## Recipes
+
+The shared shape is a row of three "chain/stick" pieces across the top, with the bucket body as a U of three pieces below.
 
 > **Legend** · 🟫 Planks · 🥢 Stick · 🟧 Copper ingot · ⛓️ Copper chain · ⬜ Iron ingot · 🔗 Iron chain
 
@@ -31,7 +34,7 @@ Plus:
 
 |  |  |  |
 |:-:|:-:|:-:|
-|  | 🥢 |  |
+| 🥢 | 🥢 | 🥢 |
 | 🟫 |  | 🟫 |
 |  | 🟫 |  |
 
@@ -39,7 +42,7 @@ Plus:
 
 |  |  |  |
 |:-:|:-:|:-:|
-|  | ⛓️ |  |
+| ⛓️ | ⛓️ | ⛓️ |
 | 🟧 |  | 🟧 |
 |  | 🟧 |  |
 
@@ -47,18 +50,11 @@ Plus:
 
 |  |  |  |
 |:-:|:-:|:-:|
-|  | 🔗 |  |
+| 🔗 | 🔗 | 🔗 |
 | ⬜ |  | ⬜ |
 |  | ⬜ |  |
 
-### ✨ Wax & 🪓 Restore — right-click only
-
-Not crafted at a table. Hold each item in opposite hands and right-click in the air.
-
-| Action | Tool | Bucket | Result |
-|---|:-:|:-:|---|
-| **Wax** | 🍯 Honeycomb | 🟠 Copper bucket | ✨ Waxed copper bucket *(oxidation stage frozen)* |
-| **Restore** | 🪓 Axe | 🟠 Oxidised copper bucket | 🟠 Copper bucket *(one stage less; axe takes 1 durability)* |
+Water, milk, and powder-snow variants aren't crafted — fill an empty bucket from a water source, milk a cow, or scoop powder snow (copper only).
 
 ## Install
 
