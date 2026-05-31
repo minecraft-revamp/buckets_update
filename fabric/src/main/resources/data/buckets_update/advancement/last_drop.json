@@ -19,15 +19,39 @@
     "drank_wooden_milk": {
       "trigger": "minecraft:consume_item",
       "conditions": {
-        "item": { "items": ["buckets_update:wooden_milk_bucket"] }
+        "item": {
+          "items": [
+            "buckets_update:wooden_milk_bucket"
+          ]
+        }
       }
     },
     "drank_copper_milk": {
       "trigger": "minecraft:consume_item",
       "conditions": {
-        "item": { "items": ["buckets_update:copper_milk_bucket"] }
+        "item": {
+          "items": [
+            "buckets_update:copper_milk_bucket"
+          ]
+        }
+      }
+    },
+    "drank_bamboo_milk": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "buckets_update:bamboo_milk_bucket"
+          ]
+        }
       }
     }
   },
-  "requirements": [["drank_wooden_milk", "drank_copper_milk"]]
+  "requirements": [
+    [
+      "drank_wooden_milk",
+      "drank_bamboo_milk",
+      "drank_copper_milk"
+    ]
+  ]
 }

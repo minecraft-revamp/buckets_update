@@ -89,7 +89,7 @@ public abstract class BaseBucketItem extends BucketItem {
 
     /** Wear-and-tear after a successful action: one durability point, unless in creative. */
     protected void applyWear(ItemStack stack, Level level, Player player, boolean fillingAction) {
-        if (player.getAbilities().instabuild) return;
+        if (maxUses() == Integer.MAX_VALUE || player.getAbilities().instabuild) return;
         stack.setDamageValue(stack.getDamageValue() + 1);
     }
 

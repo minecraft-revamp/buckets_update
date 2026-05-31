@@ -65,6 +65,7 @@ public final class MilkEvents {
 
     private static Item getMilkVariant(Item emptyBucket) {
         if (emptyBucket == ModItems.WOODEN_BUCKET.get()) return ModItems.WOODEN_MILK_BUCKET.get();
+        if (emptyBucket == ModItems.BAMBOO_BUCKET.get()) return ModItems.BAMBOO_MILK_BUCKET.get();
         if (emptyBucket == ModItems.COPPER_BUCKET.get()) return ModItems.COPPER_MILK_BUCKET.get();
         return null;
     }

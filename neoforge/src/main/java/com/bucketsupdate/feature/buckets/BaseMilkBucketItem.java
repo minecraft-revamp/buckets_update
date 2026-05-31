@@ -70,6 +70,7 @@ public abstract class BaseMilkBucketItem extends Item {
 
     /** Apply drink wear; returns {@link ItemStack#EMPTY} if the bucket broke. */
     protected ItemStack finalizeDrink(ItemStack drunk, ItemStack empty, Level level, Player player) {
+        if (maxUses() == Integer.MAX_VALUE) return empty;   // unbreakable (copper) — no wear
         int newDamage = drunk.getDamageValue() + 1;
         if (newDamage >= maxUses()) {
             if (level instanceof ServerLevel sl) {

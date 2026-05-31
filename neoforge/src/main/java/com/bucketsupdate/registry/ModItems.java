@@ -1,6 +1,8 @@
 package com.bucketsupdate.registry;
 
 import com.bucketsupdate.BucketsUpdate;
+import com.bucketsupdate.feature.buckets.BambooBucketItem;
+import com.bucketsupdate.feature.buckets.BambooMilkBucketItem;
 import com.bucketsupdate.feature.buckets.CopperBucketItem;
 import com.bucketsupdate.feature.buckets.CopperMilkBucketItem;
 import com.bucketsupdate.feature.buckets.CopperPowderSnowBucketItem;
@@ -38,12 +40,35 @@ public final class ModItems {
                     props.stacksTo(1).component(DataComponents.CONSUMABLE, Consumables.MILK_BUCKET),
                     () -> ModItems.WOODEN_BUCKET.get()));
 
+    // ---- Bamboo bucket family (like wood, 2× durability) ----
+    public static final DeferredItem<BambooBucketItem> BAMBOO_BUCKET = ITEMS.registerItem(
+            "bamboo_bucket",
+            props -> new BambooBucketItem(
+                    Fluids.EMPTY,
+                    props.stacksTo(1),
+                    () -> ModItems.BAMBOO_WATER_BUCKET.get(),
+                    () -> ModItems.BAMBOO_BUCKET.get()));
+
+    public static final DeferredItem<BambooBucketItem> BAMBOO_WATER_BUCKET = ITEMS.registerItem(
+            "bamboo_water_bucket",
+            props -> new BambooBucketItem(
+                    Fluids.WATER,
+                    props.stacksTo(1).craftRemainder(ModItems.BAMBOO_BUCKET.get()),
+                    () -> ModItems.BAMBOO_WATER_BUCKET.get(),
+                    () -> ModItems.BAMBOO_BUCKET.get()));
+
+    public static final DeferredItem<BambooMilkBucketItem> BAMBOO_MILK_BUCKET = ITEMS.registerItem(
+            "bamboo_milk_bucket",
+            props -> new BambooMilkBucketItem(
+                    props.stacksTo(1).component(DataComponents.CONSUMABLE, Consumables.MILK_BUCKET),
+                    () -> ModItems.BAMBOO_BUCKET.get()));
+
     // ---- Copper bucket family ----
     public static final DeferredItem<CopperBucketItem> COPPER_BUCKET = ITEMS.registerItem(
             "copper_bucket",
             props -> new CopperBucketItem(
                     Fluids.EMPTY,
-                    props.stacksTo(1),
+                    props.stacksTo(16),
                     () -> ModItems.COPPER_WATER_BUCKET.get(),
                     () -> ModItems.COPPER_BUCKET.get()));
 
@@ -64,7 +89,7 @@ public final class ModItems {
     public static final DeferredItem<CopperPowderSnowBucketItem> COPPER_POWDER_SNOW_BUCKET = ITEMS.registerItem(
             "copper_powder_snow_bucket",
             props -> new CopperPowderSnowBucketItem(
-                    props.durability(CopperBucketItem.MAX_USES),
+                    props.stacksTo(1),
                     () -> ModItems.COPPER_BUCKET.get()));
 
     private ModItems() {}

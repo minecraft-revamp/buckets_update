@@ -80,21 +80,23 @@ When porting to Fabric, the following NeoForge-only conveniences need workaround
 **Each loader has identical Java structure** (mirrored content):
 - `BucketsUpdate{,Fabric}` — entry point with `MOD_ID = "buckets_update"`
 - `BaseBucketItem` — shared bucket logic (extends `BucketItem`, restricts liquid pickup to water, hooks `canUseFor` / `applyWear` / `buildResult` / `copyState`, plus the solid-pickup hooks `canSolidPickup` / `buildSolidResult`)
-- `WoodenBucketItem`, `CopperBucketItem` — concrete buckets; pass `.durability(MAX_USES)` and override `maxUses()` (+ copper `getBreakSound()` and the powder-snow hooks)
-- `BaseMilkBucketItem`, `WoodenMilkBucketItem`, `CopperMilkBucketItem` — drinkable milk variants (share the empty bucket's durability pool)
-- `CopperPowderSnowBucketItem` — `extends SolidBucketItem`; places powder snow and returns the empty copper bucket (carrying durability damage)
+- `WoodenBucketItem` (16), `BambooBucketItem` (32) — durable buckets; pass `.durability(MAX_USES)` and override `maxUses()`
+- `CopperBucketItem` — **permanent like iron**: no `.durability`, inherits `maxUses() == Integer.MAX_VALUE`; overrides the powder-snow hooks
+- `BaseMilkBucketItem`, `Wooden/Bamboo/CopperMilkBucketItem` — drinkable milk variants (wood/bamboo share the empty bucket's durability pool; copper has none)
+- `CopperPowderSnowBucketItem` — `extends SolidBucketItem`; places powder snow and returns the empty copper bucket
 - `ModItems`, `ModCreativeTabs` — registries
 - `BucketEvents` — iron bucket recipe override; `MilkEvents` — cow-milking handler
 
-**Durability is vanilla** (`DAMAGE`/`MAX_DAMAGE` via `.durability(MAX_USES)`). Consequences, all free from being damageable: the vanilla durability bar renders, and two damaged buckets of the same type combine in the **crafting grid to repair** (`RepairItemRecipe`). Wear flows across the empty/filled/milk transition via `copyState` copying the `DAMAGE` component; `applyWear` increments it; `buildResult`/`finalizeDrink` return `ItemStack.EMPTY` (bucket breaks) at `maxUses()`. The break check lives in `BaseBucketItem`/`BaseMilkBucketItem` keyed on `maxUses()` + `getBreakSound()`.
-
-> Note: because they're damageable, the buckets **do not stack** (vanilla rule — an item can't be both damageable and stackable; `Item.Properties` validator: "Item cannot have both durability and be stackable"). We deliberately keep vanilla durability so repair works, accepting the one-per-slot stacking.
+**Two durability models, keyed on `maxUses()`:**
+- **Wood (16) / bamboo (32)** use vanilla durability (`DAMAGE`/`MAX_DAMAGE` via `.durability(MAX_USES)`): vanilla bar renders, and two damaged buckets repair in the **crafting grid** (`RepairItemRecipe`). Wear flows across empty/filled/milk via `copyState` copying `DAMAGE`; `applyWear` increments; `buildResult`/`finalizeDrink` break (return `ItemStack.EMPTY`) at `maxUses()`. Being damageable, they **don't stack** (an item can't be both damageable and stackable — `Item.Properties` validator: "Item cannot have both durability and be stackable").
+- **Copper is permanent like iron**: no durability, `maxUses() == Integer.MAX_VALUE`. `BaseBucketItem.applyWear` and `BaseMilkBucketItem.finalizeDrink` short-circuit when `maxUses()==MAX_VALUE` (no wear, never breaks), so the empty copper bucket can `stacksTo(16)`.
 
 **Items** (no waxed/oxidising variants — those were removed; Mojang doesn't oxidise copper tools in 26.1):
 - `wooden_bucket` / `wooden_water_bucket` / `wooden_milk_bucket`
+- `bamboo_bucket` / `bamboo_water_bucket` / `bamboo_milk_bucket`
 - `copper_bucket` / `copper_water_bucket` / `copper_milk_bucket` / `copper_powder_snow_bucket`
 
-`craftRemainder` chains the empty version when a water bucket is consumed in a recipe (powder snow has no remainder, matching vanilla). Only the **copper** bucket scoops powder snow (the wooden bucket stays water+milk).
+Empty `copper_bucket` `stacksTo(16)`; everything else (durable empties, all filled/milk/powder-snow) is `stacksTo(1)`. `craftRemainder` chains the empty version when a water bucket is consumed in a recipe (powder snow has no remainder, matching vanilla). Only the **copper** bucket scoops powder snow (wood/bamboo stay water+milk).
 
 ## Resource override pattern
 
@@ -109,15 +111,18 @@ The vanilla iron bucket recipe is replaced by ours (a row of 3 iron chains acros
 
 Translation keys:
 - `itemGroup.buckets_update.main` — creative tab label (kept as `"Buckets Update"` untranslated for branding)
-- `item.buckets_update.<id>` — item display names (incl. `copper_powder_snow_bucket`)
+- `item.buckets_update.<id>` — item display names (incl. bamboo family + `copper_powder_snow_bucket`)
 - `item.buckets_update.bucket.water_only` — overlay msg when trying to fill a bucket from a non-water source (powder snow is exempt on copper)
 - `advancements.buckets_update.craft_{wooden,copper}.description` — name the recipe shape, so they change when the recipe changes
 
 ## Textures
 
-Textures under `assets/buckets_update/textures/item/`, generated **ad-hoc** (the throwaway Python scripts aren't committed) by recoloring/compositing vanilla templates from `neoforge/build/neoForm/.../assets/minecraft/textures/item/`:
-- Empty/water buckets: recolor grey pixels (R≈G≈B) of vanilla `bucket.png`/`water_bucket.png` to a copper or wood palette; preserve water-blue pixels.
-- Milk + powder-snow buckets: composite the vanilla contents onto our copper/wood rim. For `copper_powder_snow_bucket` specifically: copper on the outer shell, the powder-snow fill on the interior (snow pixels = bluish `b>r` or bright `lum>190`; the rest of the interior is force-filled with snow so vanilla's interior grey shading doesn't speckle through as copper).
+Textures under `assets/buckets_update/textures/item/`. The pipeline **is committed** under `tools/` and `tests/`:
+- `tools/textures.py` — single source of truth: `EXPECTED_PALETTES` (wood / bamboo / copper_unoxidized), `ITEM_TO_STAGE`, and the `recolor()` helper. `bamboo` is the wood palette HSV-shifted (+18° hue, ×0.62 sat, ×1.5 value).
+- `tools/regenerate.py` — recolors the grey pixels of vanilla `bucket.png` / `water_bucket.png` to each stage palette (water-blue preserved), writing the empty + water textures for every `ITEM_TO_STAGE` entry into both trees.
+- `tests/validate.py` — L3 asserts each `ITEM_TO_STAGE` texture's opaque non-water pixels exactly equal its `EXPECTED_PALETTES` entry. Wired onto `gradle check` (`validateResources`).
+- **Milk** textures = recolor the wood-palette pixels of `wooden_milk_bucket.png` to the bamboo palette (index→index), keeping the white milk; milk variants are **excluded** from `ITEM_TO_STAGE`/L3 (white isn't in the palette).
+- **`copper_powder_snow_bucket`** = `tools/make_powder_snow_texture.py` (configurable `SNOWIFY` / `MODE`): copper body from `copper_bucket.png`, vanilla snow kept; default `MODE='right'` keeps the top dome + the right-side snow trail and forces the left column back to copper. Excluded from L3.
 
 ## Iteration pointers
 

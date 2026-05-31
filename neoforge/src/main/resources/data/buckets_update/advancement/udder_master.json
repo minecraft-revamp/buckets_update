@@ -19,15 +19,45 @@
     "got_wooden_milk": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
-        "items": [{ "items": ["buckets_update:wooden_milk_bucket"] }]
+        "items": [
+          {
+            "items": [
+              "buckets_update:wooden_milk_bucket"
+            ]
+          }
+        ]
       }
     },
     "got_copper_milk": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
-        "items": [{ "items": ["buckets_update:copper_milk_bucket"] }]
+        "items": [
+          {
+            "items": [
+              "buckets_update:copper_milk_bucket"
+            ]
+          }
+        ]
+      }
+    },
+    "got_bamboo_milk": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "buckets_update:bamboo_milk_bucket"
+            ]
+          }
+        ]
       }
     }
   },
-  "requirements": [["got_wooden_milk", "got_copper_milk"]]
+  "requirements": [
+    [
+      "got_wooden_milk",
+      "got_bamboo_milk",
+      "got_copper_milk"
+    ]
+  ]
 }

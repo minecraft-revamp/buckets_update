@@ -35,6 +35,10 @@ RGB = Tuple[int, int, int]
 EXPECTED_PALETTES: Dict[str, List[RGB]] = {
     "wood": [(55, 41, 16), (73, 54, 21), (89, 67, 25), (104, 78, 30),
              (107, 81, 31), (117, 88, 33), (134, 101, 38), (137, 103, 39)],
+    # bamboo = the wood palette HSV-shifted toward pale yellow-green (+18° hue,
+    # ×0.62 saturation, ×1.5 value). Recompute: see the snippet in CLAUDE.md.
+    "bamboo": [(82, 80, 46), (110, 106, 61), (133, 131, 74), (156, 152, 87),
+               (160, 158, 90), (176, 172, 97), (201, 197, 112), (206, 201, 114)],
     "copper_unoxidized": [(109, 52, 33), (138, 65, 41), (156, 69, 41),
                           (156, 78, 49), (193, 90, 54), (231, 124, 86),
                           (252, 153, 130), (251, 195, 182)],
@@ -46,6 +50,8 @@ EXPECTED_PALETTES: Dict[str, List[RGB]] = {
 ITEM_TO_STAGE: Dict[str, str] = {
     "wooden_bucket":       "wood",
     "wooden_water_bucket": "wood",
+    "bamboo_bucket":       "bamboo",
+    "bamboo_water_bucket": "bamboo",
     "copper_bucket":       "copper_unoxidized",
     "copper_water_bucket": "copper_unoxidized",
 }

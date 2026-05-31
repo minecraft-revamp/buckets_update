@@ -44,11 +44,34 @@ public final class ModItems {
                             .component(DataComponents.CONSUMABLE, Consumables.MILK_BUCKET),
                     () -> ModItems.WOODEN_BUCKET));
 
+    public static final BambooBucketItem BAMBOO_BUCKET = registerItem(
+            "bamboo_bucket",
+            props -> new BambooBucketItem(
+                    Fluids.EMPTY,
+                    props.stacksTo(1),
+                    () -> ModItems.BAMBOO_WATER_BUCKET,
+                    () -> ModItems.BAMBOO_BUCKET));
+
+    public static final BambooBucketItem BAMBOO_WATER_BUCKET = registerItem(
+            "bamboo_water_bucket",
+            props -> new BambooBucketItem(
+                    Fluids.WATER,
+                    props.stacksTo(1).craftRemainder(ModItems.BAMBOO_BUCKET),
+                    () -> ModItems.BAMBOO_WATER_BUCKET,
+                    () -> ModItems.BAMBOO_BUCKET));
+
+    public static final BambooMilkBucketItem BAMBOO_MILK_BUCKET = registerItem(
+            "bamboo_milk_bucket",
+            props -> new BambooMilkBucketItem(
+                    props.stacksTo(1)
+                            .component(DataComponents.CONSUMABLE, Consumables.MILK_BUCKET),
+                    () -> ModItems.BAMBOO_BUCKET));
+
     public static final CopperBucketItem COPPER_BUCKET = registerItem(
             "copper_bucket",
             props -> new CopperBucketItem(
                     Fluids.EMPTY,
-                    props.stacksTo(1),
+                    props.stacksTo(16),
                     () -> ModItems.COPPER_WATER_BUCKET,
                     () -> ModItems.COPPER_BUCKET));
 
@@ -70,7 +93,7 @@ public final class ModItems {
     public static final CopperPowderSnowBucketItem COPPER_POWDER_SNOW_BUCKET = registerItem(
             "copper_powder_snow_bucket",
             props -> new CopperPowderSnowBucketItem(
-                    props.durability(CopperBucketItem.MAX_USES),
+                    props.stacksTo(1),
                     () -> ModItems.COPPER_BUCKET));
 
     private ModItems() {}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "BBB",
+    "P P",
+    " P "
+  ],
+  "key": {
+    "B": "minecraft:bamboo",
+    "P": "minecraft:bamboo_planks"
+  },
+  "result": {
+    "id": "buckets_update:bamboo_bucket",
+    "count": 1
+  }
+}

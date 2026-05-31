@@ -14,21 +14,22 @@ Refresh the Minecraft bucket family with new craftable variants — lightweight 
 | Bucket | Material | Behaviour |
 |---|---|---|
 | 🪣 Wooden | 3 planks + 3 sticks | Cheapest tier — ~16 uses, then breaks |
-| 🟠 Copper | 3 copper ingots + 3 copper chains | Mid-tier — ~190 uses, then breaks; also scoops powder snow like the iron bucket |
+| 🎋 Bamboo | 3 bamboo planks + 3 bamboo | Like wood but twice as tough — ~32 uses, then breaks |
+| 🟠 Copper | 3 copper ingots + 3 copper chains | Permanent like iron — never breaks, **stacks to 16**; also scoops powder snow |
 | ⚙️ Iron *(vanilla, recipe revised)* | 3 iron ingots + 3 iron chains | Standard vanilla bucket — only the recipe changes, to avoid the historical shape conflict with the wooden bowl |
 
-Each wood and copper bucket comes as an empty, a water, and a milk variant, plus a copper powder-snow variant. Highlights:
+Each bucket comes as an empty, a water, and a milk variant, plus a copper powder-snow variant. Highlights:
 
-- **Durability, the vanilla way.** Wood and copper buckets wear out and break (vanilla durability), show the normal durability bar, and — like any vanilla tool — can be **repaired by combining two damaged ones in the crafting grid**. Being damageable, they don't stack (one per slot), same as other durable items.
-- **Milk a cow** with any wood or copper bucket → the matching milk bucket (drink to clear effects, same as vanilla). Milking and drinking draw from the same durability pool as filling.
-- **Powder snow.** Scoop powder snow with an empty **copper** bucket (the wooden bucket only holds water), just like the iron bucket. Placing it back returns the empty copper bucket.
+- **Two durable tiers + a permanent one.** Wooden (16 uses) and bamboo (32 uses) buckets wear out and break, show the vanilla durability bar, and can be **repaired by combining two damaged ones in the crafting grid**; being damageable they don't stack. The **copper** bucket is permanent like iron — no durability, never breaks, and the empty bucket **stacks to 16**.
+- **Milk a cow** with any wood/bamboo/copper bucket → the matching milk bucket (drink to clear effects, same as vanilla). For wood/bamboo, milking and drinking draw from the same durability pool as filling.
+- **Powder snow.** Scoop powder snow with an empty **copper** bucket (wood/bamboo hold water only), just like the iron bucket. Placing it back returns the empty copper bucket.
 - **30 language translations** included.
 
 ## Recipes
 
 The shared shape is a row of three "chain/stick" pieces across the top, with the bucket body as a U of three pieces below.
 
-> **Legend** · 🟫 Planks · 🥢 Stick · 🟧 Copper ingot · ⛓️ Copper chain · ⬜ Iron ingot · 🔗 Iron chain
+> **Legend** · 🟫 Planks · 🥢 Stick · 🎋 Bamboo · 🟩 Bamboo planks · 🟧 Copper ingot · ⛓️ Copper chain · ⬜ Iron ingot · 🔗 Iron chain
 
 ### 🪣 Wooden Bucket
 
@@ -37,6 +38,14 @@ The shared shape is a row of three "chain/stick" pieces across the top, with the
 | 🥢 | 🥢 | 🥢 |
 | 🟫 |  | 🟫 |
 |  | 🟫 |  |
+
+### 🎋 Bamboo Bucket
+
+|  |  |  |
+|:-:|:-:|:-:|
+| 🎋 | 🎋 | 🎋 |
+| 🟩 |  | 🟩 |
+|  | 🟩 |  |
 
 ### 🟠 Copper Bucket
 

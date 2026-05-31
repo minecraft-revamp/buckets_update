@@ -17,6 +17,9 @@ public final class ModCreativeTabs {
                         output.accept(ModItems.WOODEN_BUCKET);
                         output.accept(ModItems.WOODEN_WATER_BUCKET);
                         output.accept(ModItems.WOODEN_MILK_BUCKET);
+                        output.accept(ModItems.BAMBOO_BUCKET);
+                        output.accept(ModItems.BAMBOO_WATER_BUCKET);
+                        output.accept(ModItems.BAMBOO_MILK_BUCKET);
                         output.accept(ModItems.COPPER_BUCKET);
                         output.accept(ModItems.COPPER_WATER_BUCKET);
                         output.accept(ModItems.COPPER_MILK_BUCKET);
