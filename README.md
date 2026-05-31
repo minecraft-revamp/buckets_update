@@ -33,41 +33,13 @@ Each bucket comes as an empty, a water, and a milk variant, plus a copper powder
 
 ## Recipes
 
-The shared shape is a row of three "chain/stick" pieces across the top, with the bucket body as a U of three pieces below.
+Every craftable bucket shares one shape: **three pieces across the top** (sticks or chains) with the **bucket body as a U** of three pieces below.
 
-> **Legend** · 🟫 Planks · 🥢 Stick · 🎋 Bamboo · 🟩 Bamboo planks · 🟧 Copper ingot · ⛓️ Copper chain · ⬜ Iron ingot · 🔗 Iron chain
-
-### 🪣 Wooden Bucket
-
-|  |  |  |
-|:-:|:-:|:-:|
-| 🥢 | 🥢 | 🥢 |
-| 🟫 |  | 🟫 |
-|  | 🟫 |  |
-
-### 🎋 Bamboo Bucket
-
-|  |  |  |
-|:-:|:-:|:-:|
-| 🎋 | 🎋 | 🎋 |
-| 🟩 |  | 🟩 |
-|  | 🟩 |  |
-
-### 🟠 Copper Bucket
-
-|  |  |  |
-|:-:|:-:|:-:|
-| ⛓️ | ⛓️ | ⛓️ |
-| 🟧 |  | 🟧 |
-|  | 🟧 |  |
-
-### ⚙️ Iron Bucket *(vanilla recipe revised)*
-
-|  |  |  |
-|:-:|:-:|:-:|
-| 🔗 | 🔗 | 🔗 |
-| ⬜ |  | ⬜ |
-|  | ⬜ |  |
+| Wooden | Bamboo |
+|:-:|:-:|
+| ![Wooden bucket recipe](docs/images/recipe_wooden.png) | ![Bamboo bucket recipe](docs/images/recipe_bamboo.png) |
+| **Copper** | **Iron** *(revised)* |
+| ![Copper bucket recipe](docs/images/recipe_copper.png) | ![Iron bucket recipe](docs/images/recipe_iron.png) |
 
 Water, milk, and powder-snow variants aren't crafted — fill an empty bucket from a water source, milk a cow, or scoop powder snow (copper only).
 
