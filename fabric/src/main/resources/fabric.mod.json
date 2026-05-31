@@ -3,6 +3,7 @@
   "id": "${mod_id}",
   "version": "${version}",
   "name": "${mod_name}",
+  "icon": "assets/buckets_update/icon.png",
   "description": "Bucketry — a vanilla-first bucket tier ladder: cheap wooden buckets (16 uses) and tougher bamboo ones (32 uses) that wear out and repair in the crafting grid, plus permanent copper buckets that stack to 16 and scoop powder snow. Water + milk variants throughout, and the iron bucket recipe is revised to a row of chains over a U of ingots.",
   "authors": ["JessicaMalle"],
   "license": "All Rights Reserved",
