@@ -1,6 +1,8 @@
 # Buckets Update
 
-Refresh the Minecraft bucket family with new craftable variants — lightweight wooden buckets and sturdier copper buckets that sit between wood and iron.
+![Buckets Update — wood, bamboo, copper, iron](docs/images/banner.png)
+
+Refresh the Minecraft bucket family with a vanilla-first tier ladder — a cheap wooden bucket, a tougher bamboo one, and a permanent copper one that sits between wood and iron.
 
 [![Build](https://github.com/minecraft-revamp/buckets_update/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/minecraft-revamp/buckets_update/actions/workflows/build-and-test.yml)
 [![Minecraft](https://img.shields.io/badge/Minecraft-26.1.2-62B132?logo=minecraft&logoColor=white)](https://www.minecraft.net/)
@@ -9,7 +11,11 @@ Refresh the Minecraft bucket family with new craftable variants — lightweight 
 
 > ⚠️ Targets **Minecraft 26.1.2**, the first post-deobfuscation snapshot. Won't load on earlier versions.
 
+> 📖 **Want the full illustrated tour?** See **[PRESENTATION.md](./PRESENTATION.md)** — tiers, variants, recipe diagrams, and mechanics in detail.
+
 ## What's in the bucket
+
+![The full bucket family](docs/images/family.png)
 
 | Bucket | Material | Behaviour |
 |---|---|---|
