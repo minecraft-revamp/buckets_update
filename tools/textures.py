@@ -138,10 +138,10 @@ def recolor(template_path: Path, palette: List[RGB], out_path: Path) -> None:
 if __name__ == "__main__":
     """Print the EXPECTED_PALETTES constant from current vanilla refs."""
     import sys
-    vanilla = Path("neoforge/build/neoForm/neoFormJoined26.1.2-1/steps/transformSource/transformed/assets/minecraft")
-    if not vanilla.exists():
-        print(f"Vanilla refs not found at {vanilla}. Run `./gradlew :neoFormDecompile` first.",
-              file=sys.stderr)
+    root = Path(__file__).parent.parent
+    vanilla = next(root.glob("neoforge/build/neoForm/**/assets/minecraft"), None)
+    if vanilla is None:
+        print("Vanilla refs not found. Run `./gradlew :neoFormDecompile` first.", file=sys.stderr)
         sys.exit(1)
     derived = rederive_from_vanilla(vanilla)
     print("# Paste this into EXPECTED_PALETTES in tools/textures.py:")

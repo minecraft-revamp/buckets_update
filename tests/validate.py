@@ -8,7 +8,7 @@ Checks
 ------
 L1.1  All JSON files under src/main/resources/ parse cleanly
 L1.2  Language files have consistent keys (vs en_us)
-L1.3  pack.mcmeta has the MC 26.1 format (min_format[2], max_format)
+L1.3  pack.mcmeta has the MC 26.x format (min_format[2], max_format)
 L1.4  Item models reference existing texture files
 L1.5  Recipes have valid shape / keys / result
 L3    Bucket textures match the expected palette per stage
@@ -98,7 +98,7 @@ def check_lang_consistency(loader_root: Path) -> None:
 # ----- L1.3: pack.mcmeta format ---------------------------------------------
 
 def check_pack_mcmeta(loader_root: Path) -> None:
-    print(f"  L1.3  pack.mcmeta MC 26.1 format")
+    print(f"  L1.3  pack.mcmeta MC 26.x format")
     mcmeta = loader_root / "src/main/resources/pack.mcmeta"
     if not mcmeta.exists():
         fail("missing pack.mcmeta")
@@ -111,7 +111,7 @@ def check_pack_mcmeta(loader_root: Path) -> None:
     if not isinstance(mx, int):
         fail(f"pack.mcmeta: max_format must be int, got {mx!r}")
     if "pack_format" in pack:
-        fail("pack.mcmeta: legacy 'pack_format' key present — MC 26.1 requires min_format/max_format only")
+        fail("pack.mcmeta: legacy 'pack_format' key present — MC 26.x requires min_format/max_format only")
 
 
 # ----- L1.4: model → texture references --------------------------------------

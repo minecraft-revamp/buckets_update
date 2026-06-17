@@ -6,13 +6,13 @@
 
 *A vanilla-first tier ladder for buckets: a cheap wooden one, a tougher bamboo one, a permanent copper one — and a quietly revised iron recipe.*
 
-[![Minecraft](https://img.shields.io/badge/Minecraft-26.1.2-62B132?logo=minecraft&logoColor=white)](https://www.minecraft.net/)
-[![NeoForge](https://img.shields.io/badge/NeoForge-26.1.2.41--beta-D7742F)](https://neoforged.net/)
-[![Fabric](https://img.shields.io/badge/Fabric-0.148.0%2B26.1.2-DBD0B4)](https://fabricmc.net/)
+[![Minecraft](https://img.shields.io/badge/Minecraft-26.2-62B132?logo=minecraft&logoColor=white)](https://www.minecraft.net/)
+[![NeoForge](https://img.shields.io/badge/NeoForge-26.2.0.1--beta-D7742F)](https://neoforged.net/)
+[![Fabric](https://img.shields.io/badge/Fabric-0.152.1%2B26.2-DBD0B4)](https://fabricmc.net/)
 
 </div>
 
-> ⚠️ Targets **Minecraft 26.1.2**, the first post-deobfuscation snapshot. Won't load on earlier versions.
+> ⚠️ Targets **Minecraft 26.2**. Won't load on earlier versions.
 
 ---
 
@@ -87,8 +87,8 @@ Every craftable bucket shares one shape: **three "binder" pieces across the top*
 
 ## Under the hood
 
-- **Two loaders, no Architectury.** NeoForge **and** Fabric, each a self-contained project, logic mirrored rather than shared — a deliberate choice for MC 26.1's bleeding-edge toolchain.
-- **Minecraft 26.1.2**, the first post-deobfuscation snapshot (Mojang official names).
+- **Two loaders, no Architectury.** NeoForge **and** Fabric, each a self-contained project, logic mirrored rather than shared — a deliberate choice for the bleeding-edge 26.x toolchain.
+- **Minecraft 26.2** (Mojang official names, post-deobfuscation).
 - **30 language translations** included; `en_us` is canonical and the rest are full translations (French uses « seau »).
 - Textures are generated from vanilla references by a committed pipeline (`tools/`), and a Python resource validator (`tests/validate.py`) gates every build.
 
