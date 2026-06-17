@@ -57,7 +57,7 @@ or scoop powder snow (copper only).
 ## 🌍 Good to know
 
 - **Loaders:** NeoForge **and** Fabric *(the Fabric build needs Fabric API).*
-- **Minecraft:** 26.1.2.
+- **Minecraft:** 26.2.
 - **Required on both client and server.**
 - **30 languages** included.
 - Open source under the **MIT license** — [source & issues on GitHub](https://github.com/minecraft-revamp/buckets_update).

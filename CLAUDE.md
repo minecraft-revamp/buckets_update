@@ -4,15 +4,15 @@
 
 **Local path:** `~/Dev/mods/minecraft-revamp/buckets_update/` (sibling repos for the Minecraft Revamp collective live under `~/Dev/mods/minecraft-revamp/`).
 
-This is a **two-loader Minecraft mod** (NeoForge + Fabric, no Architectury) targeting **Minecraft 26.1.2** — the first post-deobfuscation snapshot. Each loader lives in a self-contained Gradle subdirectory with its own toolchain.
+This is a **two-loader Minecraft mod** (NeoForge + Fabric, no Architectury) targeting **Minecraft 26.2**. Each loader lives in a self-contained Gradle subdirectory with its own toolchain.
 
 ```
 buckets_update/
-├── neoforge/   # NeoGradle 7, NeoForge 26.1.2.41-beta
-└── fabric/     # Fabric Loom 1.16.1, Fabric API 0.148.0+26.1.2
+├── neoforge/   # NeoGradle 7, NeoForge 26.2.0.1-beta
+└── fabric/     # Fabric Loom 1.17.11, Fabric API 0.152.1+26.2
 ```
 
-The two trees share **logic**, **resources** (assets + data), and **conventions**, but each maintains its own copy. There is **no shared module** — duplication is intentional given Architectury's incomplete 26.1 support at the time of writing.
+The two trees share **logic**, **resources** (assets + data), and **conventions**, but each maintains its own copy. There is **no shared module** — duplication is intentional given Architectury's incomplete 26.x support at the time of writing.
 
 ## Build & run
 
@@ -37,17 +37,30 @@ export JAVA_HOME=$HOME/.local/jdks/current25 PATH=$JAVA_HOME/bin:$PATH
 ```
 
 JAR outputs:
-- `neoforge/build/libs/buckets_update-1.0.0.jar`
-- `fabric/build/libs/buckets_update-fabric-1.0.0.jar`
+- `neoforge/build/libs/buckets_update-1.1.0.jar`
+- `fabric/build/libs/buckets_update-fabric-1.1.0.jar`
 
 ## Test workflow
 
-Prism Launcher with two instances (one per loader). Symlink the JAR for hot-reload:
+Prism Launcher with two instances (one per loader). Deploy with `cp` (Flatpak Prism doesn't follow symlinks):
 ```bash
-ln -sf <project>/neoforge/build/libs/buckets_update-1.0.0.jar \
-       ~/.var/app/org.prismlauncher.PrismLauncher/data/PrismLauncher/instances/<NeoForgeInstance>/.minecraft/mods/
+cp <project>/neoforge/build/libs/buckets_update-1.1.0.jar \
+   ~/.var/app/org.prismlauncher.PrismLauncher/data/PrismLauncher/instances/<NeoForgeInstance>/.minecraft/mods/
 ```
 Same pattern for Fabric.
+
+## MC 26.2 migration notes
+
+26.2 (Chaos Cubed, 2026-06-16) is rendering-focused. **Zero Java API changes in our mod code** — the bucket/registry/event surfaces survived intact. What changed in the toolchain:
+
+| Component | Was | Now |
+|---|---|---|
+| NeoGradle | `7.1.26` | `7.1.38` — patches for Blaze3D/rendering classes failed to apply with 7.1.26 |
+| Fabric Loom | `1.16.1` | `1.17.11` |
+| Fabric Loader | `0.18.4` | `0.19.3` |
+| Fabric API | `0.148.0+26.1.2` | `0.152.1+26.2` |
+| data pack format | `min_format [101,1]` / `max_format 101` | `[107,1]` / `107` |
+| Python `tools/` paths | hardcoded `neoFormJoined26.1.2-1` | dynamic glob — `neoforge/build/neoForm/**/assets/...` |
 
 ## MC 26.1 post-deobfuscation gotchas (apply to both loaders)
 
@@ -93,7 +106,7 @@ When porting to Fabric, the following NeoForge-only conveniences need workaround
 - **Wood (16) / bamboo (32)** use vanilla durability (`DAMAGE`/`MAX_DAMAGE` via `.durability(MAX_USES)`): vanilla bar renders, and two damaged buckets repair in the **crafting grid** (`RepairItemRecipe`). Wear flows across empty/filled/milk via `copyState` copying `DAMAGE`; `applyWear` increments; `buildResult`/`finalizeDrink` break (return `ItemStack.EMPTY`) at `maxUses()`. Being damageable, they **don't stack** (an item can't be both damageable and stackable — `Item.Properties` validator: "Item cannot have both durability and be stackable").
 - **Copper is permanent like iron**: no durability, `maxUses() == Integer.MAX_VALUE`. `BaseBucketItem.applyWear` and `BaseMilkBucketItem.finalizeDrink` short-circuit when `maxUses()==MAX_VALUE` (no wear, never breaks), so the empty copper bucket can `stacksTo(16)`.
 
-**Items** (no waxed/oxidising variants — those were removed; Mojang doesn't oxidise copper tools in 26.1):
+**Items** (no waxed/oxidising variants — those were removed; Mojang doesn't oxidise copper tools in 26.x):
 - `wooden_bucket` / `wooden_water_bucket` / `wooden_milk_bucket`
 - `bamboo_bucket` / `bamboo_water_bucket` / `bamboo_milk_bucket`
 - `copper_bucket` / `copper_water_bucket` / `copper_milk_bucket` / `copper_powder_snow_bucket`
@@ -143,5 +156,5 @@ Textures under `assets/buckets_update/textures/item/`. The pipeline **is committ
 
 - User's local Unix account is `darthica` (a Star Wars RP nickname, used internally on her machine — see paths like `/var/home/darthica/`). **Do not use `darthica` as a published identity.** The public GitHub / mod author handle is **`JessicaMalle`** — that's what goes in `fabric.mod.json` `authors`, `neoforge.mods.toml` `authors`, and any README credits. Works on Bazzite (immutable Fedora-based), uses Prism Launcher Flatpak.
 - Communicates in French. Code/comments in English. Translation keys use English-style item names; French translation uses **« seau »** (bucket — the user's original "sceau" was a homophone typo for "seal").
-- User explicitly chose "two separate projects side by side" over Architectury for MC 26.1.2 due to bleeding-edge tooling uncertainty. Revisit Architectury later if its 26.1 support matures.
+- User explicitly chose "two separate projects side by side" over Architectury for MC 26.x due to bleeding-edge tooling uncertainty. Revisit Architectury later if its 26.x support matures.
 - Ultraconservative auto-mode classifier blocks `curl | bash` and external git clones without explicit pre-authorization. Anticipate by asking before such actions.

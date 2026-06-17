@@ -20,7 +20,10 @@ from tools.textures import (  # noqa: E402
 )
 
 ROOT = Path(__file__).parent.parent
-VANILLA_TEX = ROOT / "neoforge/build/neoForm/neoFormJoined26.1.2-1/steps/transformSource/transformed/assets/minecraft/textures"
+VANILLA_TEX = next(ROOT.glob("neoforge/build/neoForm/**/assets/minecraft/textures"), None)
+if VANILLA_TEX is None:
+    print("Vanilla textures not found. Run `./gradlew :neoFormDecompile` first.", file=sys.stderr)
+    sys.exit(1)
 EMPTY_TPL = VANILLA_TEX / "item/bucket.png"
 FILLED_TPL = VANILLA_TEX / "item/water_bucket.png"
 

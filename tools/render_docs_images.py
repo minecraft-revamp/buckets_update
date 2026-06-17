@@ -16,7 +16,10 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
 MOD_TEX = ROOT / "neoforge/src/main/resources/assets/buckets_update/textures/item"
-VANILLA = ROOT / "neoforge/build/neoForm/neoFormJoined26.1.2-1/steps/transformSource/transformed/assets/minecraft/textures"
+VANILLA = next(ROOT.glob("neoforge/build/neoForm/**/assets/minecraft/textures"), None)
+if VANILLA is None:
+    print("Vanilla textures not found. Run `./gradlew :neoFormDecompile` first.", file=sys.stderr)
+    sys.exit(1)
 OUT = ROOT / "docs/images"
 
 BG = (30, 33, 40, 255)       # page backdrop
