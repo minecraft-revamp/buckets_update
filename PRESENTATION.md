@@ -18,7 +18,7 @@
 
 ## Why this mod
 
-Vanilla has exactly one bucket. You either have iron, or you have nothing — there's no early-game bucket and no reason to ever craft a second kind. Bucketry fills that one missing piece with a small, readable **tier ladder** that looks like it could have shipped with the base game: wood early, bamboo as a sturdier alternative, copper as a permanent mid-tier, gold as a versatile late-game option that's the only bucket capable of carrying lava, and iron unchanged except for a recipe tweak.
+Vanilla has exactly one bucket. You either have iron, or you have nothing — there's no early-game bucket and no reason to ever craft a second kind. Bucketry fills that one missing piece with a small, readable **tier ladder** that looks like it could have shipped with the base game: wood early, bamboo as a sturdier alternative, copper as a permanent mid-tier, gold as a versatile late-game option — the only *added* bucket capable of carrying lava, matching vanilla iron — and iron unchanged except for a recipe tweak.
 
 No HUD spam, no menus, no new ores. Just buckets that behave the way you'd expect.
 
@@ -32,21 +32,21 @@ No HUD spam, no menus, no new ores. Just buckets that behave the way you'd expec
 | 🎋 **Bamboo** | 5 bamboo planks | ~32 uses, then breaks | 1 | — | — |
 | 🟠 **Copper** | 5 copper ingots | **permanent** (never breaks) | **16** | — | ✅ |
 | 🥇 **Gold** | 5 gold ingots | ~32 uses, then breaks | 1 | ✅ | ✅ |
-| ⚙️ **Iron** *(vanilla)* | 5 iron ingots | permanent | 16 | — | ✅ |
+| ⚙️ **Iron** *(vanilla)* | 5 iron ingots | permanent | 16 | ✅ | ✅ |
 
 ![The full bucket family](docs/images/family.png)
 
 - **🪣 Wooden** — the cheapest way to carry water. Light and disposable: ~16 uses before it breaks. Great for your first nether trip or an early farm.
 - **🎋 Bamboo** — looks and works like wood, but **twice as tough** (~32 uses). A natural step up if you have a bamboo farm before you have spare iron.
 - **🟠 Copper** — the mid-tier sweet spot. Like iron it's **permanent** (no durability, never breaks) and the empty bucket **stacks to 16**, and like iron it can **scoop powder snow**. Cheaper than iron, and it doesn't oxidise (matching vanilla copper tools).
-- **🥇 Gold** — the specialist. Same 32-use durability as bamboo, but it's the **only bucket that can hold lava** — ideal for nether builds or moving lava lakes. Also carries water, milk, and powder snow.
+- **🥇 Gold** — the specialist. Same 32-use durability as bamboo, but it's the **only *added* bucket that can hold lava** (matching vanilla iron) — ideal for nether builds or moving lava lakes. Also carries water, milk, and powder snow.
 - **⚙️ Iron** — the unmodified vanilla bucket. Only its **recipe** changes (see below); behaviour is 100% vanilla.
 
 ---
 
 ## Variants
 
-Every tier comes as an **empty**, a **water**, and a **milk** bucket. Copper and gold additionally have a **powder snow** bucket. Gold uniquely adds a **lava** bucket.
+Every tier comes as an **empty**, a **water**, and a **milk** bucket. Copper and gold additionally have a **powder snow** bucket. Gold is the only *added* tier with a **lava** bucket (iron carries lava through the vanilla lava bucket).
 
 | Variant | How you get it |
 |---|---|
@@ -84,7 +84,7 @@ Every craftable bucket shares one shape: **five pieces of a single material in a
 
 **Permanence & stacking (copper, iron).** Copper has no durability at all — it never breaks, never needs repair, and the **empty bucket stacks to 16** so you can haul a column of them.
 
-**Lava (gold only).** The gold bucket is the only tier that can scoop lava. Right-click any lava source block to fill it; right-clicking a target block empties it and returns the worn empty gold bucket. This makes gold essential for nether infrastructure work.
+**Lava (gold, plus vanilla iron).** Among the added buckets, only gold can scoop lava — iron does too, exactly as in vanilla, while wood, bamboo and copper can't. Right-click any lava source block to fill the gold bucket; right-clicking a target block empties it and returns the worn empty gold bucket. This makes gold a handy gold-sink alternative to iron for nether infrastructure work.
 
 **Powder snow (copper, gold).** The empty copper or gold bucket scoops powder snow and places it back — wood and bamboo hold water only.
 
