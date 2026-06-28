@@ -26,5 +26,12 @@
   "advancements.buckets_update.udder_master.title": "Tőgytől vödörig",
   "advancements.buckets_update.udder_master.description": "Fejj meg egy tehenet fa, bambusz vagy réz vödörbe.",
   "advancements.buckets_update.last_drop.title": "Az utolsó cseppig",
-  "advancements.buckets_update.last_drop.description": "Igyál ki egy tejesvödröt — fa, bambusz vagy réz."
+  "advancements.buckets_update.last_drop.description": "Igyál ki egy tejesvödröt — fa, bambusz vagy réz.",
+  "item.buckets_update.gold_bucket": "Gold Bucket",
+  "item.buckets_update.gold_water_bucket": "Gold Water Bucket",
+  "item.buckets_update.gold_lava_bucket": "Gold Lava Bucket",
+  "item.buckets_update.gold_milk_bucket": "Gold Milk Bucket",
+  "item.buckets_update.gold_powder_snow_bucket": "Gold Powder Snow Bucket",
+  "advancements.buckets_update.craft_gold.title": "First Gold Bucket",
+  "advancements.buckets_update.craft_gold.description": "Craft a gold bucket: 5 gold ingots in a V. Carries water, lava, milk, and powder snow — 32 uses."
 }

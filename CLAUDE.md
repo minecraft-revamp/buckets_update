@@ -37,17 +37,17 @@ export JAVA_HOME=$HOME/.local/jdks/current25 PATH=$JAVA_HOME/bin:$PATH
 ```
 
 JAR outputs:
-- `neoforge/build/libs/buckets_update-1.1.0.jar`
-- `fabric/build/libs/buckets_update-fabric-1.1.0.jar`
+- `neoforge/build/libs/buckets_update-1.2.0+mc26.2.jar`
+- `fabric/build/libs/buckets_update-fabric-1.2.0+mc26.2.jar`
 
 ## Test workflow
 
 Prism Launcher with two instances (one per loader). Deploy with `cp` (Flatpak Prism doesn't follow symlinks):
 ```bash
-cp <project>/neoforge/build/libs/buckets_update-1.1.0.jar \
+cp <project>/neoforge/build/libs/buckets_update-1.2.0+mc26.2.jar \
    ~/.var/app/org.prismlauncher.PrismLauncher/data/PrismLauncher/instances/<NeoForgeInstance>/.minecraft/mods/
 ```
-Same pattern for Fabric.
+Same pattern for Fabric (`buckets_update-fabric-1.2.0+mc26.2.jar`).
 
 ## MC 26.2 migration notes
 
@@ -94,24 +94,28 @@ When porting to Fabric, the following NeoForge-only conveniences need workaround
 
 **Each loader has identical Java structure** (mirrored content):
 - `BucketsUpdate{,Fabric}` — entry point with `MOD_ID = "buckets_update"`
-- `BaseBucketItem` — shared bucket logic (extends `BucketItem`, restricts liquid pickup to water, hooks `canUseFor` / `applyWear` / `buildResult` / `copyState`, plus the solid-pickup hooks `canSolidPickup` / `buildSolidResult`)
-- `WoodenBucketItem` (16), `BambooBucketItem` (32) — durable buckets; pass `.durability(MAX_USES)` and override `maxUses()`
-- `CopperBucketItem` — **permanent like iron**: no `.durability`, inherits `maxUses() == Integer.MAX_VALUE`; overrides the powder-snow hooks
-- `BaseMilkBucketItem`, `Wooden/Bamboo/CopperMilkBucketItem` — drinkable milk variants (wood/bamboo share the empty bucket's durability pool; copper has none)
-- `CopperPowderSnowBucketItem` — `extends SolidBucketItem`; places powder snow and returns the empty copper bucket
+- `BaseBucketItem` — shared bucket logic (extends `BucketItem`; hooks `canUseFor` / `applyWear` / `buildResult` / `copyState` + `isFluidAllowed` / `buildFilledResult` for multi-fluid support + solid-pickup hooks `canSolidPickup` / `buildSolidResult`)
+- `WoodenBucketItem` (16), `BambooBucketItem` (32) — durable buckets; pass `.durability(MAX_USES)` and override `maxUses()`. Water only.
+- `CopperBucketItem` — **permanent like iron**: no `.durability`, inherits `maxUses() == Integer.MAX_VALUE`; overrides powder-snow hooks. Water only.
+- `GoldBucketItem` (32) — durable like bamboo; overrides `isFluidAllowed` (WATER + LAVA), `buildFilledResult` (returns `gold_water_bucket` or `gold_lava_bucket` per fluid), and powder-snow hooks. Carries water, lava, milk, powder snow.
+- `BaseMilkBucketItem`, `Wooden/Bamboo/Copper/GoldMilkBucketItem` — drinkable milk variants; share durability pool with the empty bucket.
+- `CopperPowderSnowBucketItem` — `extends SolidBucketItem`; permanent (no wear). Returns empty copper bucket on place.
+- `GoldPowderSnowBucketItem` — `extends SolidBucketItem`; durable (32 uses). Snapshots damage before `super.useOn()` replaces the held item, then returns worn empty gold bucket.
 - `ModItems`, `ModCreativeTabs` — registries
-- `BucketEvents` — iron bucket recipe override; `MilkEvents` — cow-milking handler
+- `BucketEvents` — iron bucket recipe override; `MilkEvents` — cow-milking handler (now includes gold)
 
-**Two durability models, keyed on `maxUses()`:**
-- **Wood (16) / bamboo (32)** use vanilla durability (`DAMAGE`/`MAX_DAMAGE` via `.durability(MAX_USES)`): vanilla bar renders, and two damaged buckets repair in the **crafting grid** (`RepairItemRecipe`). Wear flows across empty/filled/milk via `copyState` copying `DAMAGE`; `applyWear` increments; `buildResult`/`finalizeDrink` break (return `ItemStack.EMPTY`) at `maxUses()`. Being damageable, they **don't stack** (an item can't be both damageable and stackable — `Item.Properties` validator: "Item cannot have both durability and be stackable").
-- **Copper is permanent like iron**: no durability, `maxUses() == Integer.MAX_VALUE`. `BaseBucketItem.applyWear` and `BaseMilkBucketItem.finalizeDrink` short-circuit when `maxUses()==MAX_VALUE` (no wear, never breaks), so the empty copper bucket can `stacksTo(16)`.
+**Durability models, keyed on `maxUses()`:**
+- **Wood (16) / bamboo (32) / gold (32)** use vanilla durability (`.durability(MAX_USES)`, `DAMAGE` component). Bar renders, two damaged empties repair in crafting grid. Not stackable (damageable items can't stack). Wear flows via `copyState` across all variants (empty/filled/milk/powder-snow).
+- **Copper is permanent like iron**: no durability, `maxUses() == Integer.MAX_VALUE`. `applyWear` and `finalizeDrink` short-circuit. Empty copper bucket `stacksTo(16)`.
+- **Gold vs bamboo**: same durability (32) but gold also allows lava pickup and powder-snow scooping. The multi-fluid extension uses `isFluidAllowed(Fluid)` / `buildFilledResult(ItemStack, Fluid)` hooks on `BaseBucketItem`.
 
-**Items** (no waxed/oxidising variants — those were removed; Mojang doesn't oxidise copper tools in 26.x):
+**Items** (no waxed/oxidising variants — Mojang doesn't oxidise copper tools in 26.x):
 - `wooden_bucket` / `wooden_water_bucket` / `wooden_milk_bucket`
 - `bamboo_bucket` / `bamboo_water_bucket` / `bamboo_milk_bucket`
 - `copper_bucket` / `copper_water_bucket` / `copper_milk_bucket` / `copper_powder_snow_bucket`
+- `gold_bucket` / `gold_water_bucket` / `gold_lava_bucket` / `gold_milk_bucket` / `gold_powder_snow_bucket`
 
-Empty `copper_bucket` `stacksTo(16)`; everything else (durable empties, all filled/milk/powder-snow) is `stacksTo(1)`. `craftRemainder` chains the empty version when a water bucket is consumed in a recipe (powder snow has no remainder, matching vanilla). Only the **copper** bucket scoops powder snow (wood/bamboo stay water+milk).
+Empty `copper_bucket` `stacksTo(16)`. Empty gold/wood/bamboo buckets and all filled/milk/powder-snow items are `stacksTo(1)`. `craftRemainder` on water and lava filled variants returns the matching empty bucket. Only copper and gold scoop powder snow.
 
 ## Resource override pattern
 
@@ -127,23 +131,24 @@ The vanilla iron bucket recipe is replaced by ours (5 iron ingots in a V — sin
 Translation keys:
 - `itemGroup.buckets_update.main` — creative tab label (kept as `"Bucketry"` untranslated for branding; the advancements root title is also `"Bucketry"` so the progress tab carries the mod name)
 - `item.buckets_update.<id>` — item display names (incl. bamboo family + `copper_powder_snow_bucket`)
-- `item.buckets_update.bucket.water_only` — overlay msg when trying to fill a bucket from a non-water source (powder snow is exempt on copper)
-- `advancements.buckets_update.craft_{wooden,copper}.description` — name the recipe shape, so they change when the recipe changes
+- `item.buckets_update.bucket.water_only` — overlay msg when trying to fill a wood/bamboo/copper bucket from a non-water, non-solid source (gold overrides `isFluidAllowed` so this never shows for gold with water/lava)
+- `advancements.buckets_update.craft_{wooden,copper,bamboo,gold}.description` — name the recipe shape and capabilities
 
 ## Textures
 
 Textures under `assets/buckets_update/textures/item/`. The pipeline **is committed** under `tools/` and `tests/`:
-- `tools/textures.py` — single source of truth: `EXPECTED_PALETTES` (wood / bamboo / copper_unoxidized), `ITEM_TO_STAGE`, and the `recolor()` helper. `bamboo` is the wood palette HSV-shifted (+18° hue, ×0.62 sat, ×1.5 value).
-- `tools/regenerate.py` — recolors the grey pixels of vanilla `bucket.png` / `water_bucket.png` to each stage palette (water-blue preserved), writing the empty + water textures for every `ITEM_TO_STAGE` entry into both trees.
+- `tools/textures.py` — single source of truth: `EXPECTED_PALETTES` (wood / bamboo / copper_unoxidized / **gold**), `ITEM_TO_STAGE`, and the `recolor()` helper. `bamboo` = wood HSV-shifted (+18° hue, ×0.62 sat, ×1.5 value); `gold` = warm amber stops derived from `gold_ingot.png`.
+- `tools/regenerate.py` — recolors the grey pixels of vanilla `bucket.png` / `water_bucket.png` to each stage palette (water-blue preserved), writing the empty + water textures for every `ITEM_TO_STAGE` entry into both trees. Gold empty and water textures are included.
 - `tests/validate.py` — L3 asserts each `ITEM_TO_STAGE` texture's opaque non-water pixels exactly equal its `EXPECTED_PALETTES` entry. Wired onto `gradle check` (`validateResources`).
-- **Milk** textures = recolor the wood-palette pixels of `wooden_milk_bucket.png` to the bamboo palette (index→index), keeping the white milk; milk variants are **excluded** from `ITEM_TO_STAGE`/L3 (white isn't in the palette).
-- **`copper_powder_snow_bucket`** = `tools/make_powder_snow_texture.py` (configurable `SNOWIFY` / `MODE`): copper body from `copper_bucket.png`, vanilla snow kept; default `MODE='right'` keeps the top dome + the right-side snow trail and forces the left column back to copper. Excluded from L3.
+- **Milk** textures = recolor wood-palette pixels (index→index) to the target material palette, keeping white milk; milk variants excluded from `ITEM_TO_STAGE`/L3.
+- **`copper_powder_snow_bucket`** = `tools/make_powder_snow_texture.py`: copper body + vanilla snow (`MODE='right'`). Excluded from L3.
+- **Gold composite textures** (lava, milk, powder snow) = inline script in `tools/`: `gold_lava_bucket` composites vanilla `lava_bucket.png` (lava pixels kept) + gold body; `gold_milk_bucket` recolors wood palette → gold palette; `gold_powder_snow_bucket` = same as copper powder snow but with gold body. All three excluded from L3.
 
 ## Iteration pointers
 
 - **Adding a new feature to both loaders**: write it in NeoForge first (richer event API), then port to Fabric. Diff between the two `BaseBucketItem.java` files is the canonical reference for what differs.
 - **Adding a new lang string**: add the key to `en_us.json` first (canonical), then propagate to the 29 other lang files via a Python script.
-- **Adding a new bucket variant** (e.g., gold bucket): copy the copper pattern. New empty/water/milk items, new recipe, new texture set, `maxUses()` override for durability. ~1 hour each loader.
+- **Adding a new bucket variant**: follow the gold pattern (gold is the most complete template — it shows multi-fluid + solid pickup + durability). New item classes, registration, recipe, texture palette, model JSONs, lang keys, advancement. ~2 hours each loader.
 - **The user previously preferred** "lots of small focused mods" over a monolithic mod. If we add features unrelated to buckets, consider a new sibling mod_id rather than expanding this one.
 
 ## What NOT to commit
