@@ -4,8 +4,8 @@ Modrinth "Description" editor. Images use absolute raw.githubusercontent URLs so
 they render on Modrinth (relative paths won't).
 
 Suggested "Summary" (short, separate field):
-  Wood, bamboo, copper & revised-iron buckets — a vanilla-first tier ladder with
-  durability, repair, milk and powder snow.
+  Wood, bamboo, copper, gold & revised-iron buckets — a vanilla-first tier ladder
+  with durability, repair, lava transport, milk and powder snow.
 
 Suggested categories: Equipment, Utility, Game Mechanics
 Environment: Client and server → Required on both
@@ -17,17 +17,19 @@ Environment: Client and server → Required on both
 
 Vanilla gives you exactly one bucket — iron, or nothing. **Bucketry** fills that one
 missing piece with a small, vanilla-first *tier ladder*: a cheap wooden bucket early,
-a tougher bamboo one, and a permanent copper one — plus a lightly revised iron recipe.
-No HUD, no menus, no new ores. Just buckets that behave the way you'd expect.
+a tougher bamboo one, a permanent copper one, and a versatile gold one that's the only
+bucket in the game that can hold lava. No HUD, no menus, no new ores. Just buckets that
+behave the way you'd expect.
 
 ## 🪣 The tiers
 
-| Tier | Material | Durability | Empty stacks | Powder snow |
-|---|---|:-:|:-:|:-:|
-| 🪣 **Wooden** | 5 planks | ~16 uses | — | — |
-| 🎋 **Bamboo** | 5 bamboo planks | ~32 uses (2× wood) | — | — |
-| 🟠 **Copper** | 5 copper ingots | permanent | **16** | ✅ |
-| ⚙️ **Iron** | *vanilla — recipe revised* | permanent | 16 | ✅ |
+| Tier | Material | Durability | Empty stacks | Lava | Powder snow |
+|---|---|:-:|:-:|:-:|:-:|
+| 🪣 **Wooden** | 5 planks | ~16 uses | — | — | — |
+| 🎋 **Bamboo** | 5 bamboo planks | ~32 uses (2× wood) | — | — | — |
+| 🟠 **Copper** | 5 copper ingots | permanent | **16** | — | ✅ |
+| 🥇 **Gold** | 5 gold ingots | ~32 uses | — | ✅ | ✅ |
+| ⚙️ **Iron** | *vanilla — recipe revised* | permanent | 16 | — | ✅ |
 
 ![The bucket family](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/family.png)
 
@@ -37,8 +39,10 @@ No HUD, no menus, no new ores. Just buckets that behave the way you'd expect.
   two damaged ones in the crafting grid**, just like any tool.
 - **Copper** is permanent like iron: it never breaks, the empty bucket **stacks to 16**,
   and it can **scoop powder snow**.
+- **Gold** (32 uses) is the only bucket that can **hold lava** — it also carries water,
+  milk, and powder snow, making it the most versatile tier.
 - Every tier has **empty / water / milk** variants — milk a cow, then drink to clear
-  effects. Copper adds a **powder snow** bucket on top.
+  effects. Copper and gold add a **powder snow** bucket. Gold uniquely adds a **lava** bucket.
 - The **iron** bucket is 100% vanilla; only its recipe changes to match the family's shape.
 
 ## 🛠️ Recipes
@@ -48,16 +52,18 @@ One shared shape: five pieces of a single material in a V — no chains.
 | Wooden | Bamboo |
 |:-:|:-:|
 | ![Wooden recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_wooden.png) | ![Bamboo recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_bamboo.png) |
-| **Copper** | **Iron** *(revised)* |
-| ![Copper recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_copper.png) | ![Iron recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_iron.png) |
+| **Copper** | **Gold** |
+| ![Copper recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_copper.png) | ![Gold recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_gold.png) |
+| **Iron** *(revised)* | |
+| ![Iron recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_iron.png) | |
 
-Water, milk and powder-snow buckets aren't crafted — fill an empty bucket, milk a cow,
-or scoop powder snow (copper only).
+Water, lava, milk and powder-snow buckets aren't crafted — fill an empty bucket, milk a
+cow, or scoop the block directly.
 
 ## 🌍 Good to know
 
 - **Loaders:** NeoForge **and** Fabric *(the Fabric build needs Fabric API).*
-- **Minecraft:** 26.2.
+- **Minecraft:** 26.2 (also available for 26.1).
 - **Required on both client and server.**
 - **30 languages** included.
 - Open source under the **MIT license** — [source & issues on GitHub](https://github.com/minecraft-revamp/buckets_update).

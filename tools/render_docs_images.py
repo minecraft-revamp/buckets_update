@@ -62,7 +62,7 @@ def _center_text(d: ImageDraw.ImageDraw, cx: int, y: int, text: str, font, fill)
 
 def render_banner() -> None:
     tiers = [("wooden_bucket", "Wooden"), ("bamboo_bucket", "Bamboo"),
-             ("copper_bucket", "Copper"), ("bucket_iron", "Iron")]
+             ("copper_bucket", "Copper"), ("gold_bucket", "Gold"), ("bucket_iron", "Iron")]
     px, gap, pad, label_h = 96, 40, 36, 30
     title_h = 56
     w = pad * 2 + len(tiers) * px + (len(tiers) - 1) * gap
@@ -70,7 +70,7 @@ def render_banner() -> None:
     img = Image.new("RGBA", (w, h), BG)
     d = ImageDraw.Draw(img)
     _center_text(d, w // 2, pad - 6, "Bucketry", _font(42), TEXT)
-    _center_text(d, w // 2, pad + 36, "wood · bamboo · copper · iron", _font(16), SUBTEXT)
+    _center_text(d, w // 2, pad + 36, "wood · bamboo · copper · gold · iron", _font(16), SUBTEXT)
     y = pad + title_h
     for i, (tex, label) in enumerate(tiers):
         x = pad + i * (px + gap)
@@ -88,15 +88,16 @@ def _iron_bucket() -> Image.Image:
 
 def render_family() -> None:
     rows = [
-        ("Wooden", ["wooden_bucket", "wooden_water_bucket", "wooden_milk_bucket"]),
-        ("Bamboo", ["bamboo_bucket", "bamboo_water_bucket", "bamboo_milk_bucket"]),
-        ("Copper", ["copper_bucket", "copper_water_bucket", "copper_milk_bucket", "copper_powder_snow_bucket"]),
+        ("Wooden", ["wooden_bucket", "wooden_water_bucket", None, "wooden_milk_bucket", None]),
+        ("Bamboo", ["bamboo_bucket", "bamboo_water_bucket", None, "bamboo_milk_bucket", None]),
+        ("Copper", ["copper_bucket", "copper_water_bucket", None, "copper_milk_bucket", "copper_powder_snow_bucket"]),
+        ("Gold",   ["gold_bucket", "gold_water_bucket", "gold_lava_bucket", "gold_milk_bucket", "gold_powder_snow_bucket"]),
     ]
-    var_labels = ["empty", "water", "milk", "powder snow"]
+    var_labels = ["empty", "water", "lava", "milk", "powder snow"]
     px, gap, padx, pady = 72, 26, 110, 24
     row_label_w = 96
     head_h = 24
-    ncols = 4
+    ncols = 5
     w = padx + row_label_w + ncols * px + (ncols - 1) * gap + 24
     h = pady + head_h + len(rows) * (px + 34) + pady
     img = Image.new("RGBA", (w, h), BG)
@@ -109,6 +110,8 @@ def render_family() -> None:
         y = pady + head_h + r * (px + 34)
         d.text((padx, y + px // 2 - 12), label, font=_font(20), fill=TEXT)
         for c, item in enumerate(items):
+            if item is None:
+                continue
             x = grid_x0 + c * (px + gap)
             img.alpha_composite(scaled(icon(item), px), (x, y))
     img.save(OUT / "family.png")
@@ -122,6 +125,7 @@ PLANK_CACHE = {}
 def _ingredient(kind: str) -> Image.Image:
     if kind == "copper_ingot": return icon("copper_ingot", vanilla=True)
     if kind == "iron_ingot":   return icon("iron_ingot", vanilla=True)
+    if kind == "gold_ingot":   return icon("gold_ingot", vanilla=True)
     if kind == "oak_planks":   return icon("oak_planks", vanilla=True, block=True)
     if kind == "bamboo_planks":return icon("bamboo_planks", vanilla=True, block=True)
     raise KeyError(kind)
@@ -178,8 +182,9 @@ def main() -> int:
     render_recipe("wooden", "oak_planks", "wooden_bucket")
     render_recipe("bamboo", "bamboo_planks", "bamboo_bucket")
     render_recipe("copper", "copper_ingot", "copper_bucket")
+    render_recipe("gold", "gold_ingot", "gold_bucket")
     render_recipe("iron", "iron_ingot", None, result_vanilla=True)
-    print(f"Rendered 6 images into {OUT.relative_to(ROOT)}/")
+    print(f"Rendered 7 images into {OUT.relative_to(ROOT)}/")
     return 0
 
 
