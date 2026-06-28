@@ -17,9 +17,9 @@ Environment: Client and server → Required on both
 
 Vanilla gives you exactly one bucket — iron, or nothing. **Bucketry** fills that one
 missing piece with a small, vanilla-first *tier ladder*: a cheap wooden bucket early,
-a tougher bamboo one, a permanent copper one, and a versatile gold one that's the only
-bucket in the game that can hold lava. No HUD, no menus, no new ores. Just buckets that
-behave the way you'd expect.
+a tougher bamboo one, a permanent copper one, and a versatile gold one — the only *added*
+bucket that can hold lava, matching vanilla iron. No HUD, no menus, no new ores. Just
+buckets that behave the way you'd expect.
 
 ## 🪣 The tiers
 
@@ -29,7 +29,7 @@ behave the way you'd expect.
 | 🎋 **Bamboo** | 5 bamboo planks | ~32 uses (2× wood) | — | — | — |
 | 🟠 **Copper** | 5 copper ingots | permanent | **16** | — | ✅ |
 | 🥇 **Gold** | 5 gold ingots | ~32 uses | — | ✅ | ✅ |
-| ⚙️ **Iron** | *vanilla — recipe revised* | permanent | 16 | — | ✅ |
+| ⚙️ **Iron** | *vanilla — recipe revised* | permanent | 16 | ✅ | ✅ |
 
 ![The bucket family](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/family.png)
 
@@ -39,10 +39,11 @@ behave the way you'd expect.
   two damaged ones in the crafting grid**, just like any tool.
 - **Copper** is permanent like iron: it never breaks, the empty bucket **stacks to 16**,
   and it can **scoop powder snow**.
-- **Gold** (32 uses) is the only bucket that can **hold lava** — it also carries water,
-  milk, and powder snow, making it the most versatile tier.
+- **Gold** (32 uses) is the only *added* bucket that can **hold lava** (matching vanilla
+  iron) — it also carries water, milk, and powder snow, making it the most versatile of the
+  new tiers.
 - Every tier has **empty / water / milk** variants — milk a cow, then drink to clear
-  effects. Copper and gold add a **powder snow** bucket. Gold uniquely adds a **lava** bucket.
+  effects. Copper and gold add a **powder snow** bucket. Gold is the only *added* tier with a **lava** bucket (iron uses the vanilla lava bucket).
 - The **iron** bucket is 100% vanilla; only its recipe changes to match the family's shape.
 
 ## 🛠️ Recipes

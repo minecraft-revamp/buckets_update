@@ -25,12 +25,12 @@ Refresh the Minecraft bucket family with a vanilla-first tier ladder — a cheap
 | 🎋 Bamboo | 5 bamboo planks | ~32 uses | water, milk |
 | 🟠 Copper | 5 copper ingots | permanent | water, milk, powder snow |
 | 🥇 Gold | 5 gold ingots | ~32 uses | **water, lava, milk, powder snow** |
-| ⚙️ Iron *(vanilla, recipe revised)* | 5 iron ingots | permanent | water, milk, powder snow |
+| ⚙️ Iron *(vanilla, recipe revised)* | 5 iron ingots | permanent | water, lava, milk, powder snow |
 
-Each bucket comes as an empty, a water, and a milk variant. Copper and gold additionally have a powder-snow variant; gold uniquely adds a lava variant. Highlights:
+Each bucket comes as an empty, a water, and a milk variant. Copper and gold additionally have a powder-snow variant; gold is the only *added* bucket with a lava variant (iron carries lava through the vanilla lava bucket). Highlights:
 
 - **Three durable tiers + two permanent ones.** Wooden (16 uses), bamboo (32 uses) and gold (32 uses) buckets wear out, show the vanilla durability bar, and can be **repaired by combining two damaged ones in the crafting grid**. Copper and iron are permanent — no durability, never break, empty copper **stacks to 16**.
-- **Lava.** Only the **gold** bucket can scoop and place lava. It's the only bucket in the family that can, because it's the only material that survives the heat.
+- **Lava.** Among the *added* buckets, only **gold** can scoop and place lava — it's the only new material that survives the heat. (Iron carries lava too, exactly as in vanilla; wood, bamboo and copper can't.)
 - **Milk a cow** with any wood/bamboo/copper/gold bucket → the matching milk bucket (drink to clear effects). For durable tiers, milking draws from the same durability pool as filling.
 - **Powder snow.** Scoop powder snow with an empty **copper** or **gold** bucket (wood/bamboo hold water only). Placing it back returns the empty bucket.
 - **30 language translations** included.
