@@ -26,5 +26,12 @@
   "advancements.buckets_update.udder_master.title": "Du pis au seau",
   "advancements.buckets_update.udder_master.description": "Trais une vache avec un seau en bois, en bambou ou en cuivre.",
   "advancements.buckets_update.last_drop.title": "Jusqu'à la dernière goutte",
-  "advancements.buckets_update.last_drop.description": "Bois un seau de lait — bois, bambou ou cuivre."
+  "advancements.buckets_update.last_drop.description": "Bois un seau de lait — bois, bambou ou cuivre.",
+  "item.buckets_update.gold_bucket": "Seau en or",
+  "item.buckets_update.gold_water_bucket": "Seau en or (eau)",
+  "item.buckets_update.gold_lava_bucket": "Seau en or (lave)",
+  "item.buckets_update.gold_milk_bucket": "Seau en or (lait)",
+  "item.buckets_update.gold_powder_snow_bucket": "Seau en or (neige poudreuse)",
+  "advancements.buckets_update.craft_gold.title": "Premier seau en or",
+  "advancements.buckets_update.craft_gold.description": "Fabrique un seau en or : 5 lingots d'or en V. Transporte eau, lave, lait et neige poudreuse — 32 utilisations."
 }

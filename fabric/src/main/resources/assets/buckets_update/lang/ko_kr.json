@@ -26,5 +26,12 @@
   "advancements.buckets_update.udder_master.title": "젖에서 양동이로",
   "advancements.buckets_update.udder_master.description": "나무, 대나무 또는 구리 양동이에 소젖을 짜.",
   "advancements.buckets_update.last_drop.title": "마지막 한 방울까지",
-  "advancements.buckets_update.last_drop.description": "우유 양동이를 비워 — 나무, 대나무 또는 구리."
+  "advancements.buckets_update.last_drop.description": "우유 양동이를 비워 — 나무, 대나무 또는 구리.",
+  "item.buckets_update.gold_bucket": "Gold Bucket",
+  "item.buckets_update.gold_water_bucket": "Gold Water Bucket",
+  "item.buckets_update.gold_lava_bucket": "Gold Lava Bucket",
+  "item.buckets_update.gold_milk_bucket": "Gold Milk Bucket",
+  "item.buckets_update.gold_powder_snow_bucket": "Gold Powder Snow Bucket",
+  "advancements.buckets_update.craft_gold.title": "First Gold Bucket",
+  "advancements.buckets_update.craft_gold.description": "Craft a gold bucket: 5 gold ingots in a V. Carries water, lava, milk, and powder snow — 32 uses."
 }

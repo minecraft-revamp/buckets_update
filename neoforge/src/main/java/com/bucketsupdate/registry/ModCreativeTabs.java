@@ -28,6 +28,11 @@ public final class ModCreativeTabs {
                         output.accept(ModItems.COPPER_WATER_BUCKET.get());
                         output.accept(ModItems.COPPER_MILK_BUCKET.get());
                         output.accept(ModItems.COPPER_POWDER_SNOW_BUCKET.get());
+                        output.accept(ModItems.GOLD_BUCKET.get());
+                        output.accept(ModItems.GOLD_WATER_BUCKET.get());
+                        output.accept(ModItems.GOLD_LAVA_BUCKET.get());
+                        output.accept(ModItems.GOLD_MILK_BUCKET.get());
+                        output.accept(ModItems.GOLD_POWDER_SNOW_BUCKET.get());
                     }).build());
 
     private ModCreativeTabs() {}
