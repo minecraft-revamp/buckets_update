@@ -4,7 +4,7 @@
 
 </div>
 
-Refresh the Minecraft bucket family with a vanilla-first tier ladder — a cheap wooden bucket, a tougher bamboo one, and a permanent copper one that sits between wood and iron.
+Refresh the Minecraft bucket family with a vanilla-first tier ladder — a cheap wooden bucket, a tougher bamboo one, a permanent copper one, a versatile gold one that handles lava, and a lightly revised iron recipe.
 
 [![Build](https://github.com/minecraft-revamp/buckets_update/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/minecraft-revamp/buckets_update/actions/workflows/build-and-test.yml)
 [![Minecraft](https://img.shields.io/badge/Minecraft-26.2-62B132?logo=minecraft&logoColor=white)](https://www.minecraft.net/)
@@ -19,18 +19,20 @@ Refresh the Minecraft bucket family with a vanilla-first tier ladder — a cheap
 
 ![The full bucket family](docs/images/family.png)
 
-| Bucket | Material | Behaviour |
-|---|---|---|
-| 🪣 Wooden | 5 planks | Cheapest tier — ~16 uses, then breaks |
-| 🎋 Bamboo | 5 bamboo planks | Like wood but twice as tough — ~32 uses, then breaks |
-| 🟠 Copper | 5 copper ingots | Permanent like iron — never breaks, **stacks to 16**; also scoops powder snow |
-| ⚙️ Iron *(vanilla, recipe revised)* | 5 iron ingots | Standard vanilla bucket — only the recipe changes, to avoid the historical shape conflict with the wooden bowl |
+| Bucket | Material | Durability | Carries |
+|---|---|:-:|---|
+| 🪣 Wooden | 5 planks | ~16 uses | water, milk |
+| 🎋 Bamboo | 5 bamboo planks | ~32 uses | water, milk |
+| 🟠 Copper | 5 copper ingots | permanent | water, milk, powder snow |
+| 🥇 Gold | 5 gold ingots | ~32 uses | **water, lava, milk, powder snow** |
+| ⚙️ Iron *(vanilla, recipe revised)* | 5 iron ingots | permanent | water, milk, powder snow |
 
-Each bucket comes as an empty, a water, and a milk variant, plus a copper powder-snow variant. Highlights:
+Each bucket comes as an empty, a water, and a milk variant. Copper and gold additionally have a powder-snow variant; gold uniquely adds a lava variant. Highlights:
 
-- **Two durable tiers + a permanent one.** Wooden (16 uses) and bamboo (32 uses) buckets wear out and break, show the vanilla durability bar, and can be **repaired by combining two damaged ones in the crafting grid**; being damageable they don't stack. The **copper** bucket is permanent like iron — no durability, never breaks, and the empty bucket **stacks to 16**.
-- **Milk a cow** with any wood/bamboo/copper bucket → the matching milk bucket (drink to clear effects, same as vanilla). For wood/bamboo, milking and drinking draw from the same durability pool as filling.
-- **Powder snow.** Scoop powder snow with an empty **copper** bucket (wood/bamboo hold water only), just like the iron bucket. Placing it back returns the empty copper bucket.
+- **Three durable tiers + two permanent ones.** Wooden (16 uses), bamboo (32 uses) and gold (32 uses) buckets wear out, show the vanilla durability bar, and can be **repaired by combining two damaged ones in the crafting grid**. Copper and iron are permanent — no durability, never break, empty copper **stacks to 16**.
+- **Lava.** Only the **gold** bucket can scoop and place lava. It's the only bucket in the family that can, because it's the only material that survives the heat.
+- **Milk a cow** with any wood/bamboo/copper/gold bucket → the matching milk bucket (drink to clear effects). For durable tiers, milking draws from the same durability pool as filling.
+- **Powder snow.** Scoop powder snow with an empty **copper** or **gold** bucket (wood/bamboo hold water only). Placing it back returns the empty bucket.
 - **30 language translations** included.
 
 ## Recipes
@@ -40,10 +42,12 @@ Every craftable bucket shares one shape: **five pieces of a single material in a
 | Wooden | Bamboo |
 |:-:|:-:|
 | ![Wooden bucket recipe](docs/images/recipe_wooden.png) | ![Bamboo bucket recipe](docs/images/recipe_bamboo.png) |
-| **Copper** | **Iron** *(revised)* |
-| ![Copper bucket recipe](docs/images/recipe_copper.png) | ![Iron bucket recipe](docs/images/recipe_iron.png) |
+| **Copper** | **Gold** |
+| ![Copper bucket recipe](docs/images/recipe_copper.png) | ![Gold bucket recipe](docs/images/recipe_gold.png) |
+| **Iron** *(revised)* | |
+| ![Iron bucket recipe](docs/images/recipe_iron.png) | |
 
-Water, milk, and powder-snow variants aren't crafted — fill an empty bucket from a water source, milk a cow, or scoop powder snow (copper only).
+Water, milk, lava, and powder-snow variants aren't crafted — fill an empty bucket from a source, milk a cow, or scoop the block directly.
 
 ## Install
 
@@ -52,8 +56,8 @@ Water, milk, and powder-snow variants aren't crafted — fill an empty bucket fr
    - **NeoForge** `26.2.0.1-beta`, or
    - **Fabric Loader** `0.19.3` + **Fabric API** `0.152.1+26.2`
 3. Drop the matching JAR from [releases](../../releases) into your instance's `mods/` folder:
-   - `buckets_update-1.1.0.jar` for NeoForge
-   - `buckets_update-fabric-1.1.0.jar` for Fabric
+   - `buckets_update-1.2.0+mc26.2.jar` for NeoForge
+   - `buckets_update-fabric-1.2.0+mc26.2.jar` for Fabric
 
 ## Build from source
 
@@ -63,12 +67,12 @@ Two self-contained Gradle projects, one per loader.
 # NeoForge — needs Java 21 (auto-fetches Java 25 toolchain)
 cd neoforge
 JAVA_HOME=/path/to/jdk-21 ./gradlew build
-# → neoforge/build/libs/buckets_update-1.1.0.jar
+# → neoforge/build/libs/buckets_update-1.2.0+mc26.2.jar
 
 # Fabric — needs Java 25 (Loom is strict)
 cd fabric
 JAVA_HOME=/path/to/jdk-25 ./gradlew build
-# → fabric/build/libs/buckets_update-fabric-1.1.0.jar
+# → fabric/build/libs/buckets_update-fabric-1.2.0+mc26.2.jar
 ```
 
 You can also run the dev client directly with `./gradlew runClient` from either subdirectory.
@@ -83,7 +87,7 @@ buckets_update/
 └── README.md    You are here
 ```
 
-The two trees deliberately duplicate logic instead of using Architectury — at the time of writing, Architectury support for MC 26.1's post-deobfuscation toolchain isn't fully stabilised. Code drift between the two is small (a handful of glue classes) and offset by toolchain simplicity.
+The two trees deliberately duplicate logic instead of using Architectury — at the time of writing, Architectury support for MC 26.x's post-deobfuscation toolchain isn't fully stabilised. Code drift between the two is small (a handful of glue classes) and offset by toolchain simplicity.
 
 [`CLAUDE.md`](./CLAUDE.md) documents the cross-loader API differences encountered during the build (NeoForge patches absent in vanilla Fabric, post-deobfuscation renames, etc.).
 
