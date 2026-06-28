@@ -63,6 +63,16 @@ public abstract class BaseBucketItem extends BucketItem {
         return Integer.MAX_VALUE;
     }
 
+    /** Fluids this bucket may pick up from the world. Default: water only. */
+    protected boolean isFluidAllowed(Fluid fluid) {
+        return fluid == Fluids.WATER;
+    }
+
+    /** Item result for a successful fluid fill. Break-check performed by caller. */
+    protected ItemStack buildFilledResult(ItemStack stack, Fluid fluid) {
+        return toFilled(stack);
+    }
+
     public ItemStack toFilled(ItemStack source) {
         ItemStack filled = new ItemStack(filledCounterpart.get());
         copyState(source, filled);
@@ -168,8 +178,8 @@ public abstract class BaseBucketItem extends BucketItem {
             return InteractionResult.FAIL;
         }
         Fluid sourceFluid = level.getFluidState(pos).getType();
-        if (sourceFluid != Fluids.WATER) {
-            // Non-water source: try a solid pickup (powder snow on copper) before refusing.
+        if (!isFluidAllowed(sourceFluid)) {
+            // Not an allowed fluid: try solid pickup before refusing.
             if (canSolidPickup(state)) {
                 return doSolidPickup(level, player, held, pickup, pos, state);
             }
@@ -190,7 +200,8 @@ public abstract class BaseBucketItem extends BucketItem {
         pickup.getPickupSound().ifPresent(s -> player.playSound(s, 1.0F, 1.0F));
         level.gameEvent(player, GameEvent.FLUID_PICKUP, pos);
 
-        return finishUseWithResult(held, player, buildResult(held, true));
+        ItemStack filled = wouldBreakAfterWear(held) ? ItemStack.EMPTY : buildFilledResult(held, sourceFluid);
+        return finishUseWithResult(held, player, filled);
     }
 
     private InteractionResult doSolidPickup(Level level, Player player, ItemStack held, BucketPickup pickup, BlockPos pos, BlockState state) {
