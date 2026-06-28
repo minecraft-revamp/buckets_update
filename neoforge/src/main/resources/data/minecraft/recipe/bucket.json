@@ -2,12 +2,11 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "pattern": [
-    "HHH",
+    "I I",
     "I I",
     " I "
   ],
   "key": {
-    "H": "minecraft:iron_chain",
     "I": "minecraft:iron_ingot"
   },
   "result": {
