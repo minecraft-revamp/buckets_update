@@ -96,6 +96,47 @@ public final class ModItems {
                     props.stacksTo(1),
                     () -> ModItems.COPPER_BUCKET));
 
+    // ---- Gold bucket family (water + lava + powder snow + milk, 32 uses) ----
+    public static final GoldBucketItem GOLD_BUCKET = registerItem(
+            "gold_bucket",
+            props -> new GoldBucketItem(
+                    Fluids.EMPTY,
+                    props.stacksTo(1),
+                    () -> ModItems.GOLD_WATER_BUCKET,
+                    () -> ModItems.GOLD_LAVA_BUCKET,
+                    () -> ModItems.GOLD_BUCKET));
+
+    public static final GoldBucketItem GOLD_WATER_BUCKET = registerItem(
+            "gold_water_bucket",
+            props -> new GoldBucketItem(
+                    Fluids.WATER,
+                    props.stacksTo(1).craftRemainder(ModItems.GOLD_BUCKET),
+                    () -> ModItems.GOLD_WATER_BUCKET,
+                    () -> ModItems.GOLD_LAVA_BUCKET,
+                    () -> ModItems.GOLD_BUCKET));
+
+    public static final GoldBucketItem GOLD_LAVA_BUCKET = registerItem(
+            "gold_lava_bucket",
+            props -> new GoldBucketItem(
+                    Fluids.LAVA,
+                    props.stacksTo(1).craftRemainder(ModItems.GOLD_BUCKET),
+                    () -> ModItems.GOLD_WATER_BUCKET,
+                    () -> ModItems.GOLD_LAVA_BUCKET,
+                    () -> ModItems.GOLD_BUCKET));
+
+    public static final GoldMilkBucketItem GOLD_MILK_BUCKET = registerItem(
+            "gold_milk_bucket",
+            props -> new GoldMilkBucketItem(
+                    props.stacksTo(1)
+                            .component(DataComponents.CONSUMABLE, Consumables.MILK_BUCKET),
+                    () -> ModItems.GOLD_BUCKET));
+
+    public static final GoldPowderSnowBucketItem GOLD_POWDER_SNOW_BUCKET = registerItem(
+            "gold_powder_snow_bucket",
+            props -> new GoldPowderSnowBucketItem(
+                    props.stacksTo(1),
+                    () -> ModItems.GOLD_BUCKET));
+
     private ModItems() {}
 
     private static <T extends Item> T registerItem(String name, Function<Item.Properties, T> factory) {

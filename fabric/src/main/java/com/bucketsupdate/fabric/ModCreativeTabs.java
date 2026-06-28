@@ -24,6 +24,11 @@ public final class ModCreativeTabs {
                         output.accept(ModItems.COPPER_WATER_BUCKET);
                         output.accept(ModItems.COPPER_MILK_BUCKET);
                         output.accept(ModItems.COPPER_POWDER_SNOW_BUCKET);
+                        output.accept(ModItems.GOLD_BUCKET);
+                        output.accept(ModItems.GOLD_WATER_BUCKET);
+                        output.accept(ModItems.GOLD_LAVA_BUCKET);
+                        output.accept(ModItems.GOLD_MILK_BUCKET);
+                        output.accept(ModItems.GOLD_POWDER_SNOW_BUCKET);
                     })
                     .build());
 

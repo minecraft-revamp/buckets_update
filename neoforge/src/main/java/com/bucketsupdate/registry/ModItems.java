@@ -6,6 +6,9 @@ import com.bucketsupdate.feature.buckets.BambooMilkBucketItem;
 import com.bucketsupdate.feature.buckets.CopperBucketItem;
 import com.bucketsupdate.feature.buckets.CopperMilkBucketItem;
 import com.bucketsupdate.feature.buckets.CopperPowderSnowBucketItem;
+import com.bucketsupdate.feature.buckets.GoldBucketItem;
+import com.bucketsupdate.feature.buckets.GoldMilkBucketItem;
+import com.bucketsupdate.feature.buckets.GoldPowderSnowBucketItem;
 import com.bucketsupdate.feature.buckets.WoodenBucketItem;
 import com.bucketsupdate.feature.buckets.WoodenMilkBucketItem;
 import net.minecraft.core.component.DataComponents;
@@ -91,6 +94,46 @@ public final class ModItems {
             props -> new CopperPowderSnowBucketItem(
                     props.stacksTo(1),
                     () -> ModItems.COPPER_BUCKET.get()));
+
+    // ---- Gold bucket family (water + lava + powder snow + milk, 32 uses) ----
+    public static final DeferredItem<GoldBucketItem> GOLD_BUCKET = ITEMS.registerItem(
+            "gold_bucket",
+            props -> new GoldBucketItem(
+                    Fluids.EMPTY,
+                    props.stacksTo(1),
+                    () -> ModItems.GOLD_WATER_BUCKET.get(),
+                    () -> ModItems.GOLD_LAVA_BUCKET.get(),
+                    () -> ModItems.GOLD_BUCKET.get()));
+
+    public static final DeferredItem<GoldBucketItem> GOLD_WATER_BUCKET = ITEMS.registerItem(
+            "gold_water_bucket",
+            props -> new GoldBucketItem(
+                    Fluids.WATER,
+                    props.stacksTo(1).craftRemainder(ModItems.GOLD_BUCKET.get()),
+                    () -> ModItems.GOLD_WATER_BUCKET.get(),
+                    () -> ModItems.GOLD_LAVA_BUCKET.get(),
+                    () -> ModItems.GOLD_BUCKET.get()));
+
+    public static final DeferredItem<GoldBucketItem> GOLD_LAVA_BUCKET = ITEMS.registerItem(
+            "gold_lava_bucket",
+            props -> new GoldBucketItem(
+                    Fluids.LAVA,
+                    props.stacksTo(1).craftRemainder(ModItems.GOLD_BUCKET.get()),
+                    () -> ModItems.GOLD_WATER_BUCKET.get(),
+                    () -> ModItems.GOLD_LAVA_BUCKET.get(),
+                    () -> ModItems.GOLD_BUCKET.get()));
+
+    public static final DeferredItem<GoldMilkBucketItem> GOLD_MILK_BUCKET = ITEMS.registerItem(
+            "gold_milk_bucket",
+            props -> new GoldMilkBucketItem(
+                    props.stacksTo(1).component(DataComponents.CONSUMABLE, Consumables.MILK_BUCKET),
+                    () -> ModItems.GOLD_BUCKET.get()));
+
+    public static final DeferredItem<GoldPowderSnowBucketItem> GOLD_POWDER_SNOW_BUCKET = ITEMS.registerItem(
+            "gold_powder_snow_bucket",
+            props -> new GoldPowderSnowBucketItem(
+                    props.stacksTo(1),
+                    () -> ModItems.GOLD_BUCKET.get()));
 
     private ModItems() {}
 }
