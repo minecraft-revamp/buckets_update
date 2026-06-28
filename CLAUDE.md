@@ -115,7 +115,7 @@ Empty `copper_bucket` `stacksTo(16)`; everything else (durable empties, all fill
 
 ## Resource override pattern
 
-The vanilla iron bucket recipe is replaced by ours (a row of 3 iron chains across the top, ingots in a U below — shared shape with the wood/copper buckets):
+The vanilla iron bucket recipe is replaced by ours (5 iron ingots in a V — single material, no chains; shared shape with the wood/copper buckets):
 - **NeoForge** (preferred path): runtime `ModifyRecipeJsonsEvent` in `BucketEvents.onModifyRecipeJsons` rewrites the JSON map before parse.
 - **Fabric**: static `data/minecraft/recipe/bucket.json` shipped in mod resources (mod datapacks override vanilla on Fabric reliably without mixin needed in our testing).
 - Both kept side by side as **belt-and-suspenders**.

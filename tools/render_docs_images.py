@@ -120,21 +120,17 @@ PLANK_CACHE = {}
 
 
 def _ingredient(kind: str) -> Image.Image:
-    if kind == "stick":        return icon("stick", vanilla=True)
-    if kind == "bamboo":       return icon("bamboo", vanilla=True)
     if kind == "copper_ingot": return icon("copper_ingot", vanilla=True)
     if kind == "iron_ingot":   return icon("iron_ingot", vanilla=True)
-    if kind == "copper_chain": return icon("copper_chain", vanilla=True)
-    if kind == "iron_chain":   return icon("iron_chain", vanilla=True)
     if kind == "oak_planks":   return icon("oak_planks", vanilla=True, block=True)
     if kind == "bamboo_planks":return icon("bamboo_planks", vanilla=True, block=True)
     raise KeyError(kind)
 
 
-def render_recipe(name: str, top: str, body: str, result_tex: str, result_vanilla: bool = False) -> None:
-    """top = the 3-across ingredient; body = the U ingredient."""
-    # pattern grid: ["TTT","X X"," X "]
-    grid = [[top, top, top], [body, None, body], [None, body, None]]
+def render_recipe(name: str, material: str, result_tex: str, result_vanilla: bool = False) -> None:
+    """material = the single ingredient; shape is a 5-item V (no chains)."""
+    # pattern grid: ["X X","X X"," X "]
+    grid = [[material, None, material], [material, None, material], [None, material, None]]
     cell, pad, slotpad = 64, 28, 6
     grid_w = grid_h = 3 * cell
     arrow_w = 80
@@ -179,10 +175,10 @@ def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     render_banner()
     render_family()
-    render_recipe("wooden", "stick", "oak_planks", "wooden_bucket")
-    render_recipe("bamboo", "bamboo", "bamboo_planks", "bamboo_bucket")
-    render_recipe("copper", "copper_chain", "copper_ingot", "copper_bucket")
-    render_recipe("iron", "iron_chain", "iron_ingot", None, result_vanilla=True)
+    render_recipe("wooden", "oak_planks", "wooden_bucket")
+    render_recipe("bamboo", "bamboo_planks", "bamboo_bucket")
+    render_recipe("copper", "copper_ingot", "copper_bucket")
+    render_recipe("iron", "iron_ingot", None, result_vanilla=True)
     print(f"Rendered 6 images into {OUT.relative_to(ROOT)}/")
     return 0
 

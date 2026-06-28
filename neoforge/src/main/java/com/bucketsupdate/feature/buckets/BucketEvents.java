@@ -16,14 +16,13 @@ public final class BucketEvents {
 
     private static final Identifier IRON_BUCKET_ID = Identifier.withDefaultNamespace("bucket");
 
-    /** New iron bucket pattern: 3 ingots in a U + a row of 3 iron chains across the top. */
+    /** New iron bucket pattern: 5 iron ingots in a V (single material, no chains). */
     private static final String IRON_BUCKET_RECIPE_JSON = """
             {
               "type": "minecraft:crafting_shaped",
               "category": "misc",
-              "pattern": ["HHH", "I I", " I "],
+              "pattern": ["I I", "I I", " I "],
               "key": {
-                "H": "minecraft:iron_chain",
                 "I": "minecraft:iron_ingot"
               },
               "result": {"id": "minecraft:bucket", "count": 1}
@@ -35,7 +34,7 @@ public final class BucketEvents {
         if (event.getRecipeJsons().containsKey(IRON_BUCKET_ID)) {
             JsonElement replacement = JsonParser.parseString(IRON_BUCKET_RECIPE_JSON);
             event.getRecipeJsons().put(IRON_BUCKET_ID, replacement);
-            BucketsUpdate.LOGGER.info("Overrode vanilla {} recipe with chain pattern", IRON_BUCKET_ID);
+            BucketsUpdate.LOGGER.info("Overrode vanilla {} recipe with V pattern", IRON_BUCKET_ID);
         }
     }
 }

@@ -28,10 +28,10 @@ No HUD spam, no menus, no new ores. Just buckets that behave the way you'd expec
 
 | Tier | Material | Durability | Empty stacks to | Powder snow |
 |---|---|:-:|:-:|:-:|
-| 🪣 **Wooden** | 3 planks + 3 sticks | ~16 uses, then breaks | 1 | — |
-| 🎋 **Bamboo** | 3 bamboo planks + 3 bamboo | ~32 uses, then breaks | 1 | — |
-| 🟠 **Copper** | 3 copper ingots + 3 copper chains | **permanent** (never breaks) | **16** | ✅ |
-| ⚙️ **Iron** *(vanilla)* | 3 iron ingots + 3 iron chains | permanent | 16 | ✅ |
+| 🪣 **Wooden** | 5 planks | ~16 uses, then breaks | 1 | — |
+| 🎋 **Bamboo** | 5 bamboo planks | ~32 uses, then breaks | 1 | — |
+| 🟠 **Copper** | 5 copper ingots | **permanent** (never breaks) | **16** | ✅ |
+| ⚙️ **Iron** *(vanilla)* | 5 iron ingots | permanent | 16 | ✅ |
 
 ![The full bucket family](docs/images/family.png)
 
@@ -59,7 +59,7 @@ For wood and bamboo, filling, milking and emptying all draw from the **same dura
 
 ## Recipes
 
-Every craftable bucket shares one shape: **three "binder" pieces across the top** (sticks or chains) with the **bucket body as a U** of three pieces below. Same silhouette, four materials.
+Every craftable bucket shares one shape: **five pieces of a single material in a V** — no chains. Same silhouette, four materials.
 
 | Wooden | Bamboo |
 |:-:|:-:|
@@ -67,7 +67,7 @@ Every craftable bucket shares one shape: **three "binder" pieces across the top*
 | **Copper** | **Iron** *(revised)* |
 | ![Copper bucket recipe](docs/images/recipe_copper.png) | ![Iron bucket recipe](docs/images/recipe_iron.png) |
 
-**Why the iron recipe changes:** vanilla's bucket shares its `▢ ▢ / ▢` shape with nothing in particular, but the new mod buckets all use the "3 across the top + U" layout — so iron joins them (3 iron chains + 3 iron ingots) for a consistent family and to keep the simple `▢ ▢ / ▢` arrangement free for the wooden bowl. The override ships two ways for robustness: a runtime recipe rewrite on NeoForge and a static datapack recipe on Fabric.
+**Why the iron recipe changes:** vanilla's bucket shares its `▢ ▢ / ▢` shape with nothing in particular, but the new mod buckets all use the five-in-a-V layout — so iron joins them (5 iron ingots) for a consistent family and to keep the simple `▢ ▢ / ▢` arrangement free for the wooden bowl. The override ships two ways for robustness: a runtime recipe rewrite on NeoForge and a static datapack recipe on Fabric.
 
 > The water, milk and powder-snow variants are **not** crafted — you obtain them in-world (fill / milk / scoop).
 

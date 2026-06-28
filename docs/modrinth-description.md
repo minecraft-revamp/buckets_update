@@ -24,9 +24,9 @@ No HUD, no menus, no new ores. Just buckets that behave the way you'd expect.
 
 | Tier | Material | Durability | Empty stacks | Powder snow |
 |---|---|:-:|:-:|:-:|
-| 🪣 **Wooden** | 3 planks + 3 sticks | ~16 uses | — | — |
-| 🎋 **Bamboo** | 3 bamboo planks + 3 bamboo | ~32 uses (2× wood) | — | — |
-| 🟠 **Copper** | 3 copper ingots + 3 copper chains | permanent | **16** | ✅ |
+| 🪣 **Wooden** | 5 planks | ~16 uses | — | — |
+| 🎋 **Bamboo** | 5 bamboo planks | ~32 uses (2× wood) | — | — |
+| 🟠 **Copper** | 5 copper ingots | permanent | **16** | ✅ |
 | ⚙️ **Iron** | *vanilla — recipe revised* | permanent | 16 | ✅ |
 
 ![The bucket family](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/family.png)
@@ -43,7 +43,7 @@ No HUD, no menus, no new ores. Just buckets that behave the way you'd expect.
 
 ## 🛠️ Recipes
 
-One shared shape: three sticks/chains across the top, the bucket body as a U below.
+One shared shape: five pieces of a single material in a V — no chains.
 
 | Wooden | Bamboo |
 |:-:|:-:|

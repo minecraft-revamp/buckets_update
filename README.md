@@ -21,10 +21,10 @@ Refresh the Minecraft bucket family with a vanilla-first tier ladder — a cheap
 
 | Bucket | Material | Behaviour |
 |---|---|---|
-| 🪣 Wooden | 3 planks + 3 sticks | Cheapest tier — ~16 uses, then breaks |
-| 🎋 Bamboo | 3 bamboo planks + 3 bamboo | Like wood but twice as tough — ~32 uses, then breaks |
-| 🟠 Copper | 3 copper ingots + 3 copper chains | Permanent like iron — never breaks, **stacks to 16**; also scoops powder snow |
-| ⚙️ Iron *(vanilla, recipe revised)* | 3 iron ingots + 3 iron chains | Standard vanilla bucket — only the recipe changes, to avoid the historical shape conflict with the wooden bowl |
+| 🪣 Wooden | 5 planks | Cheapest tier — ~16 uses, then breaks |
+| 🎋 Bamboo | 5 bamboo planks | Like wood but twice as tough — ~32 uses, then breaks |
+| 🟠 Copper | 5 copper ingots | Permanent like iron — never breaks, **stacks to 16**; also scoops powder snow |
+| ⚙️ Iron *(vanilla, recipe revised)* | 5 iron ingots | Standard vanilla bucket — only the recipe changes, to avoid the historical shape conflict with the wooden bowl |
 
 Each bucket comes as an empty, a water, and a milk variant, plus a copper powder-snow variant. Highlights:
 
@@ -35,7 +35,7 @@ Each bucket comes as an empty, a water, and a milk variant, plus a copper powder
 
 ## Recipes
 
-Every craftable bucket shares one shape: **three pieces across the top** (sticks or chains) with the **bucket body as a U** of three pieces below.
+Every craftable bucket shares one shape: **five pieces of a single material in a V** — no chains.
 
 | Wooden | Bamboo |
 |:-:|:-:|
