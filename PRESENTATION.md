@@ -1,6 +1,6 @@
 <div align="center">
 
-![Bucketry](docs/images/logo.png)
+![Bucketry](assets/banners/banner_more_buckets.webp)
 
 **The bucket progression vanilla never finished.**
 
@@ -24,77 +24,144 @@ No HUD spam, no menus, no new ores. Just buckets that behave the way you'd expec
 
 ---
 
-## The tiers
+## The Tiers
 
-| Tier | Material | Durability | Empty stacks to | Lava | Powder snow |
-|---|---|:-:|:-:|:-:|:-:|
-| 🪣 **Wooden** | 5 planks | ~16 uses, then breaks | 1 | — | — |
-| 🎋 **Bamboo** | 5 bamboo planks | ~32 uses, then breaks | 1 | — | — |
-| 🟠 **Copper** | 5 copper ingots | **permanent** (never breaks) | **16** | — | ✅ |
-| 🥇 **Gold** | 5 gold ingots | ~32 uses, then breaks | 1 | ✅ | ✅ |
-| ⚙️ **Iron** *(vanilla)* | 5 iron ingots | permanent | 16 | ✅ | ✅ |
+Here is a summary of the bucket progression:
 
-![The full bucket family](docs/images/family.png)
-
-- **🪣 Wooden** — the cheapest way to carry water. Light and disposable: ~16 uses before it breaks. Great for your first nether trip or an early farm.
-- **🎋 Bamboo** — looks and works like wood, but **twice as tough** (~32 uses). A natural step up if you have a bamboo farm before you have spare iron.
-- **🟠 Copper** — the mid-tier sweet spot. Like iron it's **permanent** (no durability, never breaks) and the empty bucket **stacks to 16**, and like iron it can **scoop powder snow**. Cheaper than iron, and it doesn't oxidise (matching vanilla copper tools).
-- **🥇 Gold** — the specialist. Same 32-use durability as bamboo, but it's the **only *added* bucket that can hold lava** (matching vanilla iron) — ideal for nether builds or moving lava lakes. Also carries water, milk, and powder snow.
-- **⚙️ Iron** — the unmodified vanilla bucket. Only its **recipe** changes (see below); behaviour is 100% vanilla.
+| Tier | Icon | Material | Durability | Empty stacks to | Lava | Powder snow |
+| :---: | :---: | :--- | :---: | :---: | :---: | :---: |
+| **Wooden** | <img src="assets/textures_256x/wooden_bucket.png" width="28" height="28" alt="Wooden Bucket" /> | 5 Planks | ~16 uses | 1 | — | — |
+| **Bamboo** | <img src="assets/textures_256x/bamboo_bucket.png" width="28" height="28" alt="Bamboo Bucket" /> | 5 Bamboo Planks | ~32 uses | 1 | — | — |
+| **Copper** | <img src="assets/textures_256x/copper_bucket.png" width="28" height="28" alt="Copper Bucket" /> | 5 Copper Ingots | **permanent** | **16** | — | ✅ |
+| **Gold** | <img src="assets/textures_256x/gold_bucket.png" width="28" height="28" alt="Gold Bucket" /> | 5 Gold Ingots | ~32 uses | 1 | ✅ | ✅ |
+| **Iron** | <img src="assets/textures_256x/iron_bucket.png" width="28" height="28" alt="Iron Bucket" /> | 5 Iron Ingots | **permanent** | 16 | ✅ | ✅ |
 
 ---
 
-## Variants
+## Tier Showcase
 
-Every tier comes as an **empty**, a **water**, and a **milk** bucket. Copper and gold additionally have a **powder snow** bucket. Gold is the only *added* tier with a **lava** bucket (iron carries lava through the vanilla lava bucket).
+### 🪣 Wooden Tier
+<img src="assets/banners/banner_wood_bucket.webp" width="100%" alt="Wooden Bucket Banner" style="border-radius: 4px; margin-bottom: 10px;" />
 
-| Variant | How you get it |
-|---|---|
-| **Empty** | Craft it (see recipes). |
-| **Water** | Right-click a water source with the empty bucket. |
-| **Lava** | Right-click a lava source with an empty **gold** bucket (gold only). |
-| **Milk** | Right-click a cow with the empty bucket — drink it to clear effects, just like vanilla milk. |
-| **Powder snow** *(copper & gold)* | Right-click powder snow with an empty **copper** or **gold** bucket; right-click to place it back. |
+*The cheapest way to carry water. Light, disposable, and easy to craft in the early game.*
 
-For wood, bamboo, and gold, filling, milking and emptying all draw from the **same durability pool** — a milk run wears the bucket just like a water run.
+* **Durability:** ~16 uses (breaks when exhausted).
+* **Stacking:** Does not stack (1 per slot).
+* **Lava:** Cannot hold lava (will not scoop).
 
----
-
-## Recipes
-
-Every craftable bucket shares one shape: **five pieces of a single material in a V** — no chains. Same silhouette, five materials.
-
-| Wooden | Bamboo |
-|:-:|:-:|
-| ![Wooden bucket recipe](docs/images/recipe_wooden.png) | ![Bamboo bucket recipe](docs/images/recipe_bamboo.png) |
-| **Copper** | **Gold** |
-| ![Copper bucket recipe](docs/images/recipe_copper.png) | ![Gold bucket recipe](docs/images/recipe_gold.png) |
-| **Iron** *(revised)* | |
-| ![Iron bucket recipe](docs/images/recipe_iron.png) | |
-
-**Why the iron recipe changes:** vanilla's bucket shares its `▢ ▢ / ▢` shape with nothing in particular, but the new mod buckets all use the five-in-a-V layout — so iron joins them (5 iron ingots) for a consistent family and to keep the simple `▢ ▢ / ▢` arrangement free for the wooden bowl. The override ships two ways for robustness: a runtime recipe rewrite on NeoForge and a static datapack recipe on Fabric.
-
-> The water, lava, milk and powder-snow variants are **not** crafted — you obtain them in-world (fill / milk / scoop).
+| Variant | Icon | How to Obtain / Behavior |
+| :--- | :---: | :--- |
+| **Wooden Bucket** | <img src="assets/textures_256x/wooden_bucket.png" width="48" height="48" alt="Wooden Bucket" /> | Crafted with 5 planks in a V-shape. |
+| **Wooden Water Bucket** | <img src="assets/textures_256x/wooden_water_bucket.png" width="48" height="48" alt="Wooden Water Bucket" /> | Filled by right-clicking a water source. |
+| **Wooden Milk Bucket** | <img src="assets/textures_256x/wooden_milk_bucket.png" width="48" height="48" alt="Wooden Milk Bucket" /> | Obtained by right-clicking a cow. Drink to clear status effects. |
 
 ---
 
-## Mechanics in detail
+### 🎋 Bamboo Tier
+<img src="assets/banners/banner_bamboo_bucket.webp" width="100%" alt="Bamboo Bucket Banner" style="border-radius: 4px; margin-bottom: 10px;" />
 
-**Durability & repair (wood, bamboo, gold).** These use real vanilla durability: they show the normal durability bar, wear down with use, and break when exhausted. Because they're genuine damageable items you can **repair them by combining two damaged buckets of the same type in the crafting grid** — exactly like repairing a pickaxe. (Being damageable, they don't stack — one per slot.)
+*Twice as tough as standard wood, presenting a sturdier early-game choice.*
 
-**Permanence & stacking (copper, iron).** Copper has no durability at all — it never breaks, never needs repair, and the **empty bucket stacks to 16** so you can haul a column of them.
+* **Durability:** ~32 uses (twice the durability of wood).
+* **Stacking:** Does not stack (1 per slot).
+* **Lava:** Cannot hold lava.
 
-**Lava (gold, plus vanilla iron).** Among the added buckets, only gold can scoop lava — iron does too, exactly as in vanilla, while wood, bamboo and copper can't. Right-click any lava source block to fill the gold bucket; right-clicking a target block empties it and returns the worn empty gold bucket. This makes gold a handy gold-sink alternative to iron for nether infrastructure work.
-
-**Powder snow (copper, gold).** The empty copper or gold bucket scoops powder snow and places it back — wood and bamboo hold water only.
-
-**Milk.** Right-click any cow with a wood/bamboo/copper/gold empty bucket to get the matching milk bucket; drinking clears status effects like vanilla. For durable tiers, milking and drinking share the same durability pool as water use.
+| Variant | Icon | How to Obtain / Behavior |
+| :--- | :---: | :--- |
+| **Bamboo Bucket** | <img src="assets/textures_256x/bamboo_bucket.png" width="48" height="48" alt="Bamboo Bucket" /> | Crafted with 5 bamboo planks in a V-shape. |
+| **Bamboo Water Bucket** | <img src="assets/textures_256x/bamboo_water_bucket.png" width="48" height="48" alt="Bamboo Water Bucket" /> | Filled by right-clicking a water source. |
+| **Bamboo Milk Bucket** | <img src="assets/textures_256x/bamboo_milk_bucket.png" width="48" height="48" alt="Bamboo Milk Bucket" /> | Obtained by right-clicking a cow. Drink to clear status effects. |
 
 ---
 
-## Under the hood
+### 🟠 Copper Tier
+<img src="assets/banners/banner_copper_bucket.webp" width="100%" alt="Copper Bucket Banner" style="border-radius: 4px; margin-bottom: 10px;" />
 
-- **Two loaders, no Architectury.** NeoForge **and** Fabric, each a self-contained project, logic mirrored rather than shared — a deliberate choice for the bleeding-edge 26.x toolchain.
+*The perfect mid-tier sweet spot. Highly durable, stackable, and capable of scooping powder snow.*
+
+* **Durability:** **Permanent** (never breaks).
+* **Stacking:** Empty buckets stack up to **16**.
+* **Lava:** Cannot hold lava.
+* **Powder Snow:** Can scoop, carry, and place powder snow.
+
+| Variant | Icon | How to Obtain / Behavior |
+| :--- | :---: | :--- |
+| **Copper Bucket** | <img src="assets/textures_256x/copper_bucket.png" width="48" height="48" alt="Copper Bucket" /> | Crafted with 5 copper ingots in a V-shape. |
+| **Copper Water Bucket** | <img src="assets/textures_256x/copper_water_bucket.png" width="48" height="48" alt="Copper Water Bucket" /> | Filled by right-clicking a water source. |
+| **Copper Milk Bucket** | <img src="assets/textures_256x/copper_milk_bucket.png" width="48" height="48" alt="Copper Milk Bucket" /> | Obtained by right-clicking a cow. |
+| **Copper Powder Snow Bucket** | <img src="assets/textures_256x/copper_powder_snow_bucket.png" width="48" height="48" alt="Copper Powder Snow Bucket" /> | Obtained by right-clicking powder snow. |
+
+---
+
+### 🥇 Gold Tier
+<img src="assets/banners/banner_gold_bucket.webp" width="100%" alt="Gold Bucket Banner" style="border-radius: 4px; margin-bottom: 10px;" />
+
+*The specialist. It's the only added bucket tough and thermally insulated enough to transport lava.*
+
+* **Durability:** ~32 uses (wear is applied by filling, emptying, and milking).
+* **Stacking:** Does not stack (1 per slot).
+* **Lava:** **Capable of holding and placing lava.**
+* **Powder Snow:** Can scoop, carry, and place powder snow.
+
+| Variant | Icon | How to Obtain / Behavior |
+| :--- | :---: | :--- |
+| **Gold Bucket** | <img src="assets/textures_256x/gold_bucket.png" width="48" height="48" alt="Gold Bucket" /> | Crafted with 5 gold ingots in a V-shape. |
+| **Gold Water Bucket** | <img src="assets/textures_256x/gold_water_bucket.png" width="48" height="48" alt="Gold Water Bucket" /> | Filled by right-clicking a water source. |
+| **Gold Lava Bucket** | <img src="assets/textures_256x/gold_lava_bucket.png" width="48" height="48" alt="Gold Lava Bucket" /> | Obtained by right-clicking a lava source. |
+| **Gold Milk Bucket** | <img src="assets/textures_256x/gold_milk_bucket.png" width="48" height="48" alt="Gold Milk Bucket" /> | Obtained by right-clicking a cow. |
+| **Gold Powder Snow Bucket** | <img src="assets/textures_256x/gold_powder_snow_bucket.png" width="48" height="48" alt="Gold Powder Snow Bucket" /> | Obtained by right-clicking powder snow. |
+
+---
+
+### ⚙️ Iron Tier *(Vanilla)*
+<img src="assets/banners/banner_iron_bucket.webp" width="100%" alt="Iron Bucket Banner" style="border-radius: 4px; margin-bottom: 10px;" />
+
+*The classic vanilla bucket. Retains all original traits, but uses a revised recipe for visual consistency.*
+
+* **Durability:** **Permanent** (never breaks).
+* **Stacking:** Empty buckets stack up to **16**.
+* **Lava:** Capable of holding and placing lava.
+* **Powder Snow:** Can scoop, carry, and place powder snow.
+
+| Variant | Icon | How to Obtain / Behavior |
+| :--- | :---: | :--- |
+| **Iron Bucket** | <img src="assets/textures_256x/iron_bucket.png" width="48" height="48" alt="Iron Bucket" /> | Crafted with 5 iron ingots (V-shape). |
+| **Iron Water Bucket** | <img src="assets/textures_256x/iron_water_bucket.png" width="48" height="48" alt="Iron Water Bucket" /> | Filled by right-clicking a water source. |
+| **Iron Lava Bucket** | <img src="assets/textures_256x/iron_lava_bucket.png" width="48" height="48" alt="Iron Lava Bucket" /> | Obtained by right-clicking a lava source. |
+| **Iron Milk Bucket** | <img src="assets/textures_256x/iron_milk_bucket.png" width="48" height="48" alt="Iron Milk Bucket" /> | Obtained by right-clicking a cow. |
+| **Iron Powder Snow Bucket** | <img src="assets/textures_256x/iron_powder_snow_bucket.png" width="48" height="48" alt="Iron Powder Snow Bucket" /> | Obtained by right-clicking powder snow. |
+
+---
+
+## Crafting Recipes
+
+Every craftable bucket now shares a consistent recipe layout: **five pieces of a single material in a V shape** — no chains.
+
+| Tier | Crafted Bucket | Recipe Pattern |
+| :---: | :---: | :---: |
+| **Wooden** | <img src="assets/textures_256x/wooden_bucket.png" width="40" height="40" alt="Wooden Bucket" /> | ![Wooden bucket recipe](docs/images/recipe_wooden.png) |
+| **Bamboo** | <img src="assets/textures_256x/bamboo_bucket.png" width="40" height="40" alt="Bamboo Bucket" /> | ![Bamboo bucket recipe](docs/images/recipe_bamboo.png) |
+| **Copper** | <img src="assets/textures_256x/copper_bucket.png" width="40" height="40" alt="Copper Bucket" /> | ![Copper bucket recipe](docs/images/recipe_copper.png) |
+| **Gold** | <img src="assets/textures_256x/gold_bucket.png" width="40" height="40" alt="Gold Bucket" /> | ![Gold bucket recipe](docs/images/recipe_gold.png) |
+| **Iron** *(revised)* | <img src="assets/textures_256x/iron_bucket.png" width="40" height="40" alt="Iron Bucket" /> | ![Iron bucket recipe](docs/images/recipe_iron.png) |
+
+**Why the iron recipe changes:** Vanilla's bucket recipe (`▢ ▢ / ▢`) is inconsistent with the other tiers. Changing it to require **5 iron ingots** in a V-shape creates a cohesive visual and progression logic across all materials.
+
+---
+
+## Mechanics in Detail
+
+* **Durability & Repair:** Wood, bamboo, and gold buckets are damageable items that display the standard vanilla durability bar. They wear down with use and break when exhausted. You can **repair them by combining two damaged buckets of the same type in the crafting grid** — exactly like repairing armor or tools. Since they can hold damage values, they do not stack.
+* **Permanence & Stacking:** Copper and iron buckets have no durability, never break, and their empty forms stack up to **16** in a single inventory slot.
+* **Lava Transport:** Only gold and vanilla iron buckets are capable of holding lava. Right-clicking a lava block with wood, bamboo, or copper will have no effect.
+* **Powder Snow:** Copper and gold join iron in their ability to scoop up powder snow blocks and place them back in the world.
+* **Milk:** Any empty bucket can be used to milk a cow. Drinking the milk clears all status effects. For durable tiers, milking and drinking draw from the bucket's durability pool.
+
+---
+
+## Under the Hood
+
+- **Two loaders, no Architectury:** NeoForge **and** Fabric, each a self-contained project, logic mirrored rather than shared — a deliberate choice for the bleeding-edge 26.x toolchain.
 - **Minecraft 26.2** (Mojang official names, post-deobfuscation).
 - **30 language translations** included; `en_us` is canonical and the rest are full translations (French uses « seau »).
 - Textures are generated from vanilla references by a committed pipeline (`tools/`), and a Python resource validator (`tests/validate.py`) gates every build.
