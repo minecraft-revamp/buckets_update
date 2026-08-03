@@ -91,6 +91,15 @@ public abstract class BaseBucketItem extends BucketItem {
         if (damage != null) {
             to.set(DataComponents.DAMAGE, damage);
         }
+        if (from.has(DataComponents.CUSTOM_NAME)) {
+            to.set(DataComponents.CUSTOM_NAME, from.get(DataComponents.CUSTOM_NAME));
+        }
+        if (from.has(DataComponents.ENCHANTMENTS)) {
+            to.set(DataComponents.ENCHANTMENTS, from.get(DataComponents.ENCHANTMENTS));
+        }
+        if (from.has(DataComponents.REPAIR_COST)) {
+            to.set(DataComponents.REPAIR_COST, from.get(DataComponents.REPAIR_COST));
+        }
     }
 
     protected boolean canUseFor(ItemStack stack, Player player, boolean fillingAction) {
@@ -172,7 +181,7 @@ public abstract class BaseBucketItem extends BucketItem {
                 : doEmpty(level, player, held, hit, pos, relPos);
     }
 
-    private InteractionResult doFill(Level level, Player player, ItemStack held, BlockHitResult hit, BlockPos pos) {
+    protected InteractionResult doFill(Level level, Player player, ItemStack held, BlockHitResult hit, BlockPos pos) {
         BlockState state = level.getBlockState(pos);
         if (!(state.getBlock() instanceof BucketPickup pickup)) {
             return InteractionResult.FAIL;
@@ -204,7 +213,7 @@ public abstract class BaseBucketItem extends BucketItem {
         return finishUseWithResult(held, player, filled);
     }
 
-    private InteractionResult doSolidPickup(Level level, Player player, ItemStack held, BucketPickup pickup, BlockPos pos, BlockState state) {
+    protected InteractionResult doSolidPickup(Level level, Player player, ItemStack held, BucketPickup pickup, BlockPos pos, BlockState state) {
         if (!canUseFor(held, player, true)) {
             return InteractionResult.FAIL;
         }
@@ -221,7 +230,7 @@ public abstract class BaseBucketItem extends BucketItem {
         return finishUseWithResult(held, player, buildSolidResult(held));
     }
 
-    private InteractionResult doEmpty(Level level, Player player, ItemStack held, BlockHitResult hit, BlockPos pos, BlockPos relPos) {
+    protected InteractionResult doEmpty(Level level, Player player, ItemStack held, BlockHitResult hit, BlockPos pos, BlockPos relPos) {
         if (!canUseFor(held, player, false)) {
             return InteractionResult.FAIL;
         }
@@ -240,7 +249,7 @@ public abstract class BaseBucketItem extends BucketItem {
         return finishUseWithResult(held, player, buildResult(held, false));
     }
 
-    private InteractionResult finishUseWithResult(ItemStack held, Player player, ItemStack ourResult) {
+    protected InteractionResult finishUseWithResult(ItemStack held, Player player, ItemStack ourResult) {
         if (ourResult.isEmpty()) {
             if (player instanceof ServerPlayer sp) {
                 sp.level().playSound(null, sp.blockPosition(),

@@ -16,7 +16,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
 MOD_TEX = ROOT / "neoforge/src/main/resources/assets/buckets_update/textures/item"
-VANILLA = next(ROOT.glob("neoforge/build/neoForm/**/assets/minecraft/textures"), None)
+VANILLA = next(ROOT.glob("neoforge/build/neoForm/neoFormJoined26.2-1/**/assets/minecraft/textures"), None)
 if VANILLA is None:
     print("Vanilla textures not found. Run `./gradlew :neoFormDecompile` first.", file=sys.stderr)
     sys.exit(1)
@@ -62,7 +62,8 @@ def _center_text(d: ImageDraw.ImageDraw, cx: int, y: int, text: str, font, fill)
 
 def render_banner() -> None:
     tiers = [("wooden_bucket", "Wooden"), ("bamboo_bucket", "Bamboo"),
-             ("copper_bucket", "Copper"), ("gold_bucket", "Gold"), ("bucket_iron", "Iron")]
+             ("copper_bucket", "Copper"), ("gold_bucket", "Gold"),
+             ("bucket_iron", "Iron"), ("diamond_bucket", "Diamond")]
     px, gap, pad, label_h = 96, 40, 36, 30
     title_h = 56
     w = pad * 2 + len(tiers) * px + (len(tiers) - 1) * gap
@@ -70,7 +71,7 @@ def render_banner() -> None:
     img = Image.new("RGBA", (w, h), BG)
     d = ImageDraw.Draw(img)
     _center_text(d, w // 2, pad - 6, "Bucketry", _font(42), TEXT)
-    _center_text(d, w // 2, pad + 36, "wood · bamboo · copper · gold · iron", _font(16), SUBTEXT)
+    _center_text(d, w // 2, pad + 36, "wood · bamboo · copper · gold · iron · diamond", _font(16), SUBTEXT)
     y = pad + title_h
     for i, (tex, label) in enumerate(tiers):
         x = pad + i * (px + gap)
@@ -92,6 +93,7 @@ def render_family() -> None:
         ("Bamboo", ["bamboo_bucket", "bamboo_water_bucket", None, "bamboo_milk_bucket", None]),
         ("Copper", ["copper_bucket", "copper_water_bucket", None, "copper_milk_bucket", "copper_powder_snow_bucket"]),
         ("Gold",   ["gold_bucket", "gold_water_bucket", "gold_lava_bucket", "gold_milk_bucket", "gold_powder_snow_bucket"]),
+        ("Diamond", ["diamond_bucket", "diamond_water_bucket", "diamond_lava_bucket", "diamond_milk_bucket", "diamond_powder_snow_bucket"]),
     ]
     var_labels = ["empty", "water", "lava", "milk", "powder snow"]
     px, gap, padx, pady = 72, 26, 110, 24
@@ -126,6 +128,7 @@ def _ingredient(kind: str) -> Image.Image:
     if kind == "copper_ingot": return icon("copper_ingot", vanilla=True)
     if kind == "iron_ingot":   return icon("iron_ingot", vanilla=True)
     if kind == "gold_ingot":   return icon("gold_ingot", vanilla=True)
+    if kind == "diamond":      return icon("diamond", vanilla=True)
     if kind == "oak_planks":   return icon("oak_planks", vanilla=True, block=True)
     if kind == "bamboo_planks":return icon("bamboo_planks", vanilla=True, block=True)
     raise KeyError(kind)
@@ -184,7 +187,8 @@ def main() -> int:
     render_recipe("copper", "copper_ingot", "copper_bucket")
     render_recipe("gold", "gold_ingot", "gold_bucket")
     render_recipe("iron", "iron_ingot", None, result_vanilla=True)
-    print(f"Rendered 7 images into {OUT.relative_to(ROOT)}/")
+    render_recipe("diamond", "diamond", "diamond_bucket")
+    print(f"Rendered 8 images into {OUT.relative_to(ROOT)}/")
     return 0
 
 

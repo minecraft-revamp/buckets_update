@@ -1,0 +1,25 @@
+{
+  "description": {
+    "translate": "enchantment.buckets_update.fluid_infinity"
+  },
+  "supported_items": "#buckets_update:enchantable_diamond_bucket",
+  "weight": 1,
+  "max_level": 3,
+  "min_cost": {
+    "base": 1,
+    "per_level_above_first": 10
+  },
+  "max_cost": {
+    "base": 50,
+    "per_level_above_first": 10
+  },
+  "anvil_cost": 8,
+  "slots": [
+    "any"
+  ],
+  "primary_items": "#buckets_update:enchantable_diamond_bucket",
+  "exclusive_set": [
+    "buckets_update:fluid_infinity",
+    "buckets_update:conservation"
+  ]
+}

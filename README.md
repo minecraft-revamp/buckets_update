@@ -2,7 +2,7 @@
 
 ![Bucketry](assets/banners/banner_more_buckets.webp)
 
-Refresh the Minecraft bucket family with a vanilla-first tier ladder — a cheap wooden bucket, a tougher bamboo one, a permanent copper one, a versatile gold one that handles lava, and a lightly revised iron recipe.
+Refresh the Minecraft bucket family with a vanilla-first tier ladder — a cheap wooden bucket, a tougher bamboo one, a permanent copper one, a versatile gold one that handles lava, a robust diamond one supporting unique enchantments, and a lightly revised iron recipe.
 
 [![Build](https://github.com/minecraft-revamp/buckets_update/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/minecraft-revamp/buckets_update/actions/workflows/build-and-test.yml)
 [![Minecraft](https://img.shields.io/badge/Minecraft-26.2-62B132?logo=minecraft&logoColor=white)](https://www.minecraft.net/)
@@ -24,7 +24,8 @@ Refresh the Minecraft bucket family with a vanilla-first tier ladder — a cheap
 | **Wooden** | <img src="assets/textures_256x/wooden_bucket.png" width="24" height="24" alt="Wooden Bucket" /> | 5 Planks | ~16 uses | Water, Milk |
 | **Bamboo** | <img src="assets/textures_256x/bamboo_bucket.png" width="24" height="24" alt="Bamboo Bucket" /> | 5 Bamboo Planks | ~32 uses | Water, Milk |
 | **Copper** | <img src="assets/textures_256x/copper_bucket.png" width="24" height="24" alt="Copper Bucket" /> | 5 Copper Ingots | **permanent** | Water, Milk, Powder Snow |
-| **Gold** | <img src="assets/textures_256x/gold_bucket.png" width="24" height="24" alt="Gold Bucket" /> | 5 Gold Ingots | ~32 uses | **Water, Lava, Milk, Powder Snow** |
+| **Gold** | <img src="assets/textures_256x/gold_bucket.png" width="24" height="24" alt="Gold Bucket" /> | 5 Gold Ingots | ~32 uses | Water, Lava, Milk, Powder Snow |
+| **Diamond** | <img src="assets/textures_256x/diamond_bucket.png" width="24" height="24" alt="Diamond Bucket" /> | 5 Diamonds | **permanent** | **Water, Lava, Milk, Powder Snow** *(Enchantable)* |
 | **Iron** *(vanilla)* | <img src="assets/textures_256x/iron_bucket.png" width="24" height="24" alt="Iron Bucket" /> | 5 Iron Ingots | **permanent** | Water, Lava, Milk, Powder Snow |
 
 ---
@@ -53,6 +54,20 @@ Refresh the Minecraft bucket family with a vanilla-first tier ladder — a cheap
 * The **only added bucket** capable of carrying and placing **lava**.
 * Can also hold water, milk, and powder snow.
 
+### 💎 Diamond
+<img src="assets/banners/banner_diamond_bucket.webp" width="100%" alt="Diamond Bucket" style="border-radius: 4px; margin-bottom: 10px;" />
+* **Permanent** durability (never breaks).
+* Empty buckets stack up to **16** in your inventory.
+* **Enchantable (10):** Can receive three unique custom enchantments via the enchanting table or enchanted books:
+
+| Enchantment | Max Level | Description | Incompatible with |
+| :--- | :---: | :--- | :--- |
+| **Fluid Infinity** | III | Permits placing fluids infinitely. Each placement consumes XP, scale decreases as level increases (Water: 5/3/1 XP, Lava: 20/10/5 XP). | **Conservation** |
+| **Conservation** | III | Gives a chance to duplicate a source block when scooping (Level I: 15%, Level II: 30%, Level III: 45%). | **Fluid Infinity** |
+| **Thermal Shield** | I | Blocks fire and lava damage while held in either hand. | — |
+
+* Can hold water, lava, milk, and powder snow.
+
 ### ⚙️ Iron *(Vanilla)*
 <img src="assets/banners/banner_iron_bucket.webp" width="100%" alt="Iron Bucket" style="border-radius: 4px; margin-bottom: 10px;" />
 * Retains vanilla permanent durability, lava transport, and powder snow capabilities.
@@ -70,6 +85,7 @@ Every craftable bucket now shares a consistent recipe layout: **five pieces of a
 | **Bamboo** | <img src="assets/textures_256x/bamboo_bucket.png" width="32" height="32" alt="Bamboo Bucket" /> | ![Bamboo bucket recipe](docs/images/recipe_bamboo.png) |
 | **Copper** | <img src="assets/textures_256x/copper_bucket.png" width="32" height="32" alt="Copper Bucket" /> | ![Copper bucket recipe](docs/images/recipe_copper.png) |
 | **Gold** | <img src="assets/textures_256x/gold_bucket.png" width="32" height="32" alt="Gold Bucket" /> | ![Gold bucket recipe](docs/images/recipe_gold.png) |
+| **Diamond** | <img src="assets/textures_256x/diamond_bucket.png" width="32" height="32" alt="Diamond Bucket" /> | ![Diamond bucket recipe](docs/images/recipe_diamond.png) |
 | **Iron** *(revised)* | <img src="assets/textures_256x/iron_bucket.png" width="32" height="32" alt="Iron Bucket" /> | ![Iron bucket recipe](docs/images/recipe_iron.png) |
 
 ---
@@ -135,4 +151,4 @@ This mod is the first of a planned set of small focused mods rather than a singl
 
 ---
 
-Made by [@JessicaMalle](https://github.com/JessicaMalle) with assistance from Claude.
+Made by [@JessicaMalle](https://github.com/JessicaMalle).

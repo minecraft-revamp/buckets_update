@@ -33,5 +33,17 @@
   "item.buckets_update.gold_milk_bucket": "Seau en or (lait)",
   "item.buckets_update.gold_powder_snow_bucket": "Seau en or (neige poudreuse)",
   "advancements.buckets_update.craft_gold.title": "Premier seau en or",
-  "advancements.buckets_update.craft_gold.description": "Fabrique un seau en or : 5 lingots d'or en V. Transporte eau, lave, lait et neige poudreuse — 32 utilisations."
+  "advancements.buckets_update.craft_gold.description": "Fabrique un seau en or : 5 lingots d'or en V. Transporte eau, lave, lait et neige poudreuse — 32 utilisations.",
+  "item.buckets_update.diamond_bucket": "Seau en diamant",
+  "item.buckets_update.diamond_water_bucket": "Seau en diamant (eau)",
+  "item.buckets_update.diamond_lava_bucket": "Seau en diamant (lave)",
+  "item.buckets_update.diamond_milk_bucket": "Seau en diamant (lait)",
+  "item.buckets_update.diamond_powder_snow_bucket": "Seau en diamant (neige poudreuse)",
+  "item.buckets_update.diamond_bucket.no_xp": "Pas assez de points d'expérience !",
+  "enchantment.buckets_update.fluid_infinity": "Infinité de fluide",
+  "enchantment.buckets_update.thermal_shield": "Bouclier thermique",
+  "enchantment.buckets_update.conservation": "Conservation",
+  "enchantment.buckets_update.fluid_infinity.desc": "Verse les fluides en consommant de l'expérience au lieu de vider le seau.",
+  "enchantment.buckets_update.thermal_shield.desc": "Confère Résistance au feu passive lorsque vous tenez un seau de lave.",
+  "enchantment.buckets_update.conservation.desc": "Chance de poser des fluides sans les consommer."
 }

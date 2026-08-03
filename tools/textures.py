@@ -45,6 +45,8 @@ EXPECTED_PALETTES: Dict[str, List[RGB]] = {
     # gold = derived from gold_ingot.png: warm amber stops from deep shadow to bright highlight.
     "gold": [(80, 48, 0), (112, 70, 0), (148, 96, 4), (180, 124, 16),
              (208, 155, 32), (230, 182, 52), (248, 206, 80), (255, 228, 132)],
+    "diamond": [(33, 76, 76), (51, 107, 107), (65, 143, 143), (76, 175, 175),
+                (102, 204, 204), (133, 224, 224), (170, 240, 240), (220, 255, 255)],
 }
 
 
@@ -59,6 +61,8 @@ ITEM_TO_STAGE: Dict[str, str] = {
     "copper_water_bucket": "copper_unoxidized",
     "gold_bucket":         "gold",
     "gold_water_bucket":   "gold",
+    "diamond_bucket":       "diamond",
+    "diamond_water_bucket": "diamond",
 }
 
 
