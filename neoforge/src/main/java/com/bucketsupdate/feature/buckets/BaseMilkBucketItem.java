@@ -66,6 +66,15 @@ public abstract class BaseMilkBucketItem extends Item {
         if (damage != null) {
             to.set(DataComponents.DAMAGE, damage);
         }
+        if (from.has(DataComponents.CUSTOM_NAME)) {
+            to.set(DataComponents.CUSTOM_NAME, from.get(DataComponents.CUSTOM_NAME));
+        }
+        if (from.has(DataComponents.ENCHANTMENTS)) {
+            to.set(DataComponents.ENCHANTMENTS, from.get(DataComponents.ENCHANTMENTS));
+        }
+        if (from.has(DataComponents.REPAIR_COST)) {
+            to.set(DataComponents.REPAIR_COST, from.get(DataComponents.REPAIR_COST));
+        }
     }
 
     /** Apply drink wear; returns {@link ItemStack#EMPTY} if the bucket broke. */

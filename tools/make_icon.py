@@ -22,17 +22,18 @@ DISC = (52, 57, 70, 255)
 DISC_EDGE = (74, 80, 96, 255)
 STAR = (96, 103, 122, 165)
 
-# vertex i: angle = -90 + 72*i  (i=0 apex/top, then clockwise)
-#   0 top, 1 upper-right, 2 lower-right, 3 lower-left, 4 upper-left
+# vertex i: angle = -90 + 60*i  (i=0 apex/top, then clockwise)
+#   0 top, 1 upper-right, 2 lower-right, 3 bottom, 4 lower-left, 5 upper-left
 LAYOUT = {
     0: "gold_bucket.png",
     1: "iron_bucket.png",
-    2: "copper_bucket.png",
-    3: "bamboo_bucket.png",
-    4: "wooden_bucket.png",
+    2: "diamond_bucket.png",
+    3: "copper_bucket.png",
+    4: "bamboo_bucket.png",
+    5: "wooden_bucket.png",
 }
 
-R = 38        # pentagon circumradius (final px)
+R = 38        # hexagon circumradius (final px)
 BPX = 36      # bucket render size (final px)
 DISC_R = 21   # disc radius behind each bucket (final px)
 
@@ -45,8 +46,8 @@ def _load(filename: str) -> Image.Image:
 def _vertices(scale: int) -> list[tuple[float, float]]:
     cx = cy = SIZE * scale / 2
     pts = []
-    for i in range(5):
-        a = math.radians(-90 + 72 * i)
+    for i in range(6):
+        a = math.radians(-90 + 60 * i)
         pts.append((cx + R * scale * math.cos(a), cy + R * scale * math.sin(a)))
     return pts
 
@@ -61,10 +62,14 @@ def render() -> Image.Image:
                         fill=BG_FILL, outline=FRAME, width=3 * S)
 
     verts = _vertices(S)
-    # pentagram: connect every other vertex 0-2-4-1-3-0
-    order = [0, 2, 4, 1, 3, 0]
-    for a, b in zip(order, order[1:]):
+    # Hexagram: two interlocking triangles
+    tri1 = [0, 2, 4, 0]
+    tri2 = [1, 3, 5, 1]
+    for a, b in zip(tri1, tri1[1:]):
         d.line([verts[a], verts[b]], fill=STAR, width=3 * S)
+    for a, b in zip(tri2, tri2[1:]):
+        d.line([verts[a], verts[b]], fill=STAR, width=3 * S)
+        
     # discs behind the buckets
     for (x, y) in verts:
         d.ellipse([x - DISC_R * S, y - DISC_R * S, x + DISC_R * S, y + DISC_R * S],

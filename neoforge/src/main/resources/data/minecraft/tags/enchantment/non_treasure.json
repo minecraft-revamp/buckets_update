@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "buckets_update:fluid_infinity",
+    "buckets_update:thermal_shield",
+    "buckets_update:conservation"
+  ]
+}

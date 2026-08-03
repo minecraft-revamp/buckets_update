@@ -11,6 +11,9 @@ import com.bucketsupdate.feature.buckets.GoldMilkBucketItem;
 import com.bucketsupdate.feature.buckets.GoldPowderSnowBucketItem;
 import com.bucketsupdate.feature.buckets.WoodenBucketItem;
 import com.bucketsupdate.feature.buckets.WoodenMilkBucketItem;
+import com.bucketsupdate.feature.buckets.DiamondBucketItem;
+import com.bucketsupdate.feature.buckets.DiamondMilkBucketItem;
+import com.bucketsupdate.feature.buckets.DiamondPowderSnowBucketItem;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.level.material.Fluids;
@@ -134,6 +137,46 @@ public final class ModItems {
             props -> new GoldPowderSnowBucketItem(
                     props.stacksTo(1),
                     () -> ModItems.GOLD_BUCKET.get()));
+
+    // ---- Diamond bucket family (water + lava + powder snow + milk, permanent) ----
+    public static final DeferredItem<DiamondBucketItem> DIAMOND_BUCKET = ITEMS.registerItem(
+            "diamond_bucket",
+            props -> new DiamondBucketItem(
+                    Fluids.EMPTY,
+                    props.stacksTo(16).enchantable(10),
+                    () -> ModItems.DIAMOND_WATER_BUCKET.get(),
+                    () -> ModItems.DIAMOND_LAVA_BUCKET.get(),
+                    () -> ModItems.DIAMOND_BUCKET.get()));
+
+    public static final DeferredItem<DiamondBucketItem> DIAMOND_WATER_BUCKET = ITEMS.registerItem(
+            "diamond_water_bucket",
+            props -> new DiamondBucketItem(
+                    Fluids.WATER,
+                    props.stacksTo(1).enchantable(10).craftRemainder(ModItems.DIAMOND_BUCKET.get()),
+                    () -> ModItems.DIAMOND_WATER_BUCKET.get(),
+                    () -> ModItems.DIAMOND_LAVA_BUCKET.get(),
+                    () -> ModItems.DIAMOND_BUCKET.get()));
+
+    public static final DeferredItem<DiamondBucketItem> DIAMOND_LAVA_BUCKET = ITEMS.registerItem(
+            "diamond_lava_bucket",
+            props -> new DiamondBucketItem(
+                    Fluids.LAVA,
+                    props.stacksTo(1).enchantable(10).craftRemainder(ModItems.DIAMOND_BUCKET.get()),
+                    () -> ModItems.DIAMOND_WATER_BUCKET.get(),
+                    () -> ModItems.DIAMOND_LAVA_BUCKET.get(),
+                    () -> ModItems.DIAMOND_BUCKET.get()));
+
+    public static final DeferredItem<DiamondMilkBucketItem> DIAMOND_MILK_BUCKET = ITEMS.registerItem(
+            "diamond_milk_bucket",
+            props -> new DiamondMilkBucketItem(
+                    props.stacksTo(1).enchantable(10).component(DataComponents.CONSUMABLE, Consumables.MILK_BUCKET),
+                    () -> ModItems.DIAMOND_BUCKET.get()));
+
+    public static final DeferredItem<DiamondPowderSnowBucketItem> DIAMOND_POWDER_SNOW_BUCKET = ITEMS.registerItem(
+            "diamond_powder_snow_bucket",
+            props -> new DiamondPowderSnowBucketItem(
+                    props.stacksTo(1).enchantable(10),
+                    () -> ModItems.DIAMOND_BUCKET.get()));
 
     private ModItems() {}
 }

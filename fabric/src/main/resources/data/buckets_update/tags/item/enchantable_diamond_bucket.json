@@ -1,0 +1,9 @@
+{
+  "values": [
+    "buckets_update:diamond_bucket",
+    "buckets_update:diamond_water_bucket",
+    "buckets_update:diamond_lava_bucket",
+    "buckets_update:diamond_milk_bucket",
+    "buckets_update:diamond_powder_snow_bucket"
+  ]
+}

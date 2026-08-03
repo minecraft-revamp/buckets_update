@@ -33,5 +33,17 @@
   "item.buckets_update.gold_milk_bucket": "Gold Milk Bucket",
   "item.buckets_update.gold_powder_snow_bucket": "Gold Powder Snow Bucket",
   "advancements.buckets_update.craft_gold.title": "First Gold Bucket",
-  "advancements.buckets_update.craft_gold.description": "Craft a gold bucket: 5 gold ingots in a V. Carries water, lava, milk, and powder snow — 32 uses."
+  "advancements.buckets_update.craft_gold.description": "Craft a gold bucket: 5 gold ingots in a V. Carries water, lava, milk, and powder snow — 32 uses.",
+  "item.buckets_update.diamond_bucket": "Diamond Bucket",
+  "item.buckets_update.diamond_water_bucket": "Diamond Water Bucket",
+  "item.buckets_update.diamond_lava_bucket": "Diamond Lava Bucket",
+  "item.buckets_update.diamond_milk_bucket": "Diamond Milk Bucket",
+  "item.buckets_update.diamond_powder_snow_bucket": "Diamond Powder Snow Bucket",
+  "item.buckets_update.diamond_bucket.no_xp": "Not enough experience points!",
+  "enchantment.buckets_update.fluid_infinity": "Fluid Infinity",
+  "enchantment.buckets_update.thermal_shield": "Thermal Shield",
+  "enchantment.buckets_update.conservation": "Conservation",
+  "enchantment.buckets_update.fluid_infinity.desc": "Places liquids using experience points instead of emptying the bucket.",
+  "enchantment.buckets_update.thermal_shield.desc": "Grants passive Fire Resistance when holding a lava bucket.",
+  "enchantment.buckets_update.conservation.desc": "Chance to place liquids without consuming them."
 }

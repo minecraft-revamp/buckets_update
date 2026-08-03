@@ -137,6 +137,47 @@ public final class ModItems {
                     props.stacksTo(1),
                     () -> ModItems.GOLD_BUCKET));
 
+    // ---- Diamond bucket family (water + lava + powder snow + milk, permanent) ----
+    public static final DiamondBucketItem DIAMOND_BUCKET = registerItem(
+            "diamond_bucket",
+            props -> new DiamondBucketItem(
+                    Fluids.EMPTY,
+                    props.stacksTo(16).enchantable(10),
+                    () -> ModItems.DIAMOND_WATER_BUCKET,
+                    () -> ModItems.DIAMOND_LAVA_BUCKET,
+                    () -> ModItems.DIAMOND_BUCKET));
+
+    public static final DiamondBucketItem DIAMOND_WATER_BUCKET = registerItem(
+            "diamond_water_bucket",
+            props -> new DiamondBucketItem(
+                    Fluids.WATER,
+                    props.stacksTo(1).enchantable(10).craftRemainder(ModItems.DIAMOND_BUCKET),
+                    () -> ModItems.DIAMOND_WATER_BUCKET,
+                    () -> ModItems.DIAMOND_LAVA_BUCKET,
+                    () -> ModItems.DIAMOND_BUCKET));
+
+    public static final DiamondBucketItem DIAMOND_LAVA_BUCKET = registerItem(
+            "diamond_lava_bucket",
+            props -> new DiamondBucketItem(
+                    Fluids.LAVA,
+                    props.stacksTo(1).enchantable(10).craftRemainder(ModItems.DIAMOND_BUCKET),
+                    () -> ModItems.DIAMOND_WATER_BUCKET,
+                    () -> ModItems.DIAMOND_LAVA_BUCKET,
+                    () -> ModItems.DIAMOND_BUCKET));
+
+    public static final DiamondMilkBucketItem DIAMOND_MILK_BUCKET = registerItem(
+            "diamond_milk_bucket",
+            props -> new DiamondMilkBucketItem(
+                    props.stacksTo(1).enchantable(10)
+                            .component(DataComponents.CONSUMABLE, Consumables.MILK_BUCKET),
+                    () -> ModItems.DIAMOND_BUCKET));
+
+    public static final DiamondPowderSnowBucketItem DIAMOND_POWDER_SNOW_BUCKET = registerItem(
+            "diamond_powder_snow_bucket",
+            props -> new DiamondPowderSnowBucketItem(
+                    props.stacksTo(1).enchantable(10),
+                    () -> ModItems.DIAMOND_BUCKET));
+
     private ModItems() {}
 
     private static <T extends Item> T registerItem(String name, Function<Item.Properties, T> factory) {
