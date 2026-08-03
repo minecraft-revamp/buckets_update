@@ -2,25 +2,17 @@
 """Render the 128x128 project icon: the five buckets at the points of a
 pentacle (MTG-colour-pie style), apex = gold.
 
-Run from the project root:
-    python3 tools/make_icon.py
-
-Writes neoforge/ + fabric/ icon.png and docs/images/icon.png. The dark
-rounded-square frame is drawn at 4x with antialiasing then downscaled, while
-the 16x16 bucket art is composited NEAREST so the pixel art stays crisp.
-Vanilla iron bucket comes from the decompiled neoForm assets (run
-`./gradlew :neoFormDecompile` first).
+Reads the 16x16 textures directly from the project's visual assets directory
+(assets/textures_16x/) and writes neoforge/ + fabric/ icon.png and docs/images/icon.png.
 """
 from __future__ import annotations
 import math
 import sys
 from pathlib import Path
-
 from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parent.parent
-MOD_TEX = ROOT / "neoforge/src/main/resources/assets/buckets_update/textures/item"
-VANILLA = next(ROOT.glob("neoforge/build/neoForm/**/assets/minecraft/textures"), None)
+ASSETS_16_DIR = ROOT / "assets" / "textures_16x"
 
 SIZE = 128
 S = 4                      # supersample factor for the smooth background
@@ -33,11 +25,11 @@ STAR = (96, 103, 122, 165)
 # vertex i: angle = -90 + 72*i  (i=0 apex/top, then clockwise)
 #   0 top, 1 upper-right, 2 lower-right, 3 lower-left, 4 upper-left
 LAYOUT = {
-    0: ("gold_bucket", False),
-    1: ("bucket", True),     # vanilla iron
-    2: ("copper_bucket", False),
-    3: ("bamboo_bucket", False),
-    4: ("wooden_bucket", False),
+    0: "gold_bucket.png",
+    1: "iron_bucket.png",
+    2: "copper_bucket.png",
+    3: "bamboo_bucket.png",
+    4: "wooden_bucket.png",
 }
 
 R = 38        # pentagon circumradius (final px)
@@ -45,10 +37,9 @@ BPX = 36      # bucket render size (final px)
 DISC_R = 21   # disc radius behind each bucket (final px)
 
 
-def _load(name: str, vanilla: bool) -> Image.Image:
-    if vanilla:
-        return Image.open(VANILLA / "item" / f"{name}.png").convert("RGBA")
-    return Image.open(MOD_TEX / f"{name}.png").convert("RGBA")
+def _load(filename: str) -> Image.Image:
+    path = ASSETS_16_DIR / filename
+    return Image.open(path).convert("RGBA")
 
 
 def _vertices(scale: int) -> list[tuple[float, float]]:
@@ -84,17 +75,18 @@ def render() -> Image.Image:
     # --- buckets composited crisp at final resolution ---
     verts1 = _vertices(1)
     for i, (x, y) in enumerate(verts1):
-        name, vanilla = LAYOUT[i]
-        art = _load(name, vanilla).resize((BPX, BPX), Image.NEAREST)
+        filename = LAYOUT[i]
+        art = _load(filename).resize((BPX, BPX), Image.NEAREST)
         icon.alpha_composite(art, (round(x - BPX / 2), round(y - BPX / 2)))
     return icon
 
 
 def main() -> int:
-    if VANILLA is None:
-        print("Vanilla textures not found. Run `./gradlew :neoFormDecompile` first.",
-              file=sys.stderr)
+    if not ASSETS_16_DIR.exists():
+        print(f"Error: Visual assets directory not found at {ASSETS_16_DIR}.", file=sys.stderr)
+        print("Please run 'python tools/generate_visual_assets.py' first to extract them.", file=sys.stderr)
         return 1
+
     icon = render()
     targets = [
         ROOT / "neoforge/src/main/resources/icon.png",
