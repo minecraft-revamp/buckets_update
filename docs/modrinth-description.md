@@ -11,60 +11,75 @@ Suggested categories: Equipment, Utility, Game Mechanics
 Environment: Client and server → Required on both
 -->
 
-![Bucketry](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/logo.png)
+![Bucketry](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/banners/banner_more_buckets.webp)
 
 **The bucket progression vanilla never finished.**
 
-Vanilla gives you exactly one bucket — iron, or nothing. **Bucketry** fills that one
-missing piece with a small, vanilla-first *tier ladder*: a cheap wooden bucket early,
-a tougher bamboo one, a permanent copper one, and a versatile gold one — the only *added*
-bucket that can hold lava, matching vanilla iron. No HUD, no menus, no new ores. Just
-buckets that behave the way you'd expect.
+Vanilla gives you exactly one bucket — iron, or nothing. **Bucketry** fills that one missing piece with a small, vanilla-first *tier ladder*: a cheap wooden bucket early, a tougher bamboo one, a permanent copper one, and a versatile gold one — the only *added* bucket that can hold lava, matching vanilla iron. No HUD, no menus, no new ores. Just buckets that behave the way you'd expect.
 
-## 🪣 The tiers
+---
 
-| Tier | Material | Durability | Empty stacks | Lava | Powder snow |
-|---|---|:-:|:-:|:-:|:-:|
-| 🪣 **Wooden** | 5 planks | ~16 uses | — | — | — |
-| 🎋 **Bamboo** | 5 bamboo planks | ~32 uses (2× wood) | — | — | — |
-| 🟠 **Copper** | 5 copper ingots | permanent | **16** | — | ✅ |
-| 🥇 **Gold** | 5 gold ingots | ~32 uses | — | ✅ | ✅ |
-| ⚙️ **Iron** | *vanilla — recipe revised* | permanent | 16 | ✅ | ✅ |
+## 🪣 What's in the Bucket
 
-![The bucket family](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/family.png)
+| Bucket Tier | Icon | Material | Durability | Carries |
+| :---: | :---: | :--- | :---: | :--- |
+| **Wooden** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/wooden_bucket.png" width="24" height="24" alt="Wooden Bucket" /> | 5 Planks | ~16 uses | Water, Milk |
+| **Bamboo** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/bamboo_bucket.png" width="24" height="24" alt="Bamboo Bucket" /> | 5 Bamboo Planks | ~32 uses | Water, Milk |
+| **Copper** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/copper_bucket.png" width="24" height="24" alt="Copper Bucket" /> | 5 Copper Ingots | **permanent** | Water, Milk, Powder Snow |
+| **Gold** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/gold_bucket.png" width="24" height="24" alt="Gold Bucket" /> | 5 Gold Ingots | ~32 uses | **Water, Lava, Milk, Powder Snow** |
+| **Iron** *(vanilla)* | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/iron_bucket.png" width="24" height="24" alt="Iron Bucket" /> | 5 Iron Ingots | **permanent** | Water, Lava, Milk, Powder Snow |
 
-## ✨ What you can do
+---
 
-- **Wooden & bamboo** buckets wear out and break — and you can **repair them by combining
-  two damaged ones in the crafting grid**, just like any tool.
-- **Copper** is permanent like iron: it never breaks, the empty bucket **stacks to 16**,
-  and it can **scoop powder snow**.
-- **Gold** (32 uses) is the only *added* bucket that can **hold lava** (matching vanilla
-  iron) — it also carries water, milk, and powder snow, making it the most versatile of the
-  new tiers.
-- Every tier has **empty / water / milk** variants — milk a cow, then drink to clear
-  effects. Copper and gold add a **powder snow** bucket. Gold is the only *added* tier with a **lava** bucket (iron uses the vanilla lava bucket).
-- The **iron** bucket is 100% vanilla; only its recipe changes to match the family's shape.
+## ✨ Tier Highlights
 
-## 🛠️ Recipes
+### 🪣 Wooden
+<img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/banners/banner_wood_bucket.webp" width="100%" alt="Wooden Bucket" />
+- **Wooden Bucket:** ~16 uses. The cheapest early-game water option.
+- Damageable and can be repaired by combining two worn buckets in the crafting grid.
 
-One shared shape: five pieces of a single material in a V — no chains.
+### 🎋 Bamboo
+<img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/banners/banner_bamboo_bucket.webp" width="100%" alt="Bamboo Bucket" />
+- **Bamboo Bucket:** ~32 uses. Twice as durable as wood.
+- Damageable and can be repaired by combining two worn buckets in the crafting grid.
 
-| Wooden | Bamboo |
-|:-:|:-:|
-| ![Wooden recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_wooden.png) | ![Bamboo recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_bamboo.png) |
-| **Copper** | **Gold** |
-| ![Copper recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_copper.png) | ![Gold recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_gold.png) |
-| **Iron** *(revised)* | |
-| ![Iron recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_iron.png) | |
+### 🟠 Copper
+<img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/banners/banner_copper_bucket.webp" width="100%" alt="Copper Bucket" />
+- **Permanent** durability (never breaks).
+- Empty copper buckets stack up to **16** in your inventory.
+- Capable of scooping and carrying **powder snow**.
 
-Water, lava, milk and powder-snow buckets aren't crafted — fill an empty bucket, milk a
-cow, or scoop the block directly.
+### 🥇 Gold
+<img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/banners/banner_gold_bucket.webp" width="100%" alt="Gold Bucket" />
+- ~32 uses durability.
+- The **only added bucket** capable of carrying and placing **lava**.
+- Can also hold water, milk, and powder snow.
+
+### ⚙️ Iron *(Vanilla)*
+<img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/banners/banner_iron_bucket.webp" width="100%" alt="Iron Bucket" />
+- Retains vanilla permanent durability, lava transport, and powder snow capabilities.
+- Crafted using a revised recipe (5 ingots) to align with the rest of the bucket family.
+
+---
+
+## 🛠️ Crafting Recipes
+
+Every craftable bucket now shares a consistent recipe layout: **five pieces of a single material in a V shape** — no chains.
+
+| Tier | Crafted Bucket | Recipe Pattern |
+| :---: | :---: | :---: |
+| **Wooden** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/wooden_bucket.png" width="32" height="32" alt="Wooden Bucket" /> | ![Wooden recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_wooden.png) |
+| **Bamboo** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/bamboo_bucket.png" width="32" height="32" alt="Bamboo Bucket" /> | ![Bamboo recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_bamboo.png) |
+| **Copper** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/copper_bucket.png" width="32" height="32" alt="Copper Bucket" /> | ![Copper recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_copper.png) |
+| **Gold** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/gold_bucket.png" width="32" height="32" alt="Gold Bucket" /> | ![Gold recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_gold.png) |
+| **Iron** *(revised)* | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/iron_bucket.png" width="32" height="32" alt="Iron Bucket" /> | ![Iron recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_iron.png) |
+
+---
 
 ## 🌍 Good to know
 
 - **Loaders:** NeoForge **and** Fabric *(the Fabric build needs Fabric API).*
-- **Minecraft:** 26.2 (also available for 26.1).
+- **Minecraft:** 26.2.
 - **Required on both client and server.**
 - **30 languages** included.
 - Open source under the **MIT license** — [source & issues on GitHub](https://github.com/minecraft-revamp/buckets_update).
