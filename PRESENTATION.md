@@ -1,6 +1,6 @@
 <div align="center">
 
-![Bucketry](assets/banners/banner_more_buckets.webp)
+![Bucketry](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/banners/banner_more_buckets.webp)
 
 **The bucket progression vanilla never finished.**
 
@@ -30,18 +30,18 @@ Here is a summary of the bucket progression:
 
 | Tier | Icon | Material | Durability | Empty stacks to | Lava | Powder snow |
 | :---: | :---: | :--- | :---: | :---: | :---: | :---: |
-| **Wooden** | <img src="assets/textures_256x/wooden_bucket.png" width="28" height="28" alt="Wooden Bucket" /> | 5 Planks | ~16 uses | 1 | — | — |
-| **Bamboo** | <img src="assets/textures_256x/bamboo_bucket.png" width="28" height="28" alt="Bamboo Bucket" /> | 5 Bamboo Planks | ~32 uses | 1 | — | — |
-| **Copper** | <img src="assets/textures_256x/copper_bucket.png" width="28" height="28" alt="Copper Bucket" /> | 5 Copper Ingots | **permanent** | **16** | — | ✅ |
-| **Gold** | <img src="assets/textures_256x/gold_bucket.png" width="28" height="28" alt="Gold Bucket" /> | 5 Gold Ingots | ~32 uses | 1 | ✅ | ✅ |
-| **Iron** | <img src="assets/textures_256x/iron_bucket.png" width="28" height="28" alt="Iron Bucket" /> | 5 Iron Ingots | **permanent** | 16 | ✅ | ✅ |
+| **Wooden** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/wooden_bucket.png" width="28" height="28" alt="Wooden Bucket" /> | 5 Planks | ~16 uses | 1 | — | — |
+| **Bamboo** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/bamboo_bucket.png" width="28" height="28" alt="Bamboo Bucket" /> | 5 Bamboo Planks | ~32 uses | 1 | — | — |
+| **Copper** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/copper_bucket.png" width="28" height="28" alt="Copper Bucket" /> | 5 Copper Ingots | **permanent** | **16** | — | ✅ |
+| **Gold** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/gold_bucket.png" width="28" height="28" alt="Gold Bucket" /> | 5 Gold Ingots | ~32 uses | 1 | ✅ | ✅ |
+| **Iron** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/iron_bucket.png" width="28" height="28" alt="Iron Bucket" /> | 5 Iron Ingots | **permanent** | 16 | ✅ | ✅ |
 
 ---
 
 ## Tier Showcase
 
 ### 🪣 Wooden Tier
-<img src="assets/banners/banner_wood_bucket.webp" width="100%" alt="Wooden Bucket Banner" style="border-radius: 4px; margin-bottom: 10px;" />
+<img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/banners/banner_wood_bucket.webp" width="100%" alt="Wooden Bucket Banner" style="border-radius: 4px; margin-bottom: 10px;" />
 
 *The cheapest way to carry water. Light, disposable, and easy to craft in the early game.*
 
@@ -51,14 +51,14 @@ Here is a summary of the bucket progression:
 
 | Variant | Icon | How to Obtain / Behavior |
 | :--- | :---: | :--- |
-| **Wooden Bucket** | <img src="assets/textures_256x/wooden_bucket.png" width="48" height="48" alt="Wooden Bucket" /> | Crafted with 5 planks in a V-shape. |
-| **Wooden Water Bucket** | <img src="assets/textures_256x/wooden_water_bucket.png" width="48" height="48" alt="Wooden Water Bucket" /> | Filled by right-clicking a water source. |
-| **Wooden Milk Bucket** | <img src="assets/textures_256x/wooden_milk_bucket.png" width="48" height="48" alt="Wooden Milk Bucket" /> | Obtained by right-clicking a cow. Drink to clear status effects. |
+| **Wooden Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/wooden_bucket.png" width="48" height="48" alt="Wooden Bucket" /> | Crafted with 5 planks in a V-shape. |
+| **Wooden Water Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/wooden_water_bucket.png" width="48" height="48" alt="Wooden Water Bucket" /> | Filled by right-clicking a water source. |
+| **Wooden Milk Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/wooden_milk_bucket.png" width="48" height="48" alt="Wooden Milk Bucket" /> | Obtained by right-clicking a cow. Drink to clear status effects. |
 
 ---
 
 ### 🎋 Bamboo Tier
-<img src="assets/banners/banner_bamboo_bucket.webp" width="100%" alt="Bamboo Bucket Banner" style="border-radius: 4px; margin-bottom: 10px;" />
+<img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/banners/banner_bamboo_bucket.webp" width="100%" alt="Bamboo Bucket Banner" style="border-radius: 4px; margin-bottom: 10px;" />
 
 *Twice as tough as standard wood, presenting a sturdier early-game choice.*
 
@@ -68,14 +68,14 @@ Here is a summary of the bucket progression:
 
 | Variant | Icon | How to Obtain / Behavior |
 | :--- | :---: | :--- |
-| **Bamboo Bucket** | <img src="assets/textures_256x/bamboo_bucket.png" width="48" height="48" alt="Bamboo Bucket" /> | Crafted with 5 bamboo planks in a V-shape. |
-| **Bamboo Water Bucket** | <img src="assets/textures_256x/bamboo_water_bucket.png" width="48" height="48" alt="Bamboo Water Bucket" /> | Filled by right-clicking a water source. |
-| **Bamboo Milk Bucket** | <img src="assets/textures_256x/bamboo_milk_bucket.png" width="48" height="48" alt="Bamboo Milk Bucket" /> | Obtained by right-clicking a cow. Drink to clear status effects. |
+| **Bamboo Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/bamboo_bucket.png" width="48" height="48" alt="Bamboo Bucket" /> | Crafted with 5 bamboo planks in a V-shape. |
+| **Bamboo Water Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/bamboo_water_bucket.png" width="48" height="48" alt="Bamboo Water Bucket" /> | Filled by right-clicking a water source. |
+| **Bamboo Milk Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/bamboo_milk_bucket.png" width="48" height="48" alt="Bamboo Milk Bucket" /> | Obtained by right-clicking a cow. Drink to clear status effects. |
 
 ---
 
 ### 🟠 Copper Tier
-<img src="assets/banners/banner_copper_bucket.webp" width="100%" alt="Copper Bucket Banner" style="border-radius: 4px; margin-bottom: 10px;" />
+<img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/banners/banner_copper_bucket.webp" width="100%" alt="Copper Bucket Banner" style="border-radius: 4px; margin-bottom: 10px;" />
 
 *The perfect mid-tier sweet spot. Highly durable, stackable, and capable of scooping powder snow.*
 
@@ -86,15 +86,15 @@ Here is a summary of the bucket progression:
 
 | Variant | Icon | How to Obtain / Behavior |
 | :--- | :---: | :--- |
-| **Copper Bucket** | <img src="assets/textures_256x/copper_bucket.png" width="48" height="48" alt="Copper Bucket" /> | Crafted with 5 copper ingots in a V-shape. |
-| **Copper Water Bucket** | <img src="assets/textures_256x/copper_water_bucket.png" width="48" height="48" alt="Copper Water Bucket" /> | Filled by right-clicking a water source. |
-| **Copper Milk Bucket** | <img src="assets/textures_256x/copper_milk_bucket.png" width="48" height="48" alt="Copper Milk Bucket" /> | Obtained by right-clicking a cow. |
-| **Copper Powder Snow Bucket** | <img src="assets/textures_256x/copper_powder_snow_bucket.png" width="48" height="48" alt="Copper Powder Snow Bucket" /> | Obtained by right-clicking powder snow. |
+| **Copper Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/copper_bucket.png" width="48" height="48" alt="Copper Bucket" /> | Crafted with 5 copper ingots in a V-shape. |
+| **Copper Water Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/copper_water_bucket.png" width="48" height="48" alt="Copper Water Bucket" /> | Filled by right-clicking a water source. |
+| **Copper Milk Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/copper_milk_bucket.png" width="48" height="48" alt="Copper Milk Bucket" /> | Obtained by right-clicking a cow. |
+| **Copper Powder Snow Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/copper_powder_snow_bucket.png" width="48" height="48" alt="Copper Powder Snow Bucket" /> | Obtained by right-clicking powder snow. |
 
 ---
 
 ### 🥇 Gold Tier
-<img src="assets/banners/banner_gold_bucket.webp" width="100%" alt="Gold Bucket Banner" style="border-radius: 4px; margin-bottom: 10px;" />
+<img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/banners/banner_gold_bucket.webp" width="100%" alt="Gold Bucket Banner" style="border-radius: 4px; margin-bottom: 10px;" />
 
 *The specialist. It's the only added bucket tough and thermally insulated enough to transport lava.*
 
@@ -105,16 +105,16 @@ Here is a summary of the bucket progression:
 
 | Variant | Icon | How to Obtain / Behavior |
 | :--- | :---: | :--- |
-| **Gold Bucket** | <img src="assets/textures_256x/gold_bucket.png" width="48" height="48" alt="Gold Bucket" /> | Crafted with 5 gold ingots in a V-shape. |
-| **Gold Water Bucket** | <img src="assets/textures_256x/gold_water_bucket.png" width="48" height="48" alt="Gold Water Bucket" /> | Filled by right-clicking a water source. |
-| **Gold Lava Bucket** | <img src="assets/textures_256x/gold_lava_bucket.png" width="48" height="48" alt="Gold Lava Bucket" /> | Obtained by right-clicking a lava source. |
-| **Gold Milk Bucket** | <img src="assets/textures_256x/gold_milk_bucket.png" width="48" height="48" alt="Gold Milk Bucket" /> | Obtained by right-clicking a cow. |
-| **Gold Powder Snow Bucket** | <img src="assets/textures_256x/gold_powder_snow_bucket.png" width="48" height="48" alt="Gold Powder Snow Bucket" /> | Obtained by right-clicking powder snow. |
+| **Gold Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/gold_bucket.png" width="48" height="48" alt="Gold Bucket" /> | Crafted with 5 gold ingots in a V-shape. |
+| **Gold Water Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/gold_water_bucket.png" width="48" height="48" alt="Gold Water Bucket" /> | Filled by right-clicking a water source. |
+| **Gold Lava Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/gold_lava_bucket.png" width="48" height="48" alt="Gold Lava Bucket" /> | Obtained by right-clicking a lava source. |
+| **Gold Milk Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/gold_milk_bucket.png" width="48" height="48" alt="Gold Milk Bucket" /> | Obtained by right-clicking a cow. |
+| **Gold Powder Snow Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/gold_powder_snow_bucket.png" width="48" height="48" alt="Gold Powder Snow Bucket" /> | Obtained by right-clicking powder snow. |
 
 ---
 
 ### ⚙️ Iron Tier *(Vanilla)*
-<img src="assets/banners/banner_iron_bucket.webp" width="100%" alt="Iron Bucket Banner" style="border-radius: 4px; margin-bottom: 10px;" />
+<img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/banners/banner_iron_bucket.webp" width="100%" alt="Iron Bucket Banner" style="border-radius: 4px; margin-bottom: 10px;" />
 
 *The classic vanilla bucket. Retains all original traits, but uses a revised recipe for visual consistency.*
 
@@ -125,11 +125,11 @@ Here is a summary of the bucket progression:
 
 | Variant | Icon | How to Obtain / Behavior |
 | :--- | :---: | :--- |
-| **Iron Bucket** | <img src="assets/textures_256x/iron_bucket.png" width="48" height="48" alt="Iron Bucket" /> | Crafted with 5 iron ingots (V-shape). |
-| **Iron Water Bucket** | <img src="assets/textures_256x/iron_water_bucket.png" width="48" height="48" alt="Iron Water Bucket" /> | Filled by right-clicking a water source. |
-| **Iron Lava Bucket** | <img src="assets/textures_256x/iron_lava_bucket.png" width="48" height="48" alt="Iron Lava Bucket" /> | Obtained by right-clicking a lava source. |
-| **Iron Milk Bucket** | <img src="assets/textures_256x/iron_milk_bucket.png" width="48" height="48" alt="Iron Milk Bucket" /> | Obtained by right-clicking a cow. |
-| **Iron Powder Snow Bucket** | <img src="assets/textures_256x/iron_powder_snow_bucket.png" width="48" height="48" alt="Iron Powder Snow Bucket" /> | Obtained by right-clicking powder snow. |
+| **Iron Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/iron_bucket.png" width="48" height="48" alt="Iron Bucket" /> | Crafted with 5 iron ingots (V-shape). |
+| **Iron Water Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/iron_water_bucket.png" width="48" height="48" alt="Iron Water Bucket" /> | Filled by right-clicking a water source. |
+| **Iron Lava Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/iron_lava_bucket.png" width="48" height="48" alt="Iron Lava Bucket" /> | Obtained by right-clicking a lava source. |
+| **Iron Milk Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/iron_milk_bucket.png" width="48" height="48" alt="Iron Milk Bucket" /> | Obtained by right-clicking a cow. |
+| **Iron Powder Snow Bucket** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/iron_powder_snow_bucket.png" width="48" height="48" alt="Iron Powder Snow Bucket" /> | Obtained by right-clicking powder snow. |
 
 ---
 
@@ -139,11 +139,11 @@ Every craftable bucket now shares a consistent recipe layout: **five pieces of a
 
 | Tier | Crafted Bucket | Recipe Pattern |
 | :---: | :---: | :---: |
-| **Wooden** | <img src="assets/textures_256x/wooden_bucket.png" width="40" height="40" alt="Wooden Bucket" /> | ![Wooden bucket recipe](docs/images/recipe_wooden.png) |
-| **Bamboo** | <img src="assets/textures_256x/bamboo_bucket.png" width="40" height="40" alt="Bamboo Bucket" /> | ![Bamboo bucket recipe](docs/images/recipe_bamboo.png) |
-| **Copper** | <img src="assets/textures_256x/copper_bucket.png" width="40" height="40" alt="Copper Bucket" /> | ![Copper bucket recipe](docs/images/recipe_copper.png) |
-| **Gold** | <img src="assets/textures_256x/gold_bucket.png" width="40" height="40" alt="Gold Bucket" /> | ![Gold bucket recipe](docs/images/recipe_gold.png) |
-| **Iron** *(revised)* | <img src="assets/textures_256x/iron_bucket.png" width="40" height="40" alt="Iron Bucket" /> | ![Iron bucket recipe](docs/images/recipe_iron.png) |
+| **Wooden** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/wooden_bucket.png" width="40" height="40" alt="Wooden Bucket" /> | ![Wooden bucket recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_wooden.png) |
+| **Bamboo** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/bamboo_bucket.png" width="40" height="40" alt="Bamboo Bucket" /> | ![Bamboo bucket recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_bamboo.png) |
+| **Copper** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/copper_bucket.png" width="40" height="40" alt="Copper Bucket" /> | ![Copper bucket recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_copper.png) |
+| **Gold** | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/gold_bucket.png" width="40" height="40" alt="Gold Bucket" /> | ![Gold bucket recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_gold.png) |
+| **Iron** *(revised)* | <img src="https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/assets/textures_256x/iron_bucket.png" width="40" height="40" alt="Iron Bucket" /> | ![Iron bucket recipe](https://raw.githubusercontent.com/minecraft-revamp/buckets_update/main/docs/images/recipe_iron.png) |
 
 **Why the iron recipe changes:** Vanilla's bucket recipe (`▢ ▢ / ▢`) is inconsistent with the other tiers. Changing it to require **5 iron ingots** in a V-shape creates a cohesive visual and progression logic across all materials.
 
@@ -170,9 +170,9 @@ Every craftable bucket now shares a consistent recipe layout: **five pieces of a
 
 <div align="center">
 
-### Install & build → see [README.md](./README.md)
+### Install & build → see [README.md](https://github.com/minecraft-revamp/buckets_update/blob/main/README.md)
 
-Part of the **[Minecraft Revamp](../README.md)** collective — small, focused mods that modernise Minecraft without denaturing it.
+Part of the **[Minecraft Revamp](https://github.com/minecraft-revamp)** collective — small, focused mods that modernise Minecraft without denaturing it.
 
 Made by [@JessicaMalle](https://github.com/JessicaMalle) with assistance from Claude.
 
