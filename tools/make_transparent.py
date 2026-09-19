@@ -4,7 +4,8 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parent.parent
-SRC_IMG = Path(r"<source-image>")
+# Source image is not shipped with the repo: point this at your own local copy first.
+SRC_IMG = Path("path/to/more_buckets_logo.jpg")
 DEST_IMG = ROOT / "assets" / "more_buckets_logo.png"
 
 def make_transparent():

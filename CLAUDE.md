@@ -2,7 +2,7 @@
 
 > Brand/display name is **Bucketry**; the technical `mod_id` remains `buckets_update` (registry IDs, asset paths, repo). Don't conflate the two.
 
-**Local path:** `<repo>/` (sibling repos for the Minecraft Revamp collective live under `<mods-dir>/`).
+**Layout:** one self-contained Gradle project per loader (`neoforge/`, `fabric/`), resources duplicated by hand, plus `tools/` and `tests/` for the icon and resource pipelines. Sibling repos live in the wider [Minecraft Revamp collective](../README.md).
 
 This is a **two-loader Minecraft mod** (NeoForge + Fabric, no Architectury) targeting **Minecraft 26.3**. Each loader lives in a self-contained Gradle subdirectory with its own toolchain.
 
