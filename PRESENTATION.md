@@ -12,8 +12,6 @@
 
 </div>
 
-> ⚠️ Targets **Minecraft 26.3**. Won't load on earlier versions.
-
 ---
 
 ## Why this mod
