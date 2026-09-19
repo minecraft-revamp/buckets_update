@@ -1,3 +1,17 @@
+# Release v1.2.1+mc26.3 — MC 26.3 Compatibility Update
+
+This is a toolchain-only compatibility release for Minecraft 26.3 ("Wilderness Bound"). No new features — all existing bucket tiers, enchantments, and recipes carry over unchanged.
+
+---
+
+## ⚙️ Toolchain & Compatibility
+*   Updated to **NeoForge 26.3.0.4-beta** and **Fabric API 0.161.0+26.3** / **Fabric Loader 0.19.5**.
+*   Bumped the data pack format to `min_format [121,0]` / `max_format 121` (was `[107,1]`/`107`) to match MC 26.3.
+*   No Java source changes were required — the mod's registry/event hooks and NeoForge patch surface (`BucketItem`, `CreativeModeTab`, `BucketPickup`, etc.) are unaffected by the 26.3 vanilla refactors.
+*   Fixed a leftover hardcoded `neoFormJoined26.2-1` path in `tools/render_docs_images.py` to use the same dynamic glob pattern as the other texture tooling scripts.
+
+---
+
 # Release v1.2.0+mc26.2 — Diamond Bucket & Enchantments Update
 
 This release introduces the **Diamond Bucket** tier, custom enchanting mechanics, and various bugfixes and visual asset updates for Minecraft 26.2 (Fabric & NeoForge).

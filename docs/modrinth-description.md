@@ -79,7 +79,7 @@ Every craftable bucket now shares a consistent recipe layout: **five pieces of a
 ## 🌍 Good to know
 
 - **Loaders:** NeoForge **and** Fabric *(the Fabric build needs Fabric API).*
-- **Minecraft:** 26.2.
+- **Minecraft:** 26.3.
 - **Required on both client and server.**
 - **30 languages** included.
 - Open source under the **MIT license** — [source & issues on GitHub](https://github.com/minecraft-revamp/buckets_update).

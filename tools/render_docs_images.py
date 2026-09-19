@@ -16,7 +16,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
 MOD_TEX = ROOT / "neoforge/src/main/resources/assets/buckets_update/textures/item"
-VANILLA = next(ROOT.glob("neoforge/build/neoForm/neoFormJoined26.2-1/**/assets/minecraft/textures"), None)
+VANILLA = next(ROOT.glob("neoforge/build/neoForm/**/assets/minecraft/textures"), None)
 if VANILLA is None:
     print("Vanilla textures not found. Run `./gradlew :neoFormDecompile` first.", file=sys.stderr)
     sys.exit(1)

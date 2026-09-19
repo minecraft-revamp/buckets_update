@@ -4,12 +4,12 @@
 
 **Local path:** `<repo>/` (sibling repos for the Minecraft Revamp collective live under `<mods-dir>/`).
 
-This is a **two-loader Minecraft mod** (NeoForge + Fabric, no Architectury) targeting **Minecraft 26.2**. Each loader lives in a self-contained Gradle subdirectory with its own toolchain.
+This is a **two-loader Minecraft mod** (NeoForge + Fabric, no Architectury) targeting **Minecraft 26.3**. Each loader lives in a self-contained Gradle subdirectory with its own toolchain.
 
 ```
 buckets_update/
-├── neoforge/   # NeoGradle 7, NeoForge 26.2.0.1-beta
-└── fabric/     # Fabric Loom 1.17.11, Fabric API 0.152.1+26.2
+├── neoforge/   # NeoGradle 7, NeoForge 26.3.0.4-beta
+└── fabric/     # Fabric Loom 1.17.11, Fabric API 0.161.0+26.3
 ```
 
 The two trees share **logic**, **resources** (assets + data), and **conventions**, but each maintains its own copy. There is **no shared module** — duplication is intentional given Architectury's incomplete 26.x support at the time of writing.
@@ -37,30 +37,42 @@ export JAVA_HOME=$HOME/.local/jdks/current25 PATH=$JAVA_HOME/bin:$PATH
 ```
 
 JAR outputs:
-- `neoforge/build/libs/buckets_update-1.2.0+mc26.2.jar`
-- `fabric/build/libs/buckets_update-fabric-1.2.0+mc26.2.jar`
+- `neoforge/build/libs/buckets_update-1.2.1+mc26.3.jar`
+- `fabric/build/libs/buckets_update-fabric-1.2.1+mc26.3.jar`
 
 ## Test workflow
 
 Prism Launcher with two instances (one per loader). Deploy with `cp` (Flatpak Prism doesn't follow symlinks):
 ```bash
-cp <project>/neoforge/build/libs/buckets_update-1.2.0+mc26.2.jar \
+cp <project>/neoforge/build/libs/buckets_update-1.2.1+mc26.3.jar \
    ~/.var/app/org.prismlauncher.PrismLauncher/data/PrismLauncher/instances/<NeoForgeInstance>/.minecraft/mods/
 ```
-Same pattern for Fabric (`buckets_update-fabric-1.2.0+mc26.2.jar`).
+Same pattern for Fabric (`buckets_update-fabric-1.2.1+mc26.3.jar`).
 
-## MC 26.2 migration notes
+## MC 26.3 migration notes
 
-26.2 (Chaos Cubed, 2026-06-16) is rendering-focused. **Zero Java API changes in our mod code** — the bucket/registry/event surfaces survived intact. What changed in the toolchain:
+26.3 ("Wilderness Bound", 2026-09-15). Like 26.2, **zero Java API changes needed in our mod code** — confirmed by a clean Fabric build with no source edits, and no matches in a grep for any of the vanilla registries/APIs the official Fabric 26.3 porting guide flags as removed (`StrippableBlockRegistry`, `TillableBlockRegistry`, `FlattenableBlockRegistry`, `CompostingChanceRegistry`, `FuelRegistry`, `FabricPotionBrewingBuilder`, `FluidVariantAttributes#enableColoredVanillaFluidNames`, `InputConstants` — none of these are used by this mod). Vanilla `bucket.png`/`water_bucket.png`/`lava_bucket.png`/`milk_bucket.png` are byte-identical to 26.2 (verified by hash), so no texture regeneration was needed either. What changed in the toolchain:
 
-| Component | Was | Now |
+| Component | Was (26.2) | Now (26.3) |
 |---|---|---|
-| NeoGradle | `7.1.26` | `7.1.38` — patches for Blaze3D/rendering classes failed to apply with 7.1.26 |
-| Fabric Loom | `1.16.1` | `1.17.11` |
-| Fabric Loader | `0.18.4` | `0.19.3` |
-| Fabric API | `0.148.0+26.1.2` | `0.152.1+26.2` |
-| data pack format | `min_format [101,1]` / `max_format 101` | `[107,1]` / `107` |
-| Python `tools/` paths | hardcoded `neoFormJoined26.1.2-1` | dynamic glob — `neoforge/build/neoForm/**/assets/...` |
+| NeoForge | `26.2.0.1-beta` | `26.3.0.4-beta` |
+| Fabric Loader | `0.19.3` | `0.19.5` |
+| Fabric API | `0.152.1+26.2` | `0.161.0+26.3` |
+| Fabric Loom | `1.17.11` | unchanged — already satisfied the 26.3 porting guide's `1.17` requirement |
+| data pack format | `min_format [107,1]` / `max_format 107` | `[121,0]` / `121` — confirmed from the real `version.json` (`pack_version.data_major`/`data_minor`) inside the downloaded `minecraft-client.jar`, **not** from the resource pack format (`resource_major` diverged to `97`, vs `88` in 26.2 — resource and data pack formats are separately numbered; this repo's `pack.mcmeta` has always tracked the data format) |
+| Python `tools/` paths | `tools/render_docs_images.py` still had a hardcoded `neoFormJoined26.2-1` path (missed in the 26.1→26.2 migration despite the changelog claiming it was fixed) | switched to the same dynamic glob (`neoForm/**/...`) already used by the other `tools/` scripts |
+
+**How the data pack format was confirmed**: rather than trusting web search results for the new format number (which returned an unverified `121` with no source), the real number was pulled directly from the Loom-downloaded `minecraft-client.jar` at `~/.gradle/caches/fabric-loom/26.3/minecraft-client.jar` → `version.json` → `pack_version`. This is more reliable than decompiling and reading a vanilla datapack's own `pack.mcmeta` (the previously-documented method) since it requires no decompile step — any loader's downloaded vanilla jar carries this file.
+
+### MC 26.3 data-driven gotcha: `recipe_crafted` advancement trigger
+
+Found by trial in-game, not in any migration guide: the vanilla `minecraft:recipe_crafted` advancement trigger renamed its condition key from `recipe_id` to `recipes` (confirmed by extracting vanilla advancement JSONs straight from `data/minecraft/advancement/**` inside `minecraft-client.jar` — vanilla ships its advancement JSONs in the client jar, not the server jar, in 26.3).
+
+| Pre-26.3 | MC 26.3 |
+|---|---|
+| `"conditions": {"recipe_id": "minecraft:bucket"}` | `"conditions": {"recipes": "minecraft:bucket"}` |
+
+**Symptom if missed**: `RegistryDataLoader` throws `Failed to load registries due to errors` at client startup — `Advancement criteria cannot be empty` / `No key recipes in MapLike[...]`. This is a **hard, fatal registry-loading crash**, not a world-specific bug: it happens before any world (new or existing) finishes loading, so it presents as "every world fails" / an infinite "Preparing world" screen rather than an in-game error. Affected our `buckets_update:old_school` advancement (`data/buckets_update/advancement/old_school.json` in both loaders) — the only advancement in this mod using the `recipe_crafted` trigger; all others use `inventory_changed`, `consume_item`, or `tick` and were unaffected.
 
 ## MC 26.1 post-deobfuscation gotchas (apply to both loaders)
 

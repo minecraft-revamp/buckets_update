@@ -5,13 +5,13 @@
 Refresh the Minecraft bucket family with a vanilla-first tier ladder — a cheap wooden bucket, a tougher bamboo one, a permanent copper one, a versatile gold one that handles lava, a robust diamond one supporting unique enchantments, and a lightly revised iron recipe.
 
 [![Build](https://github.com/minecraft-revamp/buckets_update/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/minecraft-revamp/buckets_update/actions/workflows/build-and-test.yml)
-[![Minecraft](https://img.shields.io/badge/Minecraft-26.2-62B132?logo=minecraft&logoColor=white)](https://www.minecraft.net/)
-[![NeoForge](https://img.shields.io/badge/NeoForge-26.2.0.1--beta-D7742F)](https://neoforged.net/)
-[![Fabric](https://img.shields.io/badge/Fabric-0.152.1%2B26.2-DBD0B4)](https://fabricmc.net/)
+[![Minecraft](https://img.shields.io/badge/Minecraft-26.3-62B132?logo=minecraft&logoColor=white)](https://www.minecraft.net/)
+[![NeoForge](https://img.shields.io/badge/NeoForge-26.3.0.4--beta-D7742F)](https://neoforged.net/)
+[![Fabric](https://img.shields.io/badge/Fabric-0.161.0%2B26.3-DBD0B4)](https://fabricmc.net/)
 
 </div>
 
-> ⚠️ Targets **Minecraft 26.2**. Won't load on earlier versions.
+> ⚠️ Targets **Minecraft 26.3**. Won't load on earlier versions.
 
 > 📖 **Want the full illustrated tour?** See **[PRESENTATION.md](./PRESENTATION.md)** — tiers, variants, recipe diagrams, and mechanics in detail.
 
@@ -93,12 +93,12 @@ Every craftable bucket now shares a consistent recipe layout: **five pieces of a
 ## Install
 
 1. Install the launcher of your choice (recommended: [Prism Launcher](https://prismlauncher.org/))
-2. Create a Minecraft **26.2** instance with either:
-   - **NeoForge** `26.2.0.1-beta`, or
-   - **Fabric Loader** `0.19.3` + **Fabric API** `0.152.1+26.2`
+2. Create a Minecraft **26.3** instance with either:
+   - **NeoForge** `26.3.0.4-beta`, or
+   - **Fabric Loader** `0.19.5` + **Fabric API** `0.161.0+26.3`
 3. Drop the matching JAR from [releases](../../releases) into your instance's `mods/` folder:
-   - `buckets_update-1.2.0+mc26.2.jar` for NeoForge
-   - `buckets_update-fabric-1.2.0+mc26.2.jar` for Fabric
+   - `buckets_update-1.2.1+mc26.3.jar` for NeoForge
+   - `buckets_update-fabric-1.2.1+mc26.3.jar` for Fabric
 
 ## Build from source
 
@@ -108,12 +108,12 @@ Two self-contained Gradle projects, one per loader.
 # NeoForge — needs Java 21 (auto-fetches Java 25 toolchain)
 cd neoforge
 JAVA_HOME=/path/to/jdk-21 ./gradlew build
-# → neoforge/build/libs/buckets_update-1.2.0+mc26.2.jar
+# → neoforge/build/libs/buckets_update-1.2.1+mc26.3.jar
 
 # Fabric — needs Java 25 (Loom is strict)
 cd fabric
 JAVA_HOME=/path/to/jdk-25 ./gradlew build
-# → fabric/build/libs/buckets_update-fabric-1.2.0+mc26.2.jar
+# → fabric/build/libs/buckets_update-fabric-1.2.1+mc26.3.jar
 ```
 
 You can also run the dev client directly with `./gradlew runClient` from either subdirectory.
@@ -122,8 +122,8 @@ You can also run the dev client directly with `./gradlew runClient` from either 
 
 ```
 buckets_update/
-├── neoforge/    NeoGradle 7 project, NeoForge 26.2.0.1-beta
-├── fabric/      Loom 1.17.11 project, Fabric 0.152.1+26.2
+├── neoforge/    NeoGradle 7 project, NeoForge 26.3.0.4-beta
+├── fabric/      Loom 1.17.11 project, Fabric 0.161.0+26.3
 ├── CLAUDE.md    Iteration notes (build commands, API gotchas, conventions)
 └── README.md    You are here
 ```

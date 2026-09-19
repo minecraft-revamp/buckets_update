@@ -19,7 +19,7 @@
     "crafted_iron_bucket": {
       "trigger": "minecraft:recipe_crafted",
       "conditions": {
-        "recipe_id": "minecraft:bucket"
+        "recipes": "minecraft:bucket"
       }
     }
   },
