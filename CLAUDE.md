@@ -36,6 +36,8 @@ export JAVA_HOME=$HOME/.local/jdks/current   PATH=$JAVA_HOME/bin:$PATH
 export JAVA_HOME=$HOME/.local/jdks/current25 PATH=$JAVA_HOME/bin:$PATH
 ```
 
+**If working from WSL2 with the repo checked out under `/mnt/c/...` (a Windows drive): run NeoForge builds from a native Windows shell instead (PowerShell/cmd calling `gradlew.bat`), not from WSL bash.** `neoFormDecompile`/`neoFormRecompile` touch tens of thousands of small files; accessed through WSL2's `/mnt/c` 9p bridge (`mount` shows `type 9p ... drvfs`) this took **1h49m** to even fail. The exact same build, run as a native Windows process (`Start-Process gradlew.bat`, native Windows JDK, native `%USERPROFILE%\.gradle`) touching the same physical NTFS files, took **under 6 minutes**. WSL adds a translation layer on every single file op; a native Windows process on a Windows-mounted repo doesn't. Worth the detour any time a NeoForge build feels unreasonably slow under WSL.
+
 JAR outputs:
 - `neoforge/build/libs/buckets_update-1.2.1+mc26.3.jar`
 - `fabric/build/libs/buckets_update-fabric-1.2.1+mc26.3.jar`
@@ -56,13 +58,29 @@ Same pattern for Fabric (`buckets_update-fabric-1.2.1+mc26.3.jar`).
 | Component | Was (26.2) | Now (26.3) |
 |---|---|---|
 | NeoForge | `26.2.0.1-beta` | `26.3.0.4-beta` |
+| NeoGradle (`net.neoforged.gradle.userdev`) | `7.1.38` | `7.1.39` — **required**, not optional: `7.1.38` fails to build against 26.3 at all (see gotcha below) |
 | Fabric Loader | `0.19.3` | `0.19.5` |
 | Fabric API | `0.152.1+26.2` | `0.161.0+26.3` |
 | Fabric Loom | `1.17.11` | unchanged — already satisfied the 26.3 porting guide's `1.17` requirement |
+| Fabric Gradle wrapper | `9.5.1` | `9.6.0` — matches the official 26.3 porting guide's recommendation |
 | data pack format | `min_format [107,1]` / `max_format 107` | `[121,0]` / `121` — confirmed from the real `version.json` (`pack_version.data_major`/`data_minor`) inside the downloaded `minecraft-client.jar`, **not** from the resource pack format (`resource_major` diverged to `97`, vs `88` in 26.2 — resource and data pack formats are separately numbered; this repo's `pack.mcmeta` has always tracked the data format) |
 | Python `tools/` paths | `tools/render_docs_images.py` still had a hardcoded `neoFormJoined26.2-1` path (missed in the 26.1→26.2 migration despite the changelog claiming it was fixed) | switched to the same dynamic glob (`neoForm/**/...`) already used by the other `tools/` scripts |
 
 **How the data pack format was confirmed**: rather than trusting web search results for the new format number (which returned an unverified `121` with no source), the real number was pulled directly from the Loom-downloaded `minecraft-client.jar` at `~/.gradle/caches/fabric-loom/26.3/minecraft-client.jar` → `version.json` → `pack_version`. This is more reliable than decompiling and reading a vanilla datapack's own `pack.mcmeta` (the previously-documented method) since it requires no decompile step — any loader's downloaded vanilla jar carries this file.
+
+### MC 26.3 NeoForge gotcha: `ModifyRecipeJsonsEvent` removed entirely
+
+`net.neoforged.neoforge.event.ModifyRecipeJsonsEvent` — the event `BucketEvents.onModifyRecipeJsons` used to override the vanilla iron bucket recipe at runtime — **no longer exists** in NeoForge 26.3 (confirmed by grepping the `neoforge-26.3.0.4-beta-universal.jar` for any `*Recipe*Event*` class; nothing server-side remains, only client-side recipe-book events). No replacement event was found. Fix: deleted `BucketEvents.java` and its `NeoForge.EVENT_BUS.register(BucketEvents.class)` call entirely — the static datapack override at `data/minecraft/recipe/bucket.json` (already shipped as the "belt-and-suspenders" fallback, see Resource override pattern below) now does this job alone on both loaders, same as it always has on Fabric.
+
+### MC 26.3 NeoGradle gotcha: broken bundled access transformer on `HolderSet`
+
+NeoGradle `7.1.38`'s bundled `accesstransformer.cfg` (NeoForge's own baseline AT set, not ours) tries to widen `HolderSet$1.contents()` to `PUBLIC`, but that AT's target no longer matches 26.3's vanilla bytecode (Mojang changed something in the method's signature) — so the AT silently fails to apply (logged as a warning, not an error: `"...did not apply as its target doesn't exist"`), and the anonymous class's `protected` override then fails to compile against `Named`'s now-`public` `contents()`:
+
+```
+HolderSet.java:44: error: contents() in <anonymous net.minecraft.core.HolderSet$1> cannot override contents() in Named
+```
+
+This happens inside NeoForge's own `neoFormRecompile` task — i.e. **before** our mod code is even touched, so it isn't fixable from this repo. **Bumping NeoGradle to `7.1.39` resolved it** (confirmed: same build, same NeoForge version, only the plugin version changed, and `neoFormRecompile` went from failing to succeeding — the JST access-transformer tool jumped from `2.0.1` to `2.0.11` as part of that bump).
 
 ### MC 26.3 data-driven gotcha: `recipe_crafted` advancement trigger
 
@@ -99,8 +117,9 @@ When porting to Fabric, the following NeoForge-only conveniences need workaround
 | `BucketItem.emptyContents(..., ItemStack)` 5-arg | Use 4-arg `emptyContents(LivingEntity, Level, BlockPos, BlockHitResult)`. |
 | `BucketPickup.getPickupSound(BlockState)` state-aware | Use `getPickupSound()` no-arg. |
 | `CreativeModeTab.builder()` no-arg | Vanilla requires `builder(CreativeModeTab.Row.TOP, columnIndex)`. |
-| `ModifyRecipeJsonsEvent` for runtime recipe override | Static datapack at `data/minecraft/recipe/<id>.json` (mod packs ride above vanilla). If priority issues arise, add a Mixin on `RecipeManager.prepare`. |
 | `PlayerInteractEvent.RightClickItem` | `UseItemCallback.EVENT.register(...)` from Fabric API. |
+
+*(`ModifyRecipeJsonsEvent` used to be in this table as a NeoForge-only convenience — it's gone from NeoForge itself as of 26.3, see the gotcha above. Both loaders now rely solely on the static datapack JSON.)*
 
 ## Architecture
 
@@ -114,7 +133,7 @@ When porting to Fabric, the following NeoForge-only conveniences need workaround
 - `CopperPowderSnowBucketItem` — `extends SolidBucketItem`; permanent (no wear). Returns empty copper bucket on place.
 - `GoldPowderSnowBucketItem` — `extends SolidBucketItem`; durable (32 uses). Snapshots damage before `super.useOn()` replaces the held item, then returns worn empty gold bucket.
 - `ModItems`, `ModCreativeTabs` — registries
-- `BucketEvents` — iron bucket recipe override; `MilkEvents` — cow-milking handler (now includes gold)
+- `MilkEvents` — cow-milking handler (now includes gold). The iron bucket recipe override used to have a NeoForge-side runtime companion (`BucketEvents`, via `ModifyRecipeJsonsEvent`) — removed in the 26.3 migration since that event no longer exists; the static datapack JSON now does this alone on both loaders.
 
 **Durability models, keyed on `maxUses()`:**
 - **Wood (16) / bamboo (32) / gold (32)** use vanilla durability (`.durability(MAX_USES)`, `DAMAGE` component). Bar renders, two damaged empties repair in crafting grid. Not stackable (damageable items can't stack). Wear flows via `copyState` across all variants (empty/filled/milk/powder-snow).
@@ -132,9 +151,8 @@ Empty `copper_bucket` `stacksTo(16)`. Empty gold/wood/bamboo buckets and all fil
 ## Resource override pattern
 
 The vanilla iron bucket recipe is replaced by ours (5 iron ingots in a V — single material, no chains; shared shape with the wood/copper buckets):
-- **NeoForge** (preferred path): runtime `ModifyRecipeJsonsEvent` in `BucketEvents.onModifyRecipeJsons` rewrites the JSON map before parse.
-- **Fabric**: static `data/minecraft/recipe/bucket.json` shipped in mod resources (mod datapacks override vanilla on Fabric reliably without mixin needed in our testing).
-- Both kept side by side as **belt-and-suspenders**.
+- **Both loaders**: static `data/minecraft/recipe/bucket.json` shipped in mod resources (mod datapacks override vanilla reliably on both loaders in our testing).
+- **NeoForge historically** also had a runtime companion (`BucketEvents.onModifyRecipeJsons` via `ModifyRecipeJsonsEvent`) as belt-and-suspenders — removed in the MC 26.3 migration since that event was deleted from NeoForge itself (see gotcha above). The static JSON alone has been sufficient.
 
 ## i18n
 

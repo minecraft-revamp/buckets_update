@@ -1,6 +1,5 @@
 package com.bucketsupdate;
 
-import com.bucketsupdate.feature.buckets.BucketEvents;
 import com.bucketsupdate.feature.buckets.MilkEvents;
 import com.bucketsupdate.registry.ModCreativeTabs;
 import com.bucketsupdate.registry.ModItems;
@@ -20,7 +19,6 @@ public class BucketsUpdate {
         ModItems.ITEMS.register(modEventBus);
         ModCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
 
-        NeoForge.EVENT_BUS.register(BucketEvents.class);
         NeoForge.EVENT_BUS.register(MilkEvents.class);
 
         LOGGER.info("Bucketry initialised");

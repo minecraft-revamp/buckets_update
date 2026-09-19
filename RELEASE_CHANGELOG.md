@@ -5,10 +5,12 @@ This is a toolchain-only compatibility release for Minecraft 26.3 ("Wilderness B
 ---
 
 ## ⚙️ Toolchain & Compatibility
-*   Updated to **NeoForge 26.3.0.4-beta** and **Fabric API 0.161.0+26.3** / **Fabric Loader 0.19.5**.
+*   Updated to **NeoForge 26.3.0.4-beta**, **NeoGradle 7.1.39**, and **Fabric API 0.161.0+26.3** / **Fabric Loader 0.19.5** / Gradle 9.6.0.
 *   Bumped the data pack format to `min_format [121,0]` / `max_format 121` (was `[107,1]`/`107`) to match MC 26.3.
-*   No Java source changes were required — the mod's registry/event hooks and NeoForge patch surface (`BucketItem`, `CreativeModeTab`, `BucketPickup`, etc.) are unaffected by the 26.3 vanilla refactors.
+*   Fixed the vanilla `minecraft:recipe_crafted` advancement trigger's condition key rename (`recipe_id` → `recipes`) in our `old_school` advancement — the old key crashed registry loading for every world, new or existing.
+*   Removed `BucketEvents` (NeoForge-only): its `ModifyRecipeJsonsEvent` hook was deleted from NeoForge itself in 26.3. The static `data/minecraft/recipe/bucket.json` override, already shipped on both loaders, now handles the iron bucket recipe alone.
 *   Fixed a leftover hardcoded `neoFormJoined26.2-1` path in `tools/render_docs_images.py` to use the same dynamic glob pattern as the other texture tooling scripts.
+*   New mod icon.
 
 ---
 
